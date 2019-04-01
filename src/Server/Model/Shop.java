@@ -1,4 +1,9 @@
+package Server.Model;
+
+import Server.Model.Inventory;
+
 import java.util.ArrayList;
+
 
 public class Shop {
 	

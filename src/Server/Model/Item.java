@@ -1,6 +1,7 @@
+package Server.Model;
 
 public class Item {
-	
+
 	private int itemId;
 	private String itemName;
 	private int itemQuantity;
