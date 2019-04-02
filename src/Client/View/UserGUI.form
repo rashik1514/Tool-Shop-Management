@@ -1,13 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Client.View.UserGUI">
-  <grid id="27dc6" row-count="1" column-count="1" layout-manager="BorderLayout">
-    <margin top="0" left="0" bottom="0" right="0"/>
+  <grid id="592ba" binding="panel1" default-binding="true" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
       <xy x="20" y="20" width="500" height="400"/>
-      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
     </constraints>
     <properties/>
     <border type="none"/>
-    <children/>
+    <children>
+      <scrollpane id="a5986">
+        <constraints border-constraint="East"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="ff3a8" class="javax.swing.JScrollBar" binding="scrollBar1" default-binding="true">
+            <constraints/>
+            <properties/>
+          </component>
+        </children>
+      </scrollpane>
+      <toolbar id="77e0">
+        <constraints border-constraint="North"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="87d6a" class="javax.swing.JButton" binding="exitButton" default-binding="true">
+            <constraints/>
+            <properties>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="1b311" class="javax.swing.JButton" binding="showToolsButton" default-binding="true">
+            <constraints/>
+            <properties>
+              <text value="Show Tools"/>
+            </properties>
+          </component>
+          <component id="995e0" class="javax.swing.JSeparator">
+            <constraints/>
+            <properties/>
+          </component>
+          <component id="f1b56" class="javax.swing.JTextField" binding="searchBarTextField" default-binding="true">
+            <constraints/>
+            <properties>
+              <text value="SearchBar"/>
+            </properties>
+          </component>
+          <component id="ec270" class="javax.swing.JButton" binding="searchButton" default-binding="true">
+            <constraints/>
+            <properties>
+              <text value="Search"/>
+            </properties>
+          </component>
+        </children>
+      </toolbar>
+      <component id="28d5c" class="javax.swing.JTextArea" binding="textArea1" default-binding="true">
+        <constraints border-constraint="Center"/>
+        <properties/>
+      </component>
+    </children>
   </grid>
+  <inspectionSuppressions>
+    <suppress inspection="NoLabelFor" id="2f2f9"/>
+  </inspectionSuppressions>
 </form>
