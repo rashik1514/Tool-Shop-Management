@@ -70,12 +70,13 @@ public class Client {
         socketOut.println("DISPLAY TOOLS");
         String response = socketIn.readLine();
         StringBuilder data = new StringBuilder();
-        while (!response.equals("DISPLAY TOOLS")) {
-            data.append(response);
-            data.append("\n");
-            response = socketIn.readLine();
-        }
-        return data.toString();
+//        while (!response.equals("DISPLAY TOOLS")) {
+//            data.append(response);
+//            data.append("\n");
+//            response = socketIn.readLine();
+//        }
+//        return data.toString();
+        return response;
     }
 
 }
