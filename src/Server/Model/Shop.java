@@ -1,4 +1,4 @@
-package Server.model;
+package Server.Model;
 
 
 import java.io.BufferedReader;
@@ -108,7 +108,7 @@ public class Shop {
         System.out.println("2.	Search for tool by toolName");
         System.out.println("3.	Search for tool by toolID");
         System.out.println("4.	Check item quantity");
-        System.out.println("5.	Decrese Item quantity.");
+        System.out.println("5.	Decrease Item quantity.");
         System.out.println("6.  Quit");
 
         choice = input.nextInt();
