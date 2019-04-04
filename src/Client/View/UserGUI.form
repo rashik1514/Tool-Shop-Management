@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Client.View.UserGUI">
-  <grid id="592ba" binding="panel1" default-binding="true" layout-manager="BorderLayout" hgap="0" vgap="0">
+  <grid id="592ba" binding="panel" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
       <xy x="20" y="20" width="500" height="400"/>
     </constraints>
@@ -23,26 +23,16 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="87d6a" class="javax.swing.JButton" binding="exitButton" default-binding="true">
-            <constraints/>
-            <properties>
-              <text value=""/>
-            </properties>
-          </component>
           <component id="1b311" class="javax.swing.JButton" binding="showToolsButton" default-binding="true">
             <constraints/>
             <properties>
               <text value="Show Tools"/>
             </properties>
           </component>
-          <component id="995e0" class="javax.swing.JSeparator">
-            <constraints/>
-            <properties/>
-          </component>
           <component id="f1b56" class="javax.swing.JTextField" binding="searchBarTextField" default-binding="true">
             <constraints/>
             <properties>
-              <text value="SearchBar"/>
+              <text value=""/>
             </properties>
           </component>
           <component id="ec270" class="javax.swing.JButton" binding="searchButton" default-binding="true">
