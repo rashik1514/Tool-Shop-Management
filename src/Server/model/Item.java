@@ -1,4 +1,4 @@
-package model;
+package Server.model;
 import java.util.ArrayList;
 /**
  * Stores all the information of the tools thats required or added to the inventory
@@ -60,7 +60,7 @@ public class Item {
         Inventory i = new Inventory();
 
         if(quantity < 40) {
-            i.order.orders.add(new OrderLine(id, name, 50-quantity, supplierId));
+            i.order.orders.add(new model.OrderLine(id, name, 50-quantity, supplierId));
         }
         System.out.println("Number of "+name+"s is "+ quantity);
         return quantity;
