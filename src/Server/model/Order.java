@@ -17,7 +17,7 @@ public class Order {
     /**
      * list of order of each item with their information
      */
-    public ArrayList<model.OrderLine> orders;
+    public ArrayList<OrderLine> orders;
     /**
      * Unique id of the order
      */
@@ -28,7 +28,7 @@ public class Order {
      */
     public Order() {
 
-        orders = new ArrayList<model.OrderLine>();
+        orders = new ArrayList<OrderLine>();
         Random rand = new Random();
 
         id = rand.nextInt(10000) + 1000;
@@ -38,13 +38,13 @@ public class Order {
     /**
      * print the order details
      */
-    public void printOrder(ArrayList<model.Supplier> suppliers) {
+    public void printOrder(ArrayList<Supplier> suppliers) {
         System.out.println("*****************************************"
                 + "*****************************");
         System.out.println("Order ID:                     "+id);
         System.out.println("Datre Ordered:                     "+ getCurrentTimeUsingCalendar() +"\n");
 
-        for(model.OrderLine order: orders) {
+        for(OrderLine order: orders) {
             System.out.println("Item description:"+"          "+ order.getName());
             System.out.println("Amount ordered:              "+ order.getQuantity());
             System.out.println("Suppler's name:              "+  suppliers.get(0).searchSupplier(id, suppliers).getName() );

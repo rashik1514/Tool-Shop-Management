@@ -9,7 +9,7 @@ import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import Server.model.*;
+import Server.Model.*;
 /**
  *  Has a method to receive an input from the clients, makes changes to the inventories, and send the result back to the client
  *
