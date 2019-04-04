@@ -69,14 +69,13 @@ public class Client {
     public String displayTools() throws IOException {
         socketOut.println("DISPLAY TOOLS");
         String response = socketIn.readLine();
-        return response;
-//        StringBuilder data = new StringBuilder();
-//        while (!response.equals("DISPLAY TOOLS")) {
-//            data.append(response);
-//            data.append("\n");
-//            response = socketIn.readLine();
-//        }
-//        return data.toString();
+        StringBuilder data = new StringBuilder();
+        while (!response.equals("DISPLAY TOOLS")) {
+            data.append(response);
+            data.append("\n");
+            response = socketIn.readLine();
+        }
+        return data.toString();
     }
 
 }

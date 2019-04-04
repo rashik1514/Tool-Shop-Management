@@ -49,7 +49,7 @@ public class Shop {
      */
     public void loadSuppliers(Shop shop) {
 
-        try (BufferedReader br = new BufferedReader(new FileReader("/Users/rashikhassan/Dropbox/workspace/RetailStoreSystem/src/system/suppliers.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Christina\\Documents\\GitHub\\ENSF409Project\\suppliers.txt"))) {
             String sCurrentLine;
 
             while ((sCurrentLine = br.readLine()) != null) {
@@ -70,7 +70,7 @@ public class Shop {
      */
     public void loadItems(Inventory i) {
         // C:/Users/rashi/Dropbox/workspace/RetailStoreSystem/src/system/
-        try (BufferedReader br = new BufferedReader(new FileReader("/Users/rashikhassan/Dropbox/workspace/RetailStoreSystem/items.txt"))){
+        try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Christina\\Documents\\GitHub\\ENSF409Project\\items.txt"))){
             String sCurrentLine;
 
             while ((sCurrentLine = br.readLine()) != null) {
