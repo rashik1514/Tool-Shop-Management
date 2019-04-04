@@ -25,25 +25,6 @@ public class UserGUI {
         this.listener = listener;
     }
 
-    /**
-     * Will continue implementing this in later stages
-     *
-     * @param args
-     */
-//    public void addListeners() {
-//        showToolsButton.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                //TODO: database.display() ??
-//            }
-//        });
-//        searchButton.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                String s = searchBarTextField.getText();
-//                //TODO: database.search(s) ??
-//            }
-//        });
-//
-//    }
     public void displayTools() {
 
         showToolsButton.addActionListener(new ActionListener() {
@@ -76,7 +57,7 @@ public class UserGUI {
 //        });
 //    }
 
-    public void updateView(){
+    public void updateView() {
         UserGUI main = new UserGUI();
         JFrame frame = new JFrame("Toolshop 5000v0.1");
         frame.setContentPane(main.panel);
@@ -104,12 +85,17 @@ public class UserGUI {
     private void $$$setupUI$$$() {
         panel = new JPanel();
         panel.setLayout(new BorderLayout(0, 0));
+        panel.setMinimumSize(new Dimension(500, 500));
+        panel.setPreferredSize(new Dimension(500, 500));
         final JScrollPane scrollPane1 = new JScrollPane();
         panel.add(scrollPane1, BorderLayout.EAST);
         scrollBar1 = new JScrollBar();
         scrollPane1.setViewportView(scrollBar1);
         final JToolBar toolBar1 = new JToolBar();
         panel.add(toolBar1, BorderLayout.NORTH);
+        final JLabel label1 = new JLabel();
+        label1.setText("");
+        toolBar1.add(label1);
         showToolsButton = new JButton();
         showToolsButton.setText("Show Tools");
         toolBar1.add(showToolsButton);

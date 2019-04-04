@@ -36,8 +36,10 @@ public class Shop {
 
     /**
      *
+     * @param theInventory
+     * @param suppliers
      */
-    public Shop() {
+    public Shop(Inventory theInventory, ArrayList<Supplier> suppliers) {
 
     }
 
