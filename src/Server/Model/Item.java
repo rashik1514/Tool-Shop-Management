@@ -32,13 +32,8 @@ public class Item {
 
     /**
      * Empty constructor
-     * @param id
-     * @param name
-     * @param quantity
-     * @param price
-     * @param theSupplier
      */
-    public Item(int id, String name, int quantity, double price, Supplier theSupplier) {
+    public Item() {
 
     }
     /**
@@ -55,10 +50,6 @@ public class Item {
         this.quantity = quantity;
         this.price = price;
         this.supplierId = supplierId;
-    }
-
-    public Item() {
-
     }
 
     /**
