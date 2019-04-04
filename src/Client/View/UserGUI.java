@@ -35,8 +35,10 @@ public class UserGUI {
              */
             @Override
             public void actionPerformed(ActionEvent e) {
-                String toolsList = listener.actionPerformed("DISPLAY TOOLS");
-                textArea1.setText(toolsList);
+                if (e.getSource() == showToolsButton) {
+                    String toolsList = listener.actionPerformed("DISPLAY TOOLS");
+                    textArea1.setText(toolsList);
+                }
             }
         });
 
