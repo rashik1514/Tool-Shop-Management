@@ -1,4 +1,4 @@
-package model;
+package Server.model;
 
 
 import java.io.BufferedReader;
