@@ -23,6 +23,12 @@
         <properties/>
         <border type="none"/>
         <children>
+          <component id="9f025" class="javax.swing.JLabel">
+            <constraints/>
+            <properties>
+              <text value="henlo"/>
+            </properties>
+          </component>
           <component id="1b311" class="javax.swing.JButton" binding="showToolsButton" default-binding="true">
             <constraints/>
             <properties>
