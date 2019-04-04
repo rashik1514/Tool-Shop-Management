@@ -10,7 +10,9 @@ public class Item {
 	private Supplier theSupplier;
 	private static final int ORDERQUANTITY = 40;
 	private static final int MINIMUMUMBER = 20; 	
-	
+
+	public Item() {
+	}
 	
 	public Item (int id, String name, int quanitiy, double price, Supplier sup) {
 		
