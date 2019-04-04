@@ -24,7 +24,6 @@ public class Item {
 	 * @param sup item supplier
 	 */
 	public Item (int id, String name, int quantity, double price, Supplier sup) {
-		
 		itemId = id;
 		itemName = name;
 		itemQuantity = quantity;
