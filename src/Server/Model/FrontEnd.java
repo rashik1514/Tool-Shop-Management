@@ -20,7 +20,6 @@ public class FrontEnd {
 	}
 
 	private ArrayList<Item> readItems() {
-
 		ArrayList<Item> items = new ArrayList<Item>();
 
 		try {
@@ -178,7 +177,6 @@ public class FrontEnd {
 	}
 
 	public static void main(String[] args) {
-
 		FrontEnd app = new FrontEnd();
 		app.menu();
 

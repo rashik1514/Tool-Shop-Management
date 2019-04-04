@@ -110,37 +110,37 @@ public class Shop {
         return theInventory.printOrder();
     }
 
-    public void readItemFile() throws FileNotFoundException {
-        Scanner scan = new Scanner(new File("/users/layla/documents/uni/ensf409/lab3/ex1/items.txt"));
-        while (scan.hasNext()) {
-            Item Item = new Item();
-            String line = scan.nextLine();
-            String[] lines = line.split(";");
-            Item.setItemID(Integer.parseInt(lines[0]));
-            Item.setItemName(lines[1]);
-            Item.setItemQuantity(Integer.parseInt(lines[2]));
-            Item.setItemPrice(Double.parseDouble(lines[3]));
-            int i = searchBySupID(Integer.parseInt(lines[4]));
-            Item.setTheSupplier(supplierList.get(i));
-            getTheInventory().getItemList().add(Item);
-        }
-
-    }
-
-    public void readSupplierFile() throws FileNotFoundException {
-        Scanner scan = new Scanner(new File("/users/layla/documents/uni/ensf409/lab3/ex1/suppliers.txt"));
-        while (scan.hasNext()) {
-            Supplier supplier = new Supplier();
-            String line = scan.nextLine();
-            String[] lines = line.split(";");
-            supplier.setSupId(Integer.parseInt(lines[0]));
-            supplier.setSupName(lines[1]);
-            supplier.setSupAddress(lines[2]);
-            supplier.setSupContactName(lines[3]);
-            supplierList.add(supplier);
-        }
-
-    }
+//    public void readItemFile() throws FileNotFoundException {
+//        Scanner scan = new Scanner(new File("/users/layla/documents/uni/ensf409/lab3/ex1/items.txt"));
+//        while (scan.hasNext()) {
+//            Item Item = new Item();
+//            String line = scan.nextLine();
+//            String[] lines = line.split(";");
+//            Item.setItemID(Integer.parseInt(lines[0]));
+//            Item.setItemName(lines[1]);
+//            Item.setItemQuantity(Integer.parseInt(lines[2]));
+//            Item.setItemPrice(Double.parseDouble(lines[3]));
+//            int i = searchBySupID(Integer.parseInt(lines[4]));
+//            Item.setTheSupplier(supplierList.get(i));
+//            getTheInventory().getItemList().add(Item);
+//        }
+//
+//    }
+//
+//    public void readSupplierFile() throws FileNotFoundException {
+//        Scanner scan = new Scanner(new File("/users/layla/documents/uni/ensf409/lab3/ex1/suppliers.txt"));
+//        while (scan.hasNext()) {
+//            Supplier supplier = new Supplier();
+//            String line = scan.nextLine();
+//            String[] lines = line.split(";");
+//            supplier.setSupId(Integer.parseInt(lines[0]));
+//            supplier.setSupName(lines[1]);
+//            supplier.setSupAddress(lines[2]);
+//            supplier.setSupContactName(lines[3]);
+//            supplierList.add(supplier);
+//        }
+//
+//    }
 
 
 }

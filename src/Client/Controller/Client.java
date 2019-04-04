@@ -14,7 +14,6 @@ public class Client {
     private Socket socket;
     private BufferedReader socketIn;
     private BufferedReader stdIn;
-    private ViewController controller;
 
     boolean isActive = false;
 
