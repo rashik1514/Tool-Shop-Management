@@ -9,7 +9,9 @@ public class Supplier {
 	private String supAddress;
 	private String supContactName;
 	private ArrayList <Item> itemList;
-	
+
+	public Supplier() {
+	}
 	
 	public Supplier (int id, String name, String address, String contactName) {
 		

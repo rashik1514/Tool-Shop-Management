@@ -62,8 +62,9 @@ public class Client {
     public static void main(String[] args) throws IOException {
         Client aClient = new Client("localhost", 0);
         UserGUI gui = new UserGUI();
-//        gui.setListener(new Listener(client));
+        gui.setListener(new Listener(aClient));
         aClient.communicate();
+        gui.updateView();
     }
 
     public String displayTools() throws IOException {

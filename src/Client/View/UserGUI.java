@@ -1,10 +1,11 @@
 package Client.View;
 
+import Client.Controller.Listener;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 public class UserGUI {
 
@@ -14,33 +15,61 @@ public class UserGUI {
     private JTextField searchBarTextField;
     private JButton showToolsButton;
     private JTextArea textArea1;
+    private Listener listener;
 
     public UserGUI() {
         //TODO: insert database stuff
     }
 
-    public void addListeners() {
+    public void setListener(Listener listener) {
+        this.listener = listener;
+    }
+
+    /**
+     * Will continue implementing this in later stages
+     *
+     * @param args
+     */
+//    public void addListeners() {
+//        showToolsButton.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                //TODO: database.display() ??
+//            }
+//        });
+//        searchButton.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                String s = searchBarTextField.getText();
+//                //TODO: database.search(s) ??
+//            }
+//        });
+//
+//    }
+    public void displayTools() {
+
         showToolsButton.addActionListener(new ActionListener() {
+            /**
+             * Invoked when an action occurs.
+             *
+             * @param e the event to be processed
+             */
+            @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO: database.display() ??
+                String toolsList = listener.actionPerformed("DISPLAY TOOLS");
+                textArea1.setText(toolsList);
             }
-        });
-        searchButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String s = searchBarTextField.getText();
-                //TODO: database.search(s) ??
-            }
+
         });
 
     }
 
-    public static void main(String[] args) {
+    public void updateView() {
         UserGUI main = new UserGUI();
-        JFrame frame = new JFrame("Main Window");
+        JFrame frame = new JFrame("Toolshop 5000v0.1");
         frame.setContentPane(main.panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+        main.displayTools();
     }
 
 
