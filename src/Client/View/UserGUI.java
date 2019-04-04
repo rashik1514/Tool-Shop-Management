@@ -62,7 +62,22 @@ public class UserGUI {
 
     }
 
-    public void updateView() {
+    public void searchTools(){
+        showToolsButton.addActionListener(new ActionListener() {
+            /**
+             * Invoked when an action occurs.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String s = searchBarTextField.getText();
+            }
+
+        });
+    }
+
+    public void updateView(){
         UserGUI main = new UserGUI();
         JFrame frame = new JFrame("Toolshop 5000v0.1");
         frame.setContentPane(main.panel);

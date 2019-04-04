@@ -29,7 +29,7 @@
           <component id="9f025" class="javax.swing.JLabel">
             <constraints/>
             <properties>
-              <text value="henlo"/>
+              <text value=""/>
             </properties>
           </component>
           <component id="1b311" class="javax.swing.JButton" binding="showToolsButton" default-binding="true">
