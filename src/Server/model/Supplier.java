@@ -1,6 +1,5 @@
 package Server.Model;
 import java.util.ArrayList;
-import java.util.Collection;
 
 /**
  * Implements the supplier
@@ -84,5 +83,6 @@ public class Supplier {
     public void setSalesContact(String salesContact) {
         this.salesContact = salesContact;
     }
+
 }
 
