@@ -32,13 +32,8 @@ public class Item {
 
     /**
      * Empty constructor
-     * @param id
-     * @param name
-     * @param quantity
-     * @param price
-     * @param theSupplier
      */
-    public Item(int id, String name, int quantity, double price, Supplier theSupplier) {
+    public Item() {
 
     }
     /**
@@ -57,10 +52,6 @@ public class Item {
         this.supplierId = supplierId;
     }
 
-    public Item() {
-
-    }
-
     /**
      * checks the quantity and orders if it falls below the limit 40.
      * @return the number of items present
@@ -69,7 +60,7 @@ public class Item {
         Inventory i = new Inventory();
 
         if(quantity < 40) {
-            i.order.orders.add(new OrderLine(id, name, 50-quantity, supplierId));
+            i.order.orders.add(new model.OrderLine(id, name, 50-quantity, supplierId));
         }
         System.out.println("Number of "+name+"s is "+ quantity);
         return quantity;
