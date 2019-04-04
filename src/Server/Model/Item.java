@@ -92,4 +92,10 @@ public class Item {
 		this.alreadyOrdered = alreadyOrdered;
 	}
 
+	public void setItemID(int ID) {
+		this.itemId = ID;
+	}
+
+	public int getItemID(){ return itemId; }
+
 }
