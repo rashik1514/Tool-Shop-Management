@@ -168,7 +168,7 @@ public class Item {
      * @return makes the member variables into a string
      */
     public String toString () {
-        return "Item ID: " + itemId + ",\tItem Name: " + itemName + ",\tItem Quantity: " +
+        return "Item ID: " + itemId + ", Item Name: " + itemName + ", Item Quantity: " +
                 itemQuantity + "\n";
     }
 
