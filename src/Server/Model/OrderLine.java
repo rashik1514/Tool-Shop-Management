@@ -1,15 +1,19 @@
 package Server.model;
 
+/**
+ * This implements the OrderLine
+ * @author Christina Lu, Layla Arab, MD Rashik Hassan
+ * @version 1.0
+ * @since April 5 2019
+ */
 public class OrderLine {
 
     private Item theItem;
     private int orderQuantity;
 
-
     public OrderLine (Item item, int quantity) {
         theItem = item;
         setOrderQuantity(quantity);
-
     }
 
     public Item getTheItem() {

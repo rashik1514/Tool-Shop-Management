@@ -9,13 +9,20 @@ import java.util.concurrent.*;
 import Server.model.*;
 
 /**
- *
+ * This implements the server
+ * @author Christina Lu, Layla Arab, MD Rashik Hassan
+ * @version 1.0
+ * @since April 5 2019
  */
 public class Server{
+    /**
+     *
+     */
     private BufferedReader socketIn;
-
+    /**
+     *
+     */
     private PrintWriter socketOut;
-
     /**
      * The socket that connects between server and client
      */
