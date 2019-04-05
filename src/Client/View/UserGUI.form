@@ -10,17 +10,6 @@
     </properties>
     <border type="none"/>
     <children>
-      <scrollpane id="a5986">
-        <constraints border-constraint="East"/>
-        <properties/>
-        <border type="none"/>
-        <children>
-          <component id="ff3a8" class="javax.swing.JScrollBar" binding="scrollBar1" default-binding="true">
-            <constraints/>
-            <properties/>
-          </component>
-        </children>
-      </scrollpane>
       <toolbar id="dd442">
         <constraints border-constraint="North"/>
         <properties/>
@@ -44,10 +33,17 @@
           </component>
         </children>
       </toolbar>
-      <component id="7df2" class="javax.swing.JTextArea" binding="ItemList">
+      <scrollpane id="c9635">
         <constraints border-constraint="Center"/>
         <properties/>
-      </component>
+        <border type="none"/>
+        <children>
+          <component id="7df2" class="javax.swing.JTextArea" binding="ItemList">
+            <constraints/>
+            <properties/>
+          </component>
+        </children>
+      </scrollpane>
     </children>
   </grid>
   <inspectionSuppressions>

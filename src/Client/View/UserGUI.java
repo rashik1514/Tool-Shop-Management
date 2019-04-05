@@ -10,7 +10,6 @@ import java.awt.event.ActionListener;
 public class UserGUI {
 
     private JPanel panel;
-    private JScrollBar scrollBar1;
     private JButton showToolsButton;
     private JTextArea ItemList;
     private JTextField textField1;
@@ -86,10 +85,6 @@ public class UserGUI {
         panel.setLayout(new BorderLayout(0, 0));
         panel.setMinimumSize(new Dimension(500, 500));
         panel.setPreferredSize(new Dimension(500, 500));
-        final JScrollPane scrollPane1 = new JScrollPane();
-        panel.add(scrollPane1, BorderLayout.EAST);
-        scrollBar1 = new JScrollBar();
-        scrollPane1.setViewportView(scrollBar1);
         final JToolBar toolBar1 = new JToolBar();
         panel.add(toolBar1, BorderLayout.NORTH);
         showToolsButton = new JButton();
@@ -100,8 +95,10 @@ public class UserGUI {
         searchButton = new JButton();
         searchButton.setText("Search");
         toolBar1.add(searchButton);
+        final JScrollPane scrollPane1 = new JScrollPane();
+        panel.add(scrollPane1, BorderLayout.CENTER);
         ItemList = new JTextArea();
-        panel.add(ItemList, BorderLayout.CENTER);
+        scrollPane1.setViewportView(ItemList);
     }
 
     /**
