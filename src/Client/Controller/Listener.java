@@ -10,7 +10,7 @@ public class Listener {
     }
 
     public String actionPerformed(String action) {
-        if (action.equals("DISPLAY TOOLS")) {
+        if (action.equals("DISPLAY")) {
             try {
                 return client.displayTools();
             } catch (IOException e) {

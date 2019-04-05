@@ -11,14 +11,14 @@ public class UserGUI {
 
     private JPanel panel;
     private JScrollBar scrollBar1;
-    private JButton searchButton;
-    private JTextField searchBarTextField;
     private JButton showToolsButton;
     private JTextArea textArea1;
+    private JTextField textField1;
+    private JButton searchButton;
+    private JTable ItemTable;
     private Listener listener;
 
     public UserGUI() {
-        //TODO: insert database stuff
     }
 
     public void setListener(Listener listener) {
@@ -26,7 +26,6 @@ public class UserGUI {
     }
 
     public void displayTools() {
-
         showToolsButton.addActionListener(new ActionListener() {
             /**
              * Invoked when an action occurs.
@@ -35,38 +34,37 @@ public class UserGUI {
              */
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (e.getSource() == showToolsButton) {
-                    String toolsList = listener.actionPerformed("DISPLAY TOOLS");
-                    textArea1.setText(toolsList);
-                }
+                String tools = listener.actionPerformed("DISPLAY");
+                String [] colHeaders = {"ID", };
+                textArea1.setText(tools);
             }
         });
 
     }
 
-//    public void searchTools(){
-//        showToolsButton.addActionListener(new ActionListener() {
-//            /**
-//             * Invoked when an action occurs.
-//             *
-//             * @param e the event to be processed
-//             */
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                String s = searchBarTextField.getText();
-//            }
-//
-//        });
-//    }
+    public void searchTools(){
+        showToolsButton.addActionListener(new ActionListener() {
+            /**
+             * Invoked when an action occurs.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
-    public void updateView() {
-        UserGUI main = new UserGUI();
-        JFrame frame = new JFrame("Toolshop 5000v0.1");
-        frame.setContentPane(main.panel);
+            }
+
+        });
+    }
+
+    public void updateView(UserGUI gui) {
+        JFrame frame = new JFrame("Toolshop");
+        frame.setContentPane(gui.panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-        main.displayTools();
+        gui.displayTools();
+        gui.searchTools();
     }
 
 
@@ -93,22 +91,18 @@ public class UserGUI {
         panel.add(scrollPane1, BorderLayout.EAST);
         scrollBar1 = new JScrollBar();
         scrollPane1.setViewportView(scrollBar1);
+        textArea1 = new JTextArea();
+        panel.add(textArea1, BorderLayout.CENTER);
         final JToolBar toolBar1 = new JToolBar();
         panel.add(toolBar1, BorderLayout.NORTH);
-        final JLabel label1 = new JLabel();
-        label1.setText("");
-        toolBar1.add(label1);
         showToolsButton = new JButton();
         showToolsButton.setText("Show Tools");
         toolBar1.add(showToolsButton);
-        searchBarTextField = new JTextField();
-        searchBarTextField.setText("");
-        toolBar1.add(searchBarTextField);
+        textField1 = new JTextField();
+        toolBar1.add(textField1);
         searchButton = new JButton();
         searchButton.setText("Search");
         toolBar1.add(searchButton);
-        textArea1 = new JTextArea();
-        panel.add(textArea1, BorderLayout.CENTER);
     }
 
     /**

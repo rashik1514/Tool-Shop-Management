@@ -1,4 +1,4 @@
-package Server.Model;
+package Server.model;
 
 
 import java.io.BufferedReader;
@@ -21,17 +21,19 @@ public class Shop {
      */
     private ArrayList<Supplier> suppliers;
 
+    private Inventory inventory;
+
     /**
      *	Transfering the data throughout the client and server.
      */
-    Socket s;
+//    Socket s;
 
     /**
      * Contructs the shop object
      */
-    public Shop(Socket s) {
-        suppliers = new ArrayList<Supplier>();
-        this.s = s;
+    public Shop(ArrayList<Supplier> supplierList, Inventory inventory) {
+        this.suppliers = supplierList;
+        this.inventory = inventory;
     }
 
     /**
@@ -41,49 +43,53 @@ public class Shop {
 
     }
 
-    /**
-     * load all the supplier information from the database
-     * @param shop object where it stores the information
-     */
-    public void loadSuppliers(Shop shop) {
-
-        try (BufferedReader br = new BufferedReader(new FileReader("/Users/rashikhassan/Dropbox/workspace/RetailStoreSystem/src/system/suppliers.txt"))) {
-            String sCurrentLine;
-
-            while ((sCurrentLine = br.readLine()) != null) {
-                String[] info = sCurrentLine.split(";");
-                int id = Integer.parseInt(info[0]);
-
-
-                shop.addSupplier(new Supplier(id, info[1], info[2], info[3]));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public Inventory getInventory() {
+        return inventory;
     }
 
-    /**
-     * load all the item information from the database
-     * @param i object where it stores the information
-     */
-    public void loadItems(Inventory i) {
-        // C:/Users/rashi/Dropbox/workspace/RetailStoreSystem/src/system/
-        try (BufferedReader br = new BufferedReader(new FileReader("/Users/rashikhassan/Dropbox/workspace/RetailStoreSystem/items.txt"))){
-            String sCurrentLine;
-
-            while ((sCurrentLine = br.readLine()) != null) {
-                String[] info = sCurrentLine.split(";");
-                int id = Integer.parseInt(info[0]);
-                int quantity = Integer.parseInt(info[2]);
-                Double price = Double.parseDouble(info[3]);
-                int supplierId = Integer.parseInt(info[4]);
-
-                i.addTool(new Item(id, info[1], quantity, price, supplierId));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+    //    /**
+//     * load all the supplier information from the database
+//     * @param shop object where it stores the information
+//     */
+//    public void loadSuppliers(Shop shop) {
+//
+//        try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Christina\\Documents\\GitHub\\ENSF409Project\\suppliers.txt"))) {
+//            String sCurrentLine;
+//
+//            while ((sCurrentLine = br.readLine()) != null) {
+//                String[] info = sCurrentLine.split(";");
+//                int id = Integer.parseInt(info[0]);
+//
+//
+//                shop.addSupplier(new Supplier(id, info[1], info[2], info[3]));
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+//
+//    /**
+//     * load all the item information from the database
+//     * @param i object where it stores the information
+//     */
+//    public void loadItems(Inventory i) {
+//        // C:/Users/rashi/Dropbox/workspace/RetailStoreSystem/src/system/
+//        try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Christina\\Documents\\GitHub\\ENSF409Project\\items.txt"))){
+//            String sCurrentLine;
+//
+//            while ((sCurrentLine = br.readLine()) != null) {
+//                String[] info = sCurrentLine.split(";");
+//                int id = Integer.parseInt(info[0]);
+//                int quantity = Integer.parseInt(info[2]);
+//                Double price = Double.parseDouble(info[3]);
+//                int supplierId = Integer.parseInt(info[4]);
+//
+//                i.addTool(new Item(id, info[1], quantity, price, supplierId));
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     /**
      * Adds supplier to the arraylist

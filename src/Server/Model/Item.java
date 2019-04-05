@@ -1,4 +1,4 @@
-package Server.Model;
+package Server.model;
 import java.util.ArrayList;
 /**
  * Stores all the information of the tools thats required or added to the inventory

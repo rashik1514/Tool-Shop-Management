@@ -21,30 +21,22 @@
           </component>
         </children>
       </scrollpane>
-      <toolbar id="77e0">
+      <toolbar id="dd442">
         <constraints border-constraint="North"/>
         <properties/>
         <border type="none"/>
         <children>
-          <component id="9f025" class="javax.swing.JLabel">
-            <constraints/>
-            <properties>
-              <text value=""/>
-            </properties>
-          </component>
-          <component id="1b311" class="javax.swing.JButton" binding="showToolsButton" default-binding="true">
+          <component id="a86ae" class="javax.swing.JButton" binding="showToolsButton" default-binding="true">
             <constraints/>
             <properties>
               <text value="Show Tools"/>
             </properties>
           </component>
-          <component id="f1b56" class="javax.swing.JTextField" binding="searchBarTextField" default-binding="true">
+          <component id="36636" class="javax.swing.JTextField" binding="textField1" default-binding="true">
             <constraints/>
-            <properties>
-              <text value=""/>
-            </properties>
+            <properties/>
           </component>
-          <component id="ec270" class="javax.swing.JButton" binding="searchButton" default-binding="true">
+          <component id="266b3" class="javax.swing.JButton" binding="searchButton" default-binding="true">
             <constraints/>
             <properties>
               <text value="Search"/>
@@ -52,7 +44,7 @@
           </component>
         </children>
       </toolbar>
-      <component id="28d5c" class="javax.swing.JTextArea" binding="textArea1" default-binding="true">
+      <component id="6449c" class="javax.swing.JTable" binding="ItemTable">
         <constraints border-constraint="Center"/>
         <properties/>
       </component>
