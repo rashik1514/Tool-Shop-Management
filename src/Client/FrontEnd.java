@@ -14,6 +14,4 @@ public class FrontEnd {
         gui.setListener(new Listener(client));
         gui.updateView(gui);
     }
-
-
 }

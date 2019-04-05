@@ -1,166 +1,95 @@
-package Server.Model;
-import java.util.ArrayList;
-/**
- * Stores all the information of the tools thats required or added to the inventory
- * @author MD Rashik Hassan
- *
- */
+package Server.model;
+
 public class Item {
 
-    /**
-     * Unique identification of the item
-     */
-    private int id;
+    private int itemId;
+    private String itemName;
+    private int itemQuantity;
+    private double itemPrice;
+    private boolean alreadyOrdered;
+    private Supplier theSupplier;
+    private static final int ORDERQUANTITY = 40;
+    private static final int MINIMUMUMBER = 20;
 
-    /**
-     * name of the item
-     */
-    private String name;
 
-    /**
-     * Quantity remained in the inventory
-     */
-    private int quantity;
-    /**
-     * Price of the item
-     */
-    private Double price;
-    /**
-     * Supplier whose providing the item
-     */
-    private int supplierId;
+    public Item (int id, String name, int quanitiy, double price, Supplier sup) {
 
-    /**
-     * Empty constructor
-     */
-    public Item() {
-
-    }
-    /**
-     * Contructs the item putting various information
-     * @param id Unique identification of the item
-     * @param name name of the item
-     * @param quantity Quantity remained in the inventory
-     * @param price Price of the item
-     * @param supplierId Supplier whose providing the item
-     */
-    public Item(int id, String name, int quantity, Double price, int supplierId) {
-        this.name = name;
-        this.id = id;
-        this.quantity = quantity;
-        this.price = price;
-        this.supplierId = supplierId;
+        itemId = id;
+        itemName = name;
+        itemQuantity = quanitiy;
+        itemPrice = price;
+        theSupplier = sup;
+        setAlreadyOrdered(false);
     }
 
-    /**
-     * checks the quantity and orders if it falls below the limit 40.
-     * @return the number of items present
-     */
-    public int checkQuantity() {
-        Inventory i = new Inventory();
-
-        if(quantity < 40) {
-            i.order.orders.add(new OrderLine(id, name, 50-quantity, supplierId));
+    public boolean decreaseItemQuantity () {
+        if (itemQuantity > 0) {
+            itemQuantity--;
+            return true;
         }
-        System.out.println("Number of "+name+"s is "+ quantity);
-        return quantity;
+        else
+            return false;
 
     }
-
-    /**
-     * Converts the information to string
-     * @param items list of items in the 9inventory
-     * @return the string formed with all the information
-     */
-    public String toString(ArrayList<Item> items) {
-        String temp = "";
-        for(Item item: items) {
-            temp += "ID: "+ item.id + " Name: "+item.name + " Price: "+
-                    item.price + " Quantity: "+item.quantity+"\n";
+    public OrderLine placeOrder (){
+        OrderLine ol;
+        if (getItemQuantity() < MINIMUMUMBER && alreadyOrdered == false){
+            ol = new OrderLine (this, ORDERQUANTITY);
+            alreadyOrdered = true;
+            return ol;
         }
-        return temp;
+        return null;
     }
 
-    /**
-     * displays all the items in the list
-     * @param items list of items
-     */
-    public void displayItems(ArrayList<Item> items) {
-        System.out.println(toString(items));
+    public int getItemId() {
+        return itemId;
     }
 
-    /**
-     * returns id
-     * @return id
-     */
-    public int getId() {
-        return id;
-    }
-    /**
-     * Overwrites id
-     * @param id Unique identification
-     */
-    public void setId(int id) {
-        this.id = id;
+    public void setItemId(int itemId) {
+        this.itemId = itemId;
     }
 
-    /**
-     * returns name
-     * @return name of the item
-     */
-    public String getName() {
-        return name;
-    }
-    /**
-     * Overrides the name
-     * @param name name of the item
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-    /**
-     * return quantity of the particular item present
-     * @return quantity
-     */
-    public int getQuantity() {
-        return quantity;
-    }
-    /**
-     * Overrides with a new quantity
-     * @param quantity
-     */
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-    /**
-     * returns prices
-     * @return price of the item
-     */
-    public Double getPrice() {
-        return price;
-    }
-    /**
-     * Overrides the price of the item
-     * @param price of the item
-     */
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-    /**
-     * returns supplier ID
-     * @return
-     */
-    public int getSupplierId() {
-        return supplierId;
-    }
-    /**
-     * Overrides supplier ID
-     * @param supplierId
-     */
-    public void setSupplierId(int supplierId) {
-        this.supplierId = supplierId;
+    public String getItemName() {
+        return itemName;
     }
 
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
+    }
+
+    public int getItemQuantity() {
+        return itemQuantity;
+    }
+
+    public void setItemQuantity(int itemQuantity) {
+        this.itemQuantity = itemQuantity;
+    }
+
+    public double getItemPrice() {
+        return itemPrice;
+    }
+
+    public void setItemPrice(double itemPrice) {
+        this.itemPrice = itemPrice;
+    }
+    public void setTheSupplier (Supplier sup) {
+        theSupplier = sup;
+    }
+    public Supplier getTheSupplier () {
+        return theSupplier;
+    }
+
+    public String toString () {
+        return "Item ID: " + itemId + ", Item Name: " + itemName + ", Item Quantity: " +
+                itemQuantity + "\n";
+    }
+
+    public boolean isAlreadyOrdered() {
+        return alreadyOrdered;
+    }
+
+    public void setAlreadyOrdered(boolean alreadyOrdered) {
+        this.alreadyOrdered = alreadyOrdered;
+    }
 
 }
-

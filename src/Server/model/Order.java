@@ -1,65 +1,55 @@
-package Server.Model;
+package Server.model;
 
-import java.sql.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Random;
 
-
-/**
- * Consists of the variuous order requests of several items.
- * @author MD Rashik Hassan
- *
- */
 public class Order {
-    /**
-     * list of order of each item with their information
-     */
-    public ArrayList<model.OrderLine> orders;
-    /**
-     * Unique id of the order
-     */
-    private int id;
 
-    /**
-     * Initializes the object order
-     */
-    public Order() {
 
-        orders = new ArrayList<model.OrderLine>();
-        Random rand = new Random();
+    private Date today;
+    private int orderId;
+    private ArrayList <OrderLine> orderLines;
 
-        id = rand.nextInt(10000) + 1000;
 
+    public Order () {
+        today = Calendar.getInstance().getTime();
+        orderLines = new ArrayList <OrderLine> ();
     }
 
-    /**
-     * print the order details
-     */
-    public void printOrder(ArrayList<model.Supplier> suppliers) {
-        System.out.println("*****************************************"
-                + "*****************************");
-        System.out.println("Order ID:                     "+id);
-        System.out.println("Datre Ordered:                     "+ getCurrentTimeUsingCalendar() +"\n");
 
-        for(model.OrderLine order: orders) {
-            System.out.println("Item description:"+"          "+ order.getName());
-            System.out.println("Amount ordered:              "+ order.getQuantity());
-            System.out.println("Suppler's name:              "+  suppliers.get(0).searchSupplier(id, suppliers).getName() );
+    public void addOrderLine (OrderLine ol) {
+        orderLines.add(ol);
+    }
+
+    public ArrayList <OrderLine> getOrderLines (){
+        return orderLines;
+    }
+    public void setOrderLines (ArrayList <OrderLine> lines){
+        orderLines = lines;
+    }
+
+    public int getOrderId() {
+        return orderId;
+    }
+
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
+    }
+    public String toString (){
+        String order = "Order Date: " + today.toString() + "\n\n";
+        String str = "";
+        for (OrderLine ol: orderLines) {
+            str += ol;
+            str += "------------------------\n";
         }
+        if (str == "")
+            str = "here are corrently no orderlines";
+
+        order += str;
+        order += "\n";
+        return order;
     }
 
-    /**
-     * generates current time when the order was generated
-     */
-    public  String getCurrentTimeUsingCalendar() {
-        Calendar cal = Calendar.getInstance();
-        Date date = (Date) cal.getTime();
-        DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
-        String formattedDate=dateFormat.format(date);
-        return formattedDate;
-    }
 }
-

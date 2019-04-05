@@ -1,88 +1,86 @@
-package Server.Model;
+package Server.model;
 import java.util.ArrayList;
 
-/**
- * Implements the supplier
- * @author MD Rashik Hassan
- *
- */
 public class Supplier {
-    /**
-     * Supplier's ID
-     */
-    private int id;
-    /**
-     * Name of the supplier
-     */
-    private String name;
-    /**
-     * address of the Supplier
-     */
-    private String address;
-    /**
-     * Person to contact for information regarding the supply
-     */
-    private String salesContact;
 
-    /**
-     * Forms the supplier object putting all the required information
-     * @param id Unique number to address a supplier
-     * @param name Supplier's name
-     * @param address Supplier's address
-     * @param salesContact Supplier's cointact
-     */
-    public Supplier(int id, String name, String address, String salesContact) {
-        this.setId(id);
-        this.setName(name);
-        this.setAddress(address);
-        this.setSalesContact(salesContact);
+    private int supId;
+    private String supName;
+    private String supAddress;
+    private String supContactName;
+    private ArrayList <Item> itemList;
+
+    public Supplier (int id, String name, String address, String contactName) {
+        supId = id;
+        supName = name;
+        supAddress = address;
+        supContactName = contactName;
+        itemList = new ArrayList <Item>();
     }
 
     /**
-     * Searches the supplier with the id
-     * @param id id of the supplier
-     * @param suppliers list of suppliers
-     * @return the supplier object that matches
+     * getter for the supplier id
+     * @return supId
      */
-    public Supplier searchSupplier(int id, ArrayList<Supplier> suppliers) {
-        for(Supplier s: suppliers) {
-            if(s.getId() == id)
-                return s;
-        }
-        return null;
-    }
+    public int getSupId() { return supId; }
 
-    public int getId() {
-        return id;
-    }
+    /**
+     *
+     * @param supId
+     */
+    public void setSupId(int supId) { this.supId = supId; }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    /**
+     * getter for the supplier name
+     * @return supName
+     */
+    public String getSupName() { return supName; }
 
-    public String getName() {
-        return name;
-    }
+    /**
+     *
+     * @param supName
+     */
+    public void setSupName(String supName) { this.supName = supName; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    /**
+     * getter for the supplier address
+     * @return supplier address
+     */
+    public String getSupAddress() { return supAddress; }
 
-    public String getAddress() {
-        return address;
-    }
+    /**
+     *
+     * @param supAddress
+     */
+    public void setSupAddress(String supAddress) { this.supAddress = supAddress; }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+    /**
+     * getter for the supplier contact name
+     * @return supplier's contact name
+     */
+    public String getSupContactName() { return supContactName; }
 
-    public String getSalesContact() {
-        return salesContact;
-    }
+    /**
+     *
+     * @param supContactName
+     */
+    public void setSupContactName(String supContactName) { this.supContactName = supContactName; }
 
-    public void setSalesContact(String salesContact) {
-        this.salesContact = salesContact;
-    }
+    /**
+     *
+     * @return
+     */
+    public String toString () { return supName + " Supplier ID: " + supId+ "\n"; }
 
+    /**
+     * getter for the item list
+     * @return
+     */
+    public ArrayList <Item> getItemList() { return itemList; }
+
+    /**
+     *
+     * @param itemList
+     */
+    public void setItemList(ArrayList <Item> itemList) { this.itemList = itemList; }
 }
 

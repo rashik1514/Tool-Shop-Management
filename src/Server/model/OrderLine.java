@@ -1,75 +1,36 @@
-package Server.Model;
+package Server.model;
 
-
-/**
- * Creates a line of order for a particular item.
- * @author Md Rashik Hassan
- *
- */
 public class OrderLine {
-    /**
-     * id of the item
-     */
-    private int id;
-    /**
-     * name of the item
-     */
-    private String name;
-    /**
-     * quantity that needs to be ordered
-     */
-    private int quantity;
-    /**
-     * supplierId of the item
-     */
-    private int supplierId;
 
-    /**
-     * Constructs a order request of a single item
-     * @param id unique identity of the item
-     * @param name name of the item
-     * @param quantity quantity that needs to be ordered
-     * @param supplierId Supplier who provides the item
-     */
-    public OrderLine(int id, String name, int quantity, int supplierId) {
-        this.setId(id);
-        this.setName(name);
-        this.setQuantity(quantity);
-        this.setSupplierId(supplierId);
+    private Item theItem;
+    private int orderQuantity;
 
-        System.out.println("Item: "+ name + "added to the order");
+
+    public OrderLine (Item item, int quantity) {
+        theItem = item;
+        setOrderQuantity(quantity);
+
     }
 
-    public int getId() {
-        return id;
+    public Item getTheItem() {
+        return theItem;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setTheItem(Item theItem) {
+        this.theItem = theItem;
     }
 
-    public String getName() {
-        return name;
+    public int getOrderQuantity() {
+        return orderQuantity;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setOrderQuantity(int orderQuantity) {
+        this.orderQuantity = orderQuantity;
+    }
+    public String toString (){
+        return  "Item Name: " + theItem.getItemName() +
+                ", Item ID: " + theItem.getItemId()+ "\n" +
+                "Order Quantity: " + orderQuantity + "\n";
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public int getSupplierId() {
-        return supplierId;
-    }
-
-    public void setSupplierId(int supplierId) {
-        this.supplierId = supplierId;
-    }
 }
-

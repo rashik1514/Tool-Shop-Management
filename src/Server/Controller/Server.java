@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.concurrent.*;
 import Server.model.*;
 
+/**
+ *
+ */
 public class Server{
     private BufferedReader socketIn;
 
@@ -28,7 +31,8 @@ public class Server{
     private ServerSocket serverSocket;
 
     /**
-     * Constructs an object of type server that initializes the socket and the thread pools
+     *
+     * @param portNum
      */
     public Server (int portNum)
     {
@@ -81,6 +85,9 @@ public class Server{
         server.close();
     }
 
+    /**
+     * closes all the sockets
+     */
     private void close(){
         try {
             socketIn.close();
@@ -141,17 +148,22 @@ public class Server{
         return items;
     }
 
+    /**
+     * finds the supplier by ID
+     * @param supplierId supplier's id
+     * @param suppliers list of suppliers
+     * @return the supplier if found, null if otherwise
+     */
     private Supplier findSupplier(int supplierId, ArrayList<Supplier> suppliers) {
-    Supplier theSupplier = null;
-    for (Supplier s : suppliers) {
-        if (s.getSupId() == supplierId) {
-            theSupplier = s;
-            break;
+        Supplier theSupplier = null;
+        for (Supplier s : suppliers) {
+            if (s.getSupId() == supplierId) {
+                theSupplier = s;
+                break;
+            }
         }
-
+        return theSupplier;
     }
-    return theSupplier;
-}
 }
 
 

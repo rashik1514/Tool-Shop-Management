@@ -6,6 +6,10 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+/**
+ *
+ */
+
 public class Client {
 
     protected PrintWriter socketOut;
@@ -15,6 +19,11 @@ public class Client {
 
     boolean isActive = false;
 
+    /**
+     * Constructs the client
+     * @param serverName name of the server
+     * @param portNumber port number
+     */
     public Client(String serverName, int portNumber) {
         try {
             socket = new Socket(serverName, portNumber);
@@ -26,6 +35,9 @@ public class Client {
         }
     }
 
+    /**
+     * disconnects the client from the server
+     */
     protected void disconnect() {
         isActive = false;
         try {
@@ -38,6 +50,11 @@ public class Client {
         }
     }
 
+    /**
+     * returns the string received from the server when the client sens DISPLAY
+     * @return
+     * @throws IOException
+     */
     public String displayTools() throws IOException {
         socketOut.println("DISPLAY");
         String response = socketIn.readLine();
