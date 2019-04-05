@@ -3,6 +3,7 @@ package Server.Controller;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.concurrent.*;
 import Server.model.*;
@@ -70,6 +71,8 @@ public class Server{
                     socketOut.println(out);
                     socketOut.println("END");
                 }
+            }catch(SocketException e){
+                threadPool.shutdown();
             }catch (Exception e) {
                 e.printStackTrace();
                 threadPool.shutdown();
