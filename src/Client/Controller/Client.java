@@ -7,16 +7,31 @@ import java.io.PrintWriter;
 import java.net.Socket;
 
 /**
- *
+ * Client that connects to server
+ * @author Christina Lu, Layla Arab, MD Rashik Hassan
+ * @version 1.0
+ * @since April 5 2019
  */
-
 public class Client {
-
+    /**
+     * output to server
+     */
     protected PrintWriter socketOut;
+    /**
+     * connection to server
+     */
     protected Socket socket;
+    /**
+     * input from server
+     */
     protected BufferedReader socketIn;
+    /**
+     * output to console
+     */
     protected BufferedReader stdIn;
-
+    /**
+     * activity status of client
+     */
     boolean isActive = false;
 
     /**

@@ -3,18 +3,26 @@ package Server.Controller;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.concurrent.*;
 import Server.Model.*;
 
 /**
- *
+ * This implements the server
+ * @author Christina Lu, Layla Arab, MD Rashik Hassan
+ * @version 1.0
+ * @since April 5 2019
  */
 public class Server{
+    /**
+     * reads from the client
+     */
     private BufferedReader socketIn;
-
+    /**
+     * prints to the client
+     */
     private PrintWriter socketOut;
-
     /**
      * The socket that connects between server and client
      */
@@ -70,6 +78,8 @@ public class Server{
                     socketOut.println(out);
                     socketOut.println("END");
                 }
+            }catch(SocketException e){
+                threadPool.shutdown();
             }catch (Exception e) {
                 e.printStackTrace();
                 threadPool.shutdown();

@@ -7,23 +7,49 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * This implements the GUI
+ * @author Christina Lu, Layla Arab, MD Rashik Hassan
+ * @version 1.0
+ * @since April 5 2019
+ */
 public class UserGUI {
-
+    /**
+     * panel containing other items of gui
+     */
     private JPanel panel;
+    /**
+     * button to show all tools
+     */
     private JButton showToolsButton;
+    /**
+     * area to show the list of items
+     */
     private JTextArea ItemList;
+    /**
+     * field to input text
+     */
     private JTextField textField1;
+    /**
+     * button to search for an item
+     */
     private JButton searchButton;
     //    private JTable ItemTable;
+
+    /**
+     * listener object to react to action in gui
+     */
     private Listener listener;
 
     /**
      * Default constructor for the GUI
      */
-    public UserGUI() { }
+    public UserGUI() {
+    }
 
     /**
      * sets the listener
+     *
      * @param listener
      */
     public void setListener(Listener listener) {
@@ -70,6 +96,7 @@ public class UserGUI {
 
     /**
      * updates the GUI
+     *
      * @param gui
      */
     public void updateView(UserGUI gui) {
@@ -102,18 +129,29 @@ public class UserGUI {
         panel.setMinimumSize(new Dimension(500, 500));
         panel.setPreferredSize(new Dimension(500, 500));
         final JToolBar toolBar1 = new JToolBar();
+        toolBar1.setBackground(new Color(-1655851));
+        toolBar1.setForeground(new Color(-1655851));
         panel.add(toolBar1, BorderLayout.NORTH);
         showToolsButton = new JButton();
+        showToolsButton.setBackground(new Color(-1140324));
+        showToolsButton.setForeground(new Color(-12828863));
         showToolsButton.setText("Show Tools");
         toolBar1.add(showToolsButton);
         textField1 = new JTextField();
+        textField1.setBackground(new Color(-4662027));
         toolBar1.add(textField1);
         searchButton = new JButton();
+        searchButton.setBackground(new Color(-1140324));
+        searchButton.setForeground(new Color(-12828863));
         searchButton.setText("Search");
         toolBar1.add(searchButton);
         final JScrollPane scrollPane1 = new JScrollPane();
+        scrollPane1.setForeground(new Color(-4662027));
         panel.add(scrollPane1, BorderLayout.CENTER);
         ItemList = new JTextArea();
+        ItemList.setBackground(new Color(-1657945));
+        ItemList.setEditable(false);
+        ItemList.setForeground(new Color(-12828863));
         scrollPane1.setViewportView(ItemList);
     }
 
@@ -124,4 +162,7 @@ public class UserGUI {
         return panel;
     }
 
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+    }
 }
