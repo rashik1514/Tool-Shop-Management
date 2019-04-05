@@ -12,8 +12,7 @@ public class Item {
     private static final int MINIMUMUMBER = 20;
 
 
-    public Item (int id, String name, int quanitiy, double price, Supplier sup) {
-
+    public Item(int id, String name, int quanitiy, double price, Supplier sup) {
         itemId = id;
         itemName = name;
         itemQuantity = quanitiy;
@@ -22,19 +21,19 @@ public class Item {
         setAlreadyOrdered(false);
     }
 
-    public boolean decreaseItemQuantity () {
+    public boolean decreaseItemQuantity() {
         if (itemQuantity > 0) {
             itemQuantity--;
             return true;
-        }
-        else
+        } else
             return false;
 
     }
-    public OrderLine placeOrder (){
+
+    public OrderLine placeOrder() {
         OrderLine ol;
-        if (getItemQuantity() < MINIMUMUMBER && alreadyOrdered == false){
-            ol = new OrderLine (this, ORDERQUANTITY);
+        if (getItemQuantity() < MINIMUMUMBER && alreadyOrdered == false) {
+            ol = new OrderLine(this, ORDERQUANTITY);
             alreadyOrdered = true;
             return ol;
         }
@@ -72,14 +71,16 @@ public class Item {
     public void setItemPrice(double itemPrice) {
         this.itemPrice = itemPrice;
     }
-    public void setTheSupplier (Supplier sup) {
+
+    public void setTheSupplier(Supplier sup) {
         theSupplier = sup;
     }
-    public Supplier getTheSupplier () {
+
+    public Supplier getTheSupplier() {
         return theSupplier;
     }
 
-    public String toString () {
+    public String toString() {
         return "Item ID: " + itemId + ", Item Name: " + itemName + ", Item Quantity: " +
                 itemQuantity + "\n";
     }

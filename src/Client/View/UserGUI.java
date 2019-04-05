@@ -14,16 +14,18 @@ public class UserGUI {
     private JTextArea ItemList;
     private JTextField textField1;
     private JButton searchButton;
-    //    private JTable ItemTable;
     private Listener listener;
+    //private JTable ItemTable;
 
     /**
      * Default constructor for the GUI
      */
-    public UserGUI() { }
+    public UserGUI() {
+    }
 
     /**
      * sets the listener
+     *
      * @param listener
      */
     public void setListener(Listener listener) {
@@ -70,6 +72,7 @@ public class UserGUI {
 
     /**
      * updates the GUI
+     *
      * @param gui
      */
     public void updateView(UserGUI gui) {

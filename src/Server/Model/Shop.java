@@ -4,24 +4,34 @@ import java.util.ArrayList;
 
 public class Shop {
     private Inventory theInventory;
-    private ArrayList <Supplier> supplierList;
+    private ArrayList<Supplier> supplierList;
 
-    public Shop (Inventory inventory, ArrayList <Supplier> suppliers) {
+    public Shop(Inventory inventory, ArrayList<Supplier> suppliers) {
         theInventory = inventory;
         supplierList = suppliers;
     }
 
-    public Inventory getTheInventory () { return theInventory; }
+    public Inventory getTheInventory() {
+        return theInventory;
+    }
 
-    public void setTheInventory (Inventory inventory) { theInventory = inventory; }
+    public void setTheInventory(Inventory inventory) {
+        theInventory = inventory;
+    }
 
-    public ArrayList<Supplier> getSupplierList (){ return supplierList; }
+    public ArrayList<Supplier> getSupplierList() {
+        return supplierList;
+    }
 
-    public void setSupplierList (ArrayList <Supplier> suppliers){ supplierList = suppliers; }
+    public void setSupplierList(ArrayList<Supplier> suppliers) {
+        supplierList = suppliers;
+    }
 
-    public void listAllItems() { System.out.println(theInventory); }
+    public void listAllItems() {
+        System.out.println(theInventory);
+    }
 
-    public String decreaseItem (String name) {
+    public String decreaseItem(String name) {
         if (theInventory.manageItem(name) == null)
             return "Couldn't not decrease item quantity!\n";
         else
@@ -29,7 +39,7 @@ public class Shop {
     }
 
     public void listAllSuppliers() {
-        for (Supplier s: supplierList) {
+        for (Supplier s : supplierList) {
             System.out.println(s);
         }
     }
@@ -39,7 +49,7 @@ public class Shop {
         if (theItem == null)
             return "Item " + name + " could not be found!";
         else
-            return outputItem (theItem);
+            return outputItem(theItem);
     }
 
     public String getItem(int id) {
@@ -47,10 +57,10 @@ public class Shop {
         if (theItem == null)
             return "Item number " + id + " could not be found!";
         else
-            return outputItem (theItem);
+            return outputItem(theItem);
     }
 
-    private String outputItem (Item theItem){
+    private String outputItem(Item theItem) {
         return "The item information is as follows: \n" + theItem;
     }
 
@@ -68,7 +78,6 @@ public class Shop {
 
         return theInventory.printOrder();
     }
-
 
 
 }

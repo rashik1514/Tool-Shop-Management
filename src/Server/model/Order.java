@@ -9,23 +9,23 @@ public class Order {
 
     private Date today;
     private int orderId;
-    private ArrayList <OrderLine> orderLines;
+    private ArrayList<OrderLine> orderLines;
 
 
-    public Order () {
+    public Order() {
         today = Calendar.getInstance().getTime();
-        orderLines = new ArrayList <OrderLine> ();
+        orderLines = new ArrayList<OrderLine>();
     }
 
-
-    public void addOrderLine (OrderLine ol) {
+    public void addOrderLine(OrderLine ol) {
         orderLines.add(ol);
     }
 
-    public ArrayList <OrderLine> getOrderLines (){
+    public ArrayList<OrderLine> getOrderLines() {
         return orderLines;
     }
-    public void setOrderLines (ArrayList <OrderLine> lines){
+
+    public void setOrderLines(ArrayList<OrderLine> lines) {
         orderLines = lines;
     }
 
@@ -33,14 +33,14 @@ public class Order {
         return orderId;
     }
 
-
     public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
-    public String toString (){
+
+    public String toString() {
         String order = "Order Date: " + today.toString() + "\n\n";
         String str = "";
-        for (OrderLine ol: orderLines) {
+        for (OrderLine ol : orderLines) {
             str += ol;
             str += "------------------------\n";
         }

@@ -4,44 +4,47 @@ import java.util.ArrayList;
 
 public class Inventory {
 
-    private ArrayList <Item> itemList;
+    private ArrayList<Item> itemList;
     private Order myOrder;
 
 
-    public Inventory (ArrayList <Item> itemList) {
+    public Inventory(ArrayList<Item> itemList) {
         this.itemList = itemList;
-        myOrder = new Order ();
+        myOrder = new Order();
     }
 
-    public ArrayList <Item> getItemList() {
+    public ArrayList<Item> getItemList() {
         return itemList;
     }
 
-    public void setItemList(ArrayList <Item> itemList) {
+    public void setItemList(ArrayList<Item> itemList) {
         this.itemList = itemList;
     }
-    public Item manageItem (String name){
-        Item theItem = decreaseItem (name);
 
-        if (theItem != null){
-            placeOrder (theItem);
+    public Item manageItem(String name) {
+        Item theItem = decreaseItem(name);
+
+        if (theItem != null) {
+            placeOrder(theItem);
         }
         return theItem;
     }
-    public void placeOrder (Item theItem){
+
+    public void placeOrder(Item theItem) {
         OrderLine ol = theItem.placeOrder();
-        if (ol !=null){
+        if (ol != null) {
             myOrder.addOrderLine(ol);
         }
     }
-    private Item decreaseItem (String name) {
 
-        Item theItem = searchForItem (name);
+    private Item decreaseItem(String name) {
+
+        Item theItem = searchForItem(name);
 
         if (theItem == null)
             return null;
 
-        if (theItem.decreaseItemQuantity() == true){
+        if (theItem.decreaseItemQuantity() == true) {
 
             return theItem;
         }
@@ -49,24 +52,25 @@ public class Inventory {
 
     }
 
-    public int getItemQuantity (String name){
-        Item theItem = searchForItem (name);
+    public int getItemQuantity(String name) {
+        Item theItem = searchForItem(name);
         if (theItem == null)
             return -1;
         else
             return theItem.getItemQuantity();
     }
-    public Item searchForItem (String name) {
-        for (Item i: itemList) {
+
+    public Item searchForItem(String name) {
+        for (Item i : itemList) {
             if (i.getItemName().equals(name))
                 return i;
         }
         return null;
     }
 
-    public String toString () {
+    public String toString() {
         String str = "";
-        for (Item i: itemList) {
+        for (Item i : itemList) {
             str += i;
         }
         return str;
@@ -74,7 +78,7 @@ public class Inventory {
 
     public Item searchForItem(int id) {
         // TODO Auto-generated method stub
-        for (Item i: itemList) {
+        for (Item i : itemList) {
             if (i.getItemId() == id)
                 return i;
         }

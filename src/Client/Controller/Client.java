@@ -9,18 +9,18 @@ import java.net.Socket;
 /**
  *
  */
-
 public class Client {
 
-    protected PrintWriter socketOut;
-    protected Socket socket;
-    protected BufferedReader socketIn;
-    protected BufferedReader stdIn;
+    private PrintWriter socketOut;
+    private Socket socket;
+    private BufferedReader socketIn;
+    private BufferedReader stdIn;
 
     boolean isActive = false;
 
     /**
      * Constructs the client
+     *
      * @param serverName name of the server
      * @param portNumber port number
      */
@@ -52,6 +52,7 @@ public class Client {
 
     /**
      * returns the string received from the server when the client sens DISPLAY
+     *
      * @return
      * @throws IOException
      */
@@ -59,7 +60,7 @@ public class Client {
         socketOut.println("DISPLAY");
         String response = socketIn.readLine();
         StringBuilder data = new StringBuilder();
-        while (! response.equals("END")) {
+        while (!response.equals("END")) {
             data.append(response);
             data.append("\n");
             response = socketIn.readLine();

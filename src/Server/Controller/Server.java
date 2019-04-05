@@ -5,12 +5,13 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.concurrent.*;
+
 import Server.Model.*;
 
 /**
  *
  */
-public class Server{
+public class Server {
     private BufferedReader socketIn;
 
     private PrintWriter socketOut;
@@ -31,11 +32,9 @@ public class Server{
     private ServerSocket serverSocket;
 
     /**
-     *
      * @param portNum
      */
-    public Server (int portNum)
-    {
+    public Server(int portNum) {
         try {
             serverSocket = new ServerSocket(portNum);
             socket = serverSocket.accept();
@@ -51,7 +50,7 @@ public class Server{
     /**
      * Initializes the shop and connects the clients
      */
-    public void communicate () throws IOException{
+    public void communicate() throws IOException {
 
         while (true) {
             ArrayList<Supplier> suppliers = new ArrayList<>();
@@ -61,16 +60,16 @@ public class Server{
 
             try {
                 String in = socketIn.readLine();
-                if (in.equals("DISPLAY")){
+                if (in.equals("DISPLAY")) {
                     Inventory temp = shop.getTheInventory();
                     String out = "";
-                    for(int i = 0; i < temp.getItemList().size(); i++) {
+                    for (int i = 0; i < temp.getItemList().size(); i++) {
                         out += temp.getItemList().get(i).toString();
                     }
                     socketOut.println(out);
                     socketOut.println("END");
                 }
-            }catch (Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
                 threadPool.shutdown();
             }
@@ -78,17 +77,10 @@ public class Server{
 
     }
 
-    public static void main (String [] args) throws IOException
-    {
-        Server server = new Server(5050);
-        server.communicate();
-        server.close();
-    }
-
     /**
      * closes all the sockets
      */
-    private void close(){
+    public void close() {
         try {
             socketIn.close();
             socketOut.close();
@@ -100,6 +92,7 @@ public class Server{
 
     /**
      * load all the supplier information from the database
+     *
      * @param suppliers object where it stores the information
      */
     public void loadSuppliers(ArrayList<Supplier> suppliers) {
@@ -120,6 +113,7 @@ public class Server{
 
     /**
      * load all the item information from the database
+     *
      * @param s object where it stores the information
      */
     public ArrayList<Item> loadItems(ArrayList<Supplier> s) {
@@ -150,8 +144,9 @@ public class Server{
 
     /**
      * finds the supplier by ID
+     *
      * @param supplierId supplier's id
-     * @param suppliers list of suppliers
+     * @param suppliers  list of suppliers
      * @return the supplier if found, null if otherwise
      */
     private Supplier findSupplier(int supplierId, ArrayList<Supplier> suppliers) {

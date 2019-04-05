@@ -10,6 +10,7 @@ public class Listener {
 
     /**
      * Constructs the listener
+     *
      * @param client the client
      */
     public Listener(Client client) {
@@ -17,7 +18,6 @@ public class Listener {
     }
 
     /**
-     *
      * @param action
      * @return string received from the server
      */
