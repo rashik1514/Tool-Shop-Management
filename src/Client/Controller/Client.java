@@ -38,20 +38,16 @@ public class Client {
         }
     }
 
-
-
-
     public String displayTools() throws IOException {
         socketOut.println("DISPLAY");
         String response = socketIn.readLine();
-//        StringBuilder data = new StringBuilder();
-//        while (! response.equals("DISPLAY")) {
-//            data.append(response);
-//            data.append("\n");
-//            response = socketIn.readLine();
-//        }
-//        return data.toString();
-        return response;
+        StringBuilder data = new StringBuilder();
+        while (! response.equals("END")) {
+            data.append(response);
+            data.append("\n");
+            response = socketIn.readLine();
+        }
+        return data.toString();
     }
 
 }

@@ -44,7 +44,7 @@
           </component>
         </children>
       </toolbar>
-      <component id="6449c" class="javax.swing.JTable" binding="ItemTable">
+      <component id="7df2" class="javax.swing.JTextArea" binding="ItemList">
         <constraints border-constraint="Center"/>
         <properties/>
       </component>

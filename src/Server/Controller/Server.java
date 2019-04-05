@@ -7,14 +7,6 @@ import java.util.ArrayList;
 import java.util.concurrent.*;
 import Server.model.*;
 
-/**
- *  Has a method to receive an input from the clients, makes changes to the inventories, and send the result back to the client
- *
- * @author Md Rashik Hassan
- * @version 1.0
- * @since March 31, 2019
- */
-
 public class Server{
     private BufferedReader socketIn;
 
@@ -60,16 +52,16 @@ public class Server{
         while (true) {
             ArrayList<Supplier> suppliers = new ArrayList<>();
             loadSuppliers(suppliers);
-            Inventory inventory = new Inventory();
-            loadItems(inventory);
-            Shop shop = new Shop(suppliers, inventory);
+            ArrayList<Item> items = loadItems(suppliers);
+            Shop shop = new Shop(new Inventory(items), suppliers);
+
             try {
                 String in = socketIn.readLine();
                 if (in.equals("DISPLAY")){
-                    Inventory temp = shop.getInventory();
+                    Inventory temp = shop.getTheInventory();
                     String out = "";
-                    for(int i = 0; i < temp.getTools().size(); i++) {
-                        out += temp.getTools().get(i).toString();
+                    for(int i = 0; i < temp.getItemList().size(); i++) {
+                        out += temp.getItemList().get(i).toString();
                     }
                     socketOut.println(out);
                     socketOut.println("END");
@@ -84,7 +76,7 @@ public class Server{
 
     public static void main (String [] args) throws IOException
     {
-        Server server = new Server(8902);
+        Server server = new Server(5050);
         server.communicate();
         server.close();
     }
@@ -105,7 +97,7 @@ public class Server{
      */
     public void loadSuppliers(ArrayList<Supplier> suppliers) {
 
-        try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Christina\\Documents\\GitHub\\ENSF409Project\\suppliers.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Christina\\Documents\\GitHub\\ENSF409Project\\src\\suppliers.txt"))) {
             String sCurrentLine;
 
             while ((sCurrentLine = br.readLine()) != null) {
@@ -121,49 +113,45 @@ public class Server{
 
     /**
      * load all the item information from the database
-     * @param i object where it stores the information
+     * @param s object where it stores the information
      */
-//    public void loadItems(Inventory i, ArrayList<Supplier> s) {
-//        try {
-//            FileReader fr = new FileReader("items.txt");
-//            BufferedReader br = new BufferedReader(fr);
-//
-//            String line = "";
-//            while ((line = br.readLine()) != null) {
-//                String[] temp = line.split(";");
-//                int supplierId = Integer.parseInt(temp[4]);
-//
-//                Supplier supplier = new Supplier();
-//                searchSupplier(supplierId, s);
-//                if (theSupplier != null) {
-//                    Item myItem = new Item(Integer.parseInt(temp[0]), temp[1], Integer.parseInt(temp[2]),
-//                            Double.parseDouble(temp[3]), theSupplier);
-//                    items.add(myItem);
-//                    theSupplier.getItemList().add(myItem);
-//                }
-//            }
-//            br.close();
-//        } catch (Exception e) {
-//            System.out.println(e.getMessage());
-//        }
-//        return items;
-//    }
-//        try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Christina\\Documents\\GitHub\\ENSF409Project\\items.txt"))){
-//            String sCurrentLine;
-//
-//            while ((sCurrentLine = br.readLine()) != null) {
-//                String[] info = sCurrentLine.split(";");
-//                int id = Integer.parseInt(info[0]);
-//                int quantity = Integer.parseInt(info[2]);
-//                Double price = Double.parseDouble(info[3]);
-//                int supplierId = Integer.parseInt(info[4]);
-//
-//                i.addTool(new Item(id, info[1], quantity, price, supplierId));
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    public ArrayList<Item> loadItems(ArrayList<Supplier> s) {
+        ArrayList<Item> items = new ArrayList<>();
+        try {
+            FileReader fr = new FileReader("C:\\Users\\Christina\\Documents\\GitHub\\ENSF409Project\\src\\items.txt");
+            BufferedReader br = new BufferedReader(fr);
+
+            String line = "";
+            while ((line = br.readLine()) != null) {
+                String[] temp = line.split(";");
+                int supplierId = Integer.parseInt(temp[4]);
+
+                Supplier supplier = findSupplier(supplierId, s);
+                if (supplier != null) {
+                    Item myItem = new Item(Integer.parseInt(temp[0]), temp[1], Integer.parseInt(temp[2]),
+                            Double.parseDouble(temp[3]), supplier);
+                    items.add(myItem);
+                    supplier.getItemList().add(myItem);
+                }
+            }
+            br.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return items;
+    }
+
+    private Supplier findSupplier(int supplierId, ArrayList<Supplier> suppliers) {
+    Supplier theSupplier = null;
+    for (Supplier s : suppliers) {
+        if (s.getSupId() == supplierId) {
+            theSupplier = s;
+            break;
+        }
+
+    }
+    return theSupplier;
+}
 }
 
 

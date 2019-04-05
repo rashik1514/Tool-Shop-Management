@@ -1,116 +1,75 @@
-package Server.Model;
+package Server.model;
 
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.net.Socket;
 import java.util.ArrayList;
-import java.util.Scanner;
 
-/**
- * Implemets the whole retail system and also the front end of the system. Handles directly the inventory
- * and the database
- * @author Rashik Hassan
- * @version 1.0
- *
- */
 public class Shop {
-    /**
-     * stores the information of the suppliers
-     */
-    private ArrayList<Supplier> suppliers;
+    private Inventory theInventory;
+    private ArrayList <Supplier> supplierList;
 
-    /**
-     *	Transfering the data throughout the client and server.
-     */
-    Socket s;
-
-    /**
-     * Contructs the shop object
-     */
-    public Shop(Socket s) {
-        suppliers = new ArrayList<Supplier>();
-        this.s = s;
+    public Shop (Inventory inventory, ArrayList <Supplier> suppliers) {
+        theInventory = inventory;
+        supplierList = suppliers;
     }
 
-    /**
-     *
-     */
-    public Shop() {
+    public Inventory getTheInventory () { return theInventory; }
 
+    public void setTheInventory (Inventory inventory) { theInventory = inventory; }
+
+    public ArrayList<Supplier> getSupplierList (){ return supplierList; }
+
+    public void setSupplierList (ArrayList <Supplier> suppliers){ supplierList = suppliers; }
+
+    public void listAllItems() { System.out.println(theInventory); }
+
+    public String decreaseItem (String name) {
+        if (theInventory.manageItem(name) == null)
+            return "Couldn't not decrease item quantity!\n";
+        else
+            return "Item quantity was decreased!\n";
     }
 
-    /**
-     * load all the supplier information from the database
-     * @param shop object where it stores the information
-     */
-    public void loadSuppliers(Shop shop) {
-
-        try (BufferedReader br = new BufferedReader(new FileReader("/Users/rashikhassan/Dropbox/workspace/RetailStoreSystem/src/system/suppliers.txt"))) {
-            String sCurrentLine;
-
-            while ((sCurrentLine = br.readLine()) != null) {
-                String[] info = sCurrentLine.split(";");
-                int id = Integer.parseInt(info[0]);
-
-
-                shop.addSupplier(new Supplier(id, info[1], info[2], info[3]));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+    public void listAllSuppliers() {
+        for (Supplier s: supplierList) {
+            System.out.println(s);
         }
     }
 
-    /**
-     * load all the item information from the database
-     * @param i object where it stores the information
-     */
-    public void loadItems(Inventory i) {
-        // C:/Users/rashi/Dropbox/workspace/RetailStoreSystem/src/system/
-        try (BufferedReader br = new BufferedReader(new FileReader("/Users/rashikhassan/Dropbox/workspace/RetailStoreSystem/items.txt"))){
-            String sCurrentLine;
-
-            while ((sCurrentLine = br.readLine()) != null) {
-                String[] info = sCurrentLine.split(";");
-                int id = Integer.parseInt(info[0]);
-                int quantity = Integer.parseInt(info[2]);
-                Double price = Double.parseDouble(info[3]);
-                int supplierId = Integer.parseInt(info[4]);
-
-                i.addTool(new Item(id, info[1], quantity, price, supplierId));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public String getItem(String name) {
+        Item theItem = theInventory.searchForItem(name);
+        if (theItem == null)
+            return "Item " + name + " could not be found!";
+        else
+            return outputItem (theItem);
     }
 
-    /**
-     * Adds supplier to the arraylist
-     * @param supplier the supplier object that needs to be added
-     */
-    public void addSupplier(Supplier supplier) {
-        suppliers.add(supplier);
+    public String getItem(int id) {
+        Item theItem = theInventory.searchForItem(id);
+        if (theItem == null)
+            return "Item number " + id + " could not be found!";
+        else
+            return outputItem (theItem);
     }
 
-    /**
-     * Displays the interface options
-     * @return returns the choice provided by the user
-     */
-    public int menu() {
-        int choice;
-        Scanner input = new Scanner(System.in);
-
-        System.out.println("Chose from the following options");
-        System.out.println("1.	List all tools");
-        System.out.println("2.	Search for tool by toolName");
-        System.out.println("3.	Search for tool by toolID");
-        System.out.println("4.	Check item quantity");
-        System.out.println("5.	Decrease Item quantity.");
-        System.out.println("6.  Quit");
-
-        choice = input.nextInt();
-        return choice;
+    private String outputItem (Item theItem){
+        return "The item information is as follows: \n" + theItem;
     }
+
+    public String getItemQuantity(String name) {
+        // TODO Auto-generated method stub
+        int quantity = theInventory.getItemQuantity(name);
+        if (quantity < 0)
+            return "Item " + name + " could not be found!";
+        else
+            return "The quantity of Item " + name + " is: " + quantity + "\n";
+    }
+
+    public String printOrder() {
+        // TODO Auto-generated method stub
+
+        return theInventory.printOrder();
+    }
+
+
 
 }
+

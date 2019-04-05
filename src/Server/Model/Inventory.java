@@ -1,112 +1,91 @@
-package Server.Model;
+package Server.model;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.net.Socket;
 import java.util.ArrayList;
-/**
- * Stores all the items, performs actions on the items
- * @author rashik Hassan
- *
- */
+
 public class Inventory {
-    /**
-     * Order object for ordering
-     */
-    public Order order;
-    /**
-     * list of items present
-     */
-    private ArrayList<Item> tools;
 
-    /**
-     * Initializes tool
-     */
-    public Inventory() {
-        tools = new ArrayList<Item>();
+    private ArrayList <Item> itemList;
+    private Order myOrder;
+
+
+    public Inventory (ArrayList <Item> itemList) {
+        this.itemList = itemList;
+        myOrder = new Order ();
     }
 
-    /**
-     * searches the inventory with name
-     * @param name of the tool
-     * @return item that matches the name
-     */
-    public Item searchTool(String name) {
-        Item tempItem = null;
+    public ArrayList <Item> getItemList() {
+        return itemList;
+    }
 
-        for(Item item: tools) {
-            if(item.getName().equals(name)) {
-                System.out.println("Item found on inventory");
-                tempItem = item;
-            }
+    public void setItemList(ArrayList <Item> itemList) {
+        this.itemList = itemList;
+    }
+    public Item manageItem (String name){
+        Item theItem = decreaseItem (name);
+
+        if (theItem != null){
+            placeOrder (theItem);
         }
-
-        return tempItem;
-
+        return theItem;
     }
-
-    /**
-     * searches the inventory with id
-     * @param id of the tool
-     * @return item that matches the id
-     */
-    public boolean searchTool(int id) {
-        for(Item item: tools) {
-            if(item.getId() == id) {
-                System.out.println("Item found on inventory");
-                return true;
-            }
+    public void placeOrder (Item theItem){
+        OrderLine ol = theItem.placeOrder();
+        if (ol !=null){
+            myOrder.addOrderLine(ol);
         }
-
-        return false;
-
     }
-    /**
-     * prints all the tools
-     */
-    public void showAllTools(Socket s) {
-        Item i = new Item();
+    private Item decreaseItem (String name) {
 
-        try
-        {
-            PrintWriter objectOutput = new PrintWriter(s.getOutputStream());
-            objectOutput.println(i.toString(tools));
+        Item theItem = searchForItem (name);
+
+        if (theItem == null)
+            return null;
+
+        if (theItem.decreaseItemQuantity() == true){
+
+            return theItem;
         }
-        catch (IOException e)
-        {
-            e.printStackTrace();
+        return null;
+
+    }
+
+    public int getItemQuantity (String name){
+        Item theItem = searchForItem (name);
+        if (theItem == null)
+            return -1;
+        else
+            return theItem.getItemQuantity();
+    }
+    public Item searchForItem (String name) {
+        for (Item i: itemList) {
+            if (i.getItemName().equals(name))
+                return i;
         }
-        //Item i = new Item();
-        //i.displayItems(tools);
-
+        return null;
     }
 
-    /**
-     * Adds tool to the list
-     * @param tool item that needs to be added
-     */
-    public void addTool(Item tool) {
-        tools.add(tool);
+    public String toString () {
+        String str = "";
+        for (Item i: itemList) {
+            str += i;
+        }
+        return str;
     }
 
-    /**
-     * Deletes a particular tool from the inventory
-     * @param tool tool item that needs to be deleted
-     */
-    public void deleteTool(Item tool) {
-        tools.remove(tool);
+    public Item searchForItem(int id) {
+        // TODO Auto-generated method stub
+        for (Item i: itemList) {
+            if (i.getItemId() == id)
+                return i;
+        }
+        return null;
     }
 
-    /**
-     * decreses the quantity of a particular item
-     * @param name name of the tool thats decresed
-     * @param quantity number that will be deducted
-     */
-    public void decreaseItemQuantity(String name, int quantity) {
-        Item item = searchTool(name);
-        item.setQuantity(item.getQuantity() - quantity);
-        item.checkQuantity();
+    public String printOrder() {
+        // TODO Auto-generated method stub
+        return myOrder.toString();
     }
 
 }
+
 

@@ -12,10 +12,10 @@ public class UserGUI {
     private JPanel panel;
     private JScrollBar scrollBar1;
     private JButton showToolsButton;
-    private JTextArea textArea1;
+    private JTextArea ItemList;
     private JTextField textField1;
     private JButton searchButton;
-    private JTable ItemTable;
+    //    private JTable ItemTable;
     private Listener listener;
 
     public UserGUI() {
@@ -35,14 +35,14 @@ public class UserGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String tools = listener.actionPerformed("DISPLAY");
-                String [] colHeaders = {"ID", };
-                textArea1.setText(tools);
+//                String [] colHeaders = {"ID", "Item", "Quantity"};
+                ItemList.setText(tools);
             }
         });
 
     }
 
-    public void searchTools(){
+    public void searchTools() {
         showToolsButton.addActionListener(new ActionListener() {
             /**
              * Invoked when an action occurs.
@@ -64,7 +64,6 @@ public class UserGUI {
         frame.pack();
         frame.setVisible(true);
         gui.displayTools();
-        gui.searchTools();
     }
 
 
@@ -91,8 +90,6 @@ public class UserGUI {
         panel.add(scrollPane1, BorderLayout.EAST);
         scrollBar1 = new JScrollBar();
         scrollPane1.setViewportView(scrollBar1);
-        textArea1 = new JTextArea();
-        panel.add(textArea1, BorderLayout.CENTER);
         final JToolBar toolBar1 = new JToolBar();
         panel.add(toolBar1, BorderLayout.NORTH);
         showToolsButton = new JButton();
@@ -103,6 +100,8 @@ public class UserGUI {
         searchButton = new JButton();
         searchButton.setText("Search");
         toolBar1.add(searchButton);
+        ItemList = new JTextArea();
+        panel.add(ItemList, BorderLayout.CENTER);
     }
 
     /**
