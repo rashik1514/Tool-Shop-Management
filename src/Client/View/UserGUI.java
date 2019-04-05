@@ -14,13 +14,31 @@ import java.awt.event.ActionListener;
  * @since April 5 2019
  */
 public class UserGUI {
-
+    /**
+     * panel containing other items of gui
+     */
     private JPanel panel;
+    /**
+     * button to show all tools
+     */
     private JButton showToolsButton;
+    /**
+     * area to show the list of items
+     */
     private JTextArea ItemList;
+    /**
+     * field to input text
+     */
     private JTextField textField1;
+    /**
+     * button to search for an item
+     */
     private JButton searchButton;
     //    private JTable ItemTable;
+
+    /**
+     * listener object to react to action in gui
+     */
     private Listener listener;
 
     /**

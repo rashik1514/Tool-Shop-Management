@@ -2,7 +2,12 @@ package Server.Controller;
 
 import javax.sql.rowset.CachedRowSet;
 import java.sql.*;
-
+/**
+ * Controls the database
+ * @author Christina Lu, Layla Arab, MD Rashik Hassan
+ * @version 1.0
+ * @since April 5 2019
+ */
 public abstract class DatabaseController {
     CachedRowSet rowSet; // Contains data
     ResultSetMetaData metaData; // Additional info about the data

@@ -16,11 +16,11 @@ import Server.model.*;
  */
 public class Server{
     /**
-     *
+     * reads from the client
      */
     private BufferedReader socketIn;
     /**
-     *
+     * prints to the client
      */
     private PrintWriter socketOut;
     /**
