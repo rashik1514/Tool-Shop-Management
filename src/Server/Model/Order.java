@@ -1,4 +1,4 @@
-package Server.model;
+package Server.Model;
 
 import java.sql.Date;
 import java.text.DateFormat;
@@ -17,7 +17,7 @@ public class Order {
     /**
      * list of order of each item with their information
      */
-    public ArrayList<OrderLine> orders;
+    public ArrayList<model.OrderLine> orders;
     /**
      * Unique id of the order
      */
@@ -28,7 +28,7 @@ public class Order {
      */
     public Order() {
 
-        orders = new ArrayList<OrderLine>();
+        orders = new ArrayList<model.OrderLine>();
         Random rand = new Random();
 
         id = rand.nextInt(10000) + 1000;
@@ -38,13 +38,13 @@ public class Order {
     /**
      * print the order details
      */
-    public void printOrder(ArrayList<Supplier> suppliers) {
+    public void printOrder(ArrayList<model.Supplier> suppliers) {
         System.out.println("*****************************************"
                 + "*****************************");
         System.out.println("Order ID:                     "+id);
         System.out.println("Datre Ordered:                     "+ getCurrentTimeUsingCalendar() +"\n");
 
-        for(OrderLine order: orders) {
+        for(model.OrderLine order: orders) {
             System.out.println("Item description:"+"          "+ order.getName());
             System.out.println("Amount ordered:              "+ order.getQuantity());
             System.out.println("Suppler's name:              "+  suppliers.get(0).searchSupplier(id, suppliers).getName() );

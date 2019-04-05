@@ -1,4 +1,4 @@
-package Server.model;
+package Server.Model;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -45,10 +45,6 @@ public class Inventory {
 
     }
 
-    public ArrayList<Item> getTools() {
-        return tools;
-    }
-
     /**
      * searches the inventory with id
      * @param id of the tool
@@ -68,7 +64,7 @@ public class Inventory {
     /**
      * prints all the tools
      */
-    public void showTools(Socket s) {
+    public void showAllTools(Socket s) {
         Item i = new Item();
 
         try
