@@ -1,4 +1,4 @@
-package Server.model;
+package Server.Model;
 import java.util.ArrayList;
 
 public class Supplier {

@@ -5,7 +5,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.concurrent.*;
-import Server.model.*;
+import Server.Model.*;
 
 /**
  *

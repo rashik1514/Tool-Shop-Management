@@ -1,4 +1,4 @@
-package Server.model;
+package Server.Model;
 
 public class OrderLine {
 
