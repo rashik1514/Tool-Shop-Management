@@ -47,7 +47,7 @@ public class Shop {
      */
     public void loadSuppliers(Shop shop) {
 
-        try (BufferedReader br = new BufferedReader(new FileReader("/Users/rashikhassan/Dropbox/workspace/RetailStoreSystem/src/system/suppliers.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("suppliers.txt"))) {
             String sCurrentLine;
 
             while ((sCurrentLine = br.readLine()) != null) {
@@ -67,10 +67,8 @@ public class Shop {
      * @param i object where it stores the information
      */
     public void loadItems(Inventory i) {
-        // C:/Users/rashi/Dropbox/workspace/RetailStoreSystem/src/system/
-        try (BufferedReader br = new BufferedReader(new FileReader("/Users/rashikhassan/Dropbox/workspace/RetailStoreSystem/items.txt"))){
+        try (BufferedReader br = new BufferedReader(new FileReader("items.txt"))){
             String sCurrentLine;
-
             while ((sCurrentLine = br.readLine()) != null) {
                 String[] info = sCurrentLine.split(";");
                 int id = Integer.parseInt(info[0]);
