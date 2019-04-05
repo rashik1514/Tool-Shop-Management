@@ -2,46 +2,85 @@ package Server.model;
 
 import java.util.ArrayList;
 
+/**
+ * Class that holds the items
+ *
+ * @author Christina Lu, Layla Arab, MD Rashik Hassan
+ * @version 1.0
+ * @since April 5 2019
+ */
 public class Inventory {
-
-    private ArrayList <Item> itemList;
+    /**
+     * ArrayList that holds the items
+     */
+    private ArrayList<Item> itemList;
+    /**
+     * Order of items for the inventory
+     */
     private Order myOrder;
 
-
-    public Inventory (ArrayList <Item> itemList) {
+    /**
+     * Constructs the inventory
+     *
+     * @param itemList itemList to set
+     */
+    public Inventory(ArrayList<Item> itemList) {
         this.itemList = itemList;
-        myOrder = new Order ();
+        myOrder = new Order();
     }
 
-    public ArrayList <Item> getItemList() {
+    /**
+     * @return the item list
+     */
+    public ArrayList<Item> getItemList() {
         return itemList;
     }
 
-    public void setItemList(ArrayList <Item> itemList) {
+    /**
+     * @param itemList list to set
+     */
+    public void setItemList(ArrayList<Item> itemList) {
         this.itemList = itemList;
     }
-    public Item manageItem (String name){
-        Item theItem = decreaseItem (name);
 
-        if (theItem != null){
-            placeOrder (theItem);
+    /**
+     * Manages the item's quantity and orders it
+     * @param name name of the item
+     * @return the item
+     */
+    public Item manageItem(String name) {
+        Item theItem = decreaseItem(name);
+
+        if (theItem != null) {
+            placeOrder(theItem);
         }
         return theItem;
     }
-    public void placeOrder (Item theItem){
+
+    /**
+     * places an order
+     * @param theItem item to order
+     */
+    public void placeOrder(Item theItem) {
         OrderLine ol = theItem.placeOrder();
-        if (ol !=null){
+        if (ol != null) {
             myOrder.addOrderLine(ol);
         }
     }
-    private Item decreaseItem (String name) {
 
-        Item theItem = searchForItem (name);
+    /**
+     * searches for item and decreases quantity
+     * @param name name of item to search for
+     * @return the item
+     */
+    private Item decreaseItem(String name) {
+
+        Item theItem = searchForItem(name);
 
         if (theItem == null)
             return null;
 
-        if (theItem.decreaseItemQuantity() == true){
+        if (theItem.decreaseItemQuantity() == true) {
 
             return theItem;
         }
@@ -49,38 +88,60 @@ public class Inventory {
 
     }
 
-    public int getItemQuantity (String name){
-        Item theItem = searchForItem (name);
+    /**
+     * @param name name of item to find
+     * @return quantity of item
+     */
+    public int getItemQuantity(String name) {
+        Item theItem = searchForItem(name);
         if (theItem == null)
             return -1;
         else
             return theItem.getItemQuantity();
     }
-    public Item searchForItem (String name) {
-        for (Item i: itemList) {
+
+    /**
+     *
+     * @param name name of item to find
+     * @return index of item to find
+     */
+    public Item searchForItem(String name) {
+        for (Item i : itemList) {
             if (i.getItemName().equals(name))
                 return i;
         }
         return null;
     }
 
-    public String toString () {
+    /**
+     *
+     * @return the String of the inventory
+     */
+    public String toString() {
         String str = "";
-        for (Item i: itemList) {
+        for (Item i : itemList) {
             str += i;
         }
         return str;
     }
 
+    /**
+     *
+     * @param id id of item to search for
+     * @return the item with the passed id
+     */
     public Item searchForItem(int id) {
         // TODO Auto-generated method stub
-        for (Item i: itemList) {
+        for (Item i : itemList) {
             if (i.getItemId() == id)
                 return i;
         }
         return null;
     }
 
+    /**
+     * @return the String of the order
+     */
     public String printOrder() {
         // TODO Auto-generated method stub
         return myOrder.toString();
