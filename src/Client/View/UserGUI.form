@@ -26,6 +26,12 @@
               <text value="Show Tools"/>
             </properties>
           </component>
+          <component id="3893" class="javax.swing.JButton" binding="button1" default-binding="true">
+            <constraints/>
+            <properties>
+              <text value=""/>
+            </properties>
+          </component>
           <component id="36636" class="javax.swing.JTextField" binding="textField1" default-binding="true">
             <constraints/>
             <properties>

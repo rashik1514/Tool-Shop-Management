@@ -34,6 +34,7 @@ public class UserGUI {
      * button to search for an item
      */
     private JButton searchButton;
+    private JButton button1;
     //    private JTable ItemTable;
 
     /**
