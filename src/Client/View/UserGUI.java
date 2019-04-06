@@ -34,7 +34,8 @@ public class UserGUI {
      * button to search for an item
      */
     private JButton searchButton;
-    private JButton button1;
+    private JButton decreaseQuantityButton;
+    private JButton checkQuantityButton;
     //    private JTable ItemTable;
 
     /**
@@ -51,7 +52,7 @@ public class UserGUI {
     /**
      * sets the listener
      *
-     * @param listener
+     * @param listener listener
      */
     public void setListener(Listener listener) {
         this.listener = listener;
@@ -60,7 +61,7 @@ public class UserGUI {
     /**
      * Displays the tools of the "Show Tools" button is pressed
      */
-    public void displayTools() {
+    private void displayTools() {
         showToolsButton.addActionListener(new ActionListener() {
             /**
              * Invoked when an action occurs.
@@ -80,7 +81,7 @@ public class UserGUI {
     /**
      * searches for the tool if "search" button is pressed
      */
-    public void searchTools() {
+    private void searchTools() {
         showToolsButton.addActionListener(new ActionListener() {
             /**
              * Invoked when an action occurs.
@@ -98,7 +99,7 @@ public class UserGUI {
     /**
      * updates the GUI
      *
-     * @param gui
+     * @param gui the gui to be updated
      */
     public void updateView(UserGUI gui) {
         JFrame frame = new JFrame("Toolshop");
