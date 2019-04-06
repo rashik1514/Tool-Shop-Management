@@ -4,7 +4,8 @@ import java.io.IOException;
 
 /**
  * This implements the Listener class
- * @author Christina Lu, Layla Arab, MD Rashik Hassan
+ *
+ * @author Christina Lu 30037885, Layla Arab 30017060, MD Rashik Hassan 30048022
  * @version 1.0
  * @since April 5 2019
  */
@@ -13,6 +14,7 @@ public class Listener {
 
     /**
      * Constructs the listener
+     *
      * @param client the client
      */
     public Listener(Client client) {
@@ -20,7 +22,6 @@ public class Listener {
     }
 
     /**
-     *
      * @param action
      * @return string received from the server
      */

@@ -8,7 +8,8 @@ import java.net.Socket;
 
 /**
  * Client that connects to server
- * @author Christina Lu, Layla Arab, MD Rashik Hassan
+ *
+ * @author Christina Lu 30037885, Layla Arab 30017060, MD Rashik Hassan 30048022
  * @version 1.0
  * @since April 5 2019
  */
@@ -16,26 +17,27 @@ public class Client {
     /**
      * output to server
      */
-    protected PrintWriter socketOut;
+    private PrintWriter socketOut;
     /**
      * connection to server
      */
-    protected Socket socket;
+    private Socket socket;
     /**
      * input from server
      */
-    protected BufferedReader socketIn;
+    private BufferedReader socketIn;
     /**
      * output to console
      */
-    protected BufferedReader stdIn;
+    private BufferedReader stdIn;
     /**
      * activity status of client
      */
-    boolean isActive = false;
+    private boolean isActive = false;
 
     /**
      * Constructs the client
+     *
      * @param serverName name of the server
      * @param portNumber port number
      */
@@ -67,14 +69,15 @@ public class Client {
 
     /**
      * returns the string received from the server when the client sens DISPLAY
+     *
      * @return
      * @throws IOException
      */
-    public String displayTools() throws IOException {
+    protected String displayTools() throws IOException {
         socketOut.println("DISPLAY");
         String response = socketIn.readLine();
         StringBuilder data = new StringBuilder();
-        while (! response.equals("END")) {
+        while (!response.equals("END")) {
             data.append(response);
             data.append("\n");
             response = socketIn.readLine();

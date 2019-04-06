@@ -8,7 +8,8 @@ import java.io.IOException;
 
 /**
  * This implements client application
- * @author Christina Lu, Layla Arab, MD Rashik Hassan
+ *
+ * @author Christina Lu 30037885, Layla Arab 30017060, MD Rashik Hassan 30048022
  * @version 1.0
  * @since April 5 2019
  */

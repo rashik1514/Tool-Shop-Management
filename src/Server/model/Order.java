@@ -3,9 +3,11 @@ package Server.Model;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
+
 /**
  * Class for orders
- * @author Christina Lu, Layla Arab, MD Rashik Hassan
+ *
+ * @author Christina Lu 30037885, Layla Arab 30017060, MD Rashik Hassan 30048022
  * @version 1.0
  * @since April 5 2019
  */
@@ -22,41 +24,40 @@ public class Order {
     /**
      * list of orderlines
      */
-    private ArrayList <OrderLine> orderLines;
+    private ArrayList<OrderLine> orderLines;
 
     /**
      * default constructor of order
      */
-    public Order () {
+    protected Order() {
         today = Calendar.getInstance().getTime();
-        orderLines = new ArrayList <OrderLine> ();
+        orderLines = new ArrayList<OrderLine>();
     }
 
     /**
      * adds orderline to the order
+     *
      * @param ol orderline to add
      */
-    public void addOrderLine (OrderLine ol) {
+    protected void addOrderLine(OrderLine ol) {
         orderLines.add(ol);
     }
 
     /**
      * @return the orderlines
      */
-    public ArrayList <OrderLine> getOrderLines (){
+    public ArrayList<OrderLine> getOrderLines() {
         return orderLines;
     }
 
     /**
-     *
      * @param lines set the orderline list
      */
-    public void setOrderLines (ArrayList <OrderLine> lines){
+    public void setOrderLines(ArrayList<OrderLine> lines) {
         orderLines = lines;
     }
 
     /**
-     *
      * @return the orderID
      */
     public int getOrderId() {
@@ -64,7 +65,6 @@ public class Order {
     }
 
     /**
-     *
      * @param orderId sets the orderID
      */
     public void setOrderId(int orderId) {
@@ -72,18 +72,17 @@ public class Order {
     }
 
     /**
-     *
      * @return the order attributes made to a string
      */
-    public String toString (){
+    public String toString() {
         String order = "Order Date: " + today.toString() + "\n\n";
-        String str = "";
-        for (OrderLine ol: orderLines) {
-            str += ol;
-            str += "------------------------\n";
+        StringBuilder str = new StringBuilder();
+        for (OrderLine ol : orderLines) {
+            str.append(ol);
+            str.append("------------------------\n");
         }
-        if (str == "")
-            str = "here are corrently no orderlines";
+        if (str.toString().equals(""))
+            str = new StringBuilder("here are corrently no orderlines");
 
         order += str;
         order += "\n";

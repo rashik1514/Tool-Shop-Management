@@ -2,9 +2,11 @@ package Server.Controller;
 
 import javax.sql.rowset.CachedRowSet;
 import java.sql.*;
+
 /**
  * Controls the database
- * @author Christina Lu, Layla Arab, MD Rashik Hassan
+ *
+ * @author Christina Lu 30037885, Layla Arab 30017060, MD Rashik Hassan 30048022
  * @version 1.0
  * @since April 5 2019
  */
@@ -16,7 +18,7 @@ public abstract class DatabaseController {
     int numcols, numrows; // Number of rows and columns
 
 
-    public DatabaseController() {
+    protected DatabaseController() {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
         } catch (Exception e) {

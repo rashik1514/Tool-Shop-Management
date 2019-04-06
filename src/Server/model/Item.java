@@ -2,7 +2,8 @@ package Server.Model;
 
 /**
  * Class for items
- * @author Christina Lu, Layla Arab, MD Rashik Hassan
+ *
+ * @author Christina Lu 30037885, Layla Arab 30017060, MD Rashik Hassan 30048022
  * @version 1.0
  * @since April 5 2019
  */
@@ -42,13 +43,14 @@ public class Item {
 
     /**
      * constructs the item
+     *
      * @param id
      * @param name
      * @param quanitiy
      * @param price
      * @param sup
      */
-    public Item (int id, String name, int quanitiy, double price, Supplier sup) {
+    public Item(int id, String name, int quanitiy, double price, Supplier sup) {
 
         itemId = id;
         itemName = name;
@@ -61,24 +63,24 @@ public class Item {
     /**
      * @return true if item has been decreased
      */
-    public boolean decreaseItemQuantity () {
+    protected boolean decreaseItemQuantity() {
         if (itemQuantity > 0) {
             itemQuantity--;
             return true;
-        }
-        else
+        } else
             return false;
 
     }
 
     /**
      * places an order for the item
+     *
      * @return
      */
-    public OrderLine placeOrder (){
+    protected OrderLine placeOrder() {
         OrderLine ol;
-        if (getItemQuantity() < MINIMUMUMBER && alreadyOrdered == false){
-            ol = new OrderLine (this, ORDERQUANTITY);
+        if (getItemQuantity() < MINIMUMUMBER && alreadyOrdered == false) {
+            ol = new OrderLine(this, ORDERQUANTITY);
             alreadyOrdered = true;
             return ol;
         }
@@ -86,10 +88,9 @@ public class Item {
     }
 
     /**
-     *
      * @return the itemID
      */
-    public int getItemId() {
+    protected int getItemId() {
         return itemId;
     }
 
@@ -103,12 +104,11 @@ public class Item {
     /**
      * @return returns the item name
      */
-    public String getItemName() {
+    protected String getItemName() {
         return itemName;
     }
 
     /**
-     *
      * @param itemName the name for the item to be set
      */
     public void setItemName(String itemName) {
@@ -116,15 +116,13 @@ public class Item {
     }
 
     /**
-     *
      * @return the item quantity
      */
-    public int getItemQuantity() {
+    protected int getItemQuantity() {
         return itemQuantity;
     }
 
     /**
-     *
      * @param itemQuantity the quantity of the item to set
      */
     public void setItemQuantity(int itemQuantity) {
@@ -132,7 +130,6 @@ public class Item {
     }
 
     /**
-     *
      * @return the item price
      */
     public double getItemPrice() {
@@ -140,7 +137,6 @@ public class Item {
     }
 
     /**
-     *
      * @param itemPrice price of the item to be set
      */
     public void setItemPrice(double itemPrice) {
@@ -148,32 +144,28 @@ public class Item {
     }
 
     /**
-     *
      * @param sup supplier to set
      */
-    public void setTheSupplier (Supplier sup) {
+    public void setTheSupplier(Supplier sup) {
         theSupplier = sup;
     }
 
     /**
-     *
      * @return supplier member variable
      */
-    public Supplier getTheSupplier () {
+    public Supplier getTheSupplier() {
         return theSupplier;
     }
 
     /**
-     *
      * @return makes the member variables into a string
      */
-    public String toString () {
+    public String toString() {
         return "Item ID: " + itemId + ", Item Name: " + itemName + ", Item Quantity: " +
                 itemQuantity + "\n";
     }
 
     /**
-     *
      * @return true if the item has been ordered
      */
     public boolean isAlreadyOrdered() {
@@ -181,10 +173,9 @@ public class Item {
     }
 
     /**
-     *
      * @param alreadyOrdered sets the order status of item
      */
-    public void setAlreadyOrdered(boolean alreadyOrdered) {
+    protected void setAlreadyOrdered(boolean alreadyOrdered) {
         this.alreadyOrdered = alreadyOrdered;
     }
 

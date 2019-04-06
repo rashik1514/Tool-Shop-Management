@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Class that holds the items
  *
- * @author Christina Lu, Layla Arab, MD Rashik Hassan
+ * @author Christina Lu 30037885, Layla Arab 30017060, MD Rashik Hassan 30048022
  * @version 1.0
  * @since April 5 2019
  */
@@ -45,10 +45,11 @@ public class Inventory {
 
     /**
      * Manages the item's quantity and orders it
+     *
      * @param name name of the item
      * @return the item
      */
-    public Item manageItem(String name) {
+    protected Item manageItem(String name) {
         Item theItem = decreaseItem(name);
 
         if (theItem != null) {
@@ -59,9 +60,10 @@ public class Inventory {
 
     /**
      * places an order
+     *
      * @param theItem item to order
      */
-    public void placeOrder(Item theItem) {
+    protected void placeOrder(Item theItem) {
         OrderLine ol = theItem.placeOrder();
         if (ol != null) {
             myOrder.addOrderLine(ol);
@@ -70,6 +72,7 @@ public class Inventory {
 
     /**
      * searches for item and decreases quantity
+     *
      * @param name name of item to search for
      * @return the item
      */
@@ -92,7 +95,7 @@ public class Inventory {
      * @param name name of item to find
      * @return quantity of item
      */
-    public int getItemQuantity(String name) {
+    protected int getItemQuantity(String name) {
         Item theItem = searchForItem(name);
         if (theItem == null)
             return -1;
@@ -101,11 +104,10 @@ public class Inventory {
     }
 
     /**
-     *
      * @param name name of item to find
      * @return index of item to find
      */
-    public Item searchForItem(String name) {
+    protected Item searchForItem(String name) {
         for (Item i : itemList) {
             if (i.getItemName().equals(name))
                 return i;
@@ -114,7 +116,6 @@ public class Inventory {
     }
 
     /**
-     *
      * @return the String of the inventory
      */
     public String toString() {
@@ -126,11 +127,10 @@ public class Inventory {
     }
 
     /**
-     *
      * @param id id of item to search for
      * @return the item with the passed id
      */
-    public Item searchForItem(int id) {
+    protected Item searchForItem(int id) {
         // TODO Auto-generated method stub
         for (Item i : itemList) {
             if (i.getItemId() == id)
@@ -142,7 +142,7 @@ public class Inventory {
     /**
      * @return the String of the order
      */
-    public String printOrder() {
+    protected String printOrder() {
         // TODO Auto-generated method stub
         return myOrder.toString();
     }
