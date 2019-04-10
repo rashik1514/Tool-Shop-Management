@@ -11,7 +11,6 @@ public class Order {
     private int orderId;
     private ArrayList<OrderLine> orderLines;
 
-
     public Order() {
         today = Calendar.getInstance().getTime();
         orderLines = new ArrayList<OrderLine>();
@@ -39,13 +38,13 @@ public class Order {
 
     public String toString() {
         String order = "Order Date: " + today.toString() + "\n\n";
-        String str = "";
+        StringBuilder str = new StringBuilder();
         for (OrderLine ol : orderLines) {
-            str += ol;
-            str += "------------------------\n";
+            str.append(ol);
+            str.append("------------------------\n");
         }
-        if (str == "")
-            str = "here are corrently no orderlines";
+        if (str.toString() == "")
+            str = new StringBuilder("here are currently no orderlines");
 
         order += str;
         order += "\n";

@@ -13,7 +13,7 @@ import Server.Model.*;
 /**
  *
  */
-public class Server {
+public class Server implements Runnable {
     private BufferedReader socketIn;
 
     private PrintWriter socketOut;
@@ -54,11 +54,19 @@ public class Server {
         System.out.println("Server is now runnning...");
     }
 
+    @Override
+    public void run() {
+        try {
+            communicate();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * Initializes the shop and connects the clients
      */
     public void communicate() throws IOException {
-
         while (true) {
             ArrayList<Supplier> suppliers = new ArrayList<>();
             loadSuppliers(suppliers);
@@ -157,6 +165,18 @@ public class Server {
         }
         return theSupplier;
     }
+
+    /**
+     * When an object implementing interface <code>Runnable</code> is used
+     * to create a thread, starting the thread causes the object's
+     * <code>run</code> method to be called in that separately executing
+     * thread.
+     * <p>
+     * The general contract of the method <code>run</code> is that it may
+     * take any action whatsoever.
+     *
+     * @see Thread#run()
+     */
 }
 
 

@@ -1,12 +1,10 @@
 package Server.Model;
 
-import javax.sql.rowset.CachedRowSet;
 import java.sql.*;
 
 
 public class Database {
-    CachedRowSet rowSet; //Contains data
-    Connection connection;
+    private Connection connection;
 
     public Database() {
         try {
@@ -16,8 +14,7 @@ public class Database {
         }
         try {
 
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ToolShop?serverTimezone=GMT",
-                    "root", "rootroot");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ToolShop?serverTimezone=GMT", "root", "rootroot");
         } catch (SQLException e) {
             System.err.println("Cannot connect to the database");
         }
