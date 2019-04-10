@@ -65,7 +65,6 @@ public class Shop {
     }
 
     public String getItemQuantity(String name) {
-        // TODO Auto-generated method stub
         int quantity = theInventory.getItemQuantity(name);
         if (quantity < 0)
             return "Item " + name + " could not be found!";
@@ -74,8 +73,6 @@ public class Shop {
     }
 
     public String printOrder() {
-        // TODO Auto-generated method stub
-
         return theInventory.printOrder();
     }
 

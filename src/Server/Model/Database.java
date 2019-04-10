@@ -19,9 +19,7 @@ public class Database {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ToolShop?serverTimezone=GMT",
                     "root", "rootroot");
         } catch (SQLException e) {
-//            System.err.println("Cannot connect to the database");
-            e.printStackTrace();
-
+            System.err.println("Cannot connect to the database");
         }
     }
 
@@ -30,12 +28,10 @@ public class Database {
         try {
             PreparedStatement statement = connection.prepareStatement(queryStr);
             resultSet = statement.executeQuery(queryStr);
-            return resultSet;
         } catch (SQLException e) {
-//            throw new IllegalStateException("Unable to execute query: " + queryStr, e);
-            e.printStackTrace();
+            throw new IllegalStateException("Unable to execute query: " + queryStr, e);
         }
-        return null;
+        return resultSet;
     }
 
 }

@@ -77,7 +77,6 @@ public class Inventory {
     }
 
     public Item searchForItem(int id) {
-        // TODO Auto-generated method stub
         for (Item i : itemList) {
             if (i.getItemId() == id)
                 return i;
@@ -86,7 +85,6 @@ public class Inventory {
     }
 
     public String printOrder() {
-        // TODO Auto-generated method stub
         return myOrder.toString();
     }
 
