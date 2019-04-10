@@ -7,6 +7,8 @@ import java.sql.*;
 public class Database {
     CachedRowSet rowSet; //Contains data
     Connection connection;
+    int numcols, numrows; //Number of rows and columns
+
 
     public Database() {
         try {
