@@ -7,7 +7,6 @@ public class Inventory {
     private ArrayList<Item> itemList;
     private Order myOrder;
 
-
     public Inventory(ArrayList<Item> itemList) {
         this.itemList = itemList;
         myOrder = new Order();
@@ -44,8 +43,7 @@ public class Inventory {
         if (theItem == null)
             return null;
 
-        if (theItem.decreaseItemQuantity() == true) {
-
+        if (theItem.decreaseItemQuantity()) {
             return theItem;
         }
         return null;
@@ -69,11 +67,11 @@ public class Inventory {
     }
 
     public String toString() {
-        String str = "";
+        StringBuilder str = new StringBuilder();
         for (Item i : itemList) {
-            str += i;
+            str.append(i);
         }
-        return str;
+        return str.toString();
     }
 
     public Item searchForItem(int id) {

@@ -15,14 +15,10 @@ public class UserGUI {
     private JTextField textField1;
     private JButton searchButton;
     private Listener listener;
-    //private JTable ItemTable;
-
     /**
      * Default constructor for the GUI
      */
-    public UserGUI() {
-    }
-
+    public UserGUI() {}
     /**
      * sets the listener
      *
@@ -45,11 +41,9 @@ public class UserGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String tools = listener.actionPerformed("DISPLAY");
-//                String [] colHeaders = {"ID", "Item", "Quantity"};
                 ItemList.setText(tools);
             }
         });
-
     }
 
     /**
@@ -117,6 +111,7 @@ public class UserGUI {
         final JScrollPane scrollPane1 = new JScrollPane();
         panel.add(scrollPane1, BorderLayout.CENTER);
         ItemList = new JTextArea();
+        ItemList.setText("");
         scrollPane1.setViewportView(ItemList);
     }
 

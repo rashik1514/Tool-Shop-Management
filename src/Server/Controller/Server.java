@@ -3,6 +3,7 @@ package Server.Controller;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -13,7 +14,11 @@ import Server.Model.*;
 /**
  *
  */
-public class Server {
+<<<<<<< HEAD
+public class Server implements Runnable{
+=======
+public class Server implements Runnable {
+>>>>>>> 9c72b649e7eaa90693014b5f379428644aff196f
     private BufferedReader socketIn;
 
     private PrintWriter socketOut;
@@ -41,6 +46,7 @@ public class Server {
      * @param portNum
      */
     public Server(int portNum) {
+
         try {
             serverSocket = new ServerSocket(portNum);
             socket = serverSocket.accept();
@@ -54,17 +60,29 @@ public class Server {
         System.out.println("Server is now runnning...");
     }
 
+    @Override
+    public void run() {
+        try {
+            communicate();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * Initializes the shop and connects the clients
      */
+<<<<<<< HEAD
+    public void communicate() {
+
+        ArrayList<Supplier> suppliers = new ArrayList<>();
+        loadSuppliers(suppliers);
+        ArrayList<Item> items = loadItems(suppliers);
+        Shop shop = new Shop(new Inventory(items), suppliers);
+=======
     public void communicate() throws IOException {
-
+>>>>>>> 9c72b649e7eaa90693014b5f379428644aff196f
         while (true) {
-            ArrayList<Supplier> suppliers = new ArrayList<>();
-            loadSuppliers(suppliers);
-            ArrayList<Item> items = loadItems(suppliers);
-            Shop shop = new Shop(new Inventory(items), suppliers);
-
             try {
                 String in = socketIn.readLine();
                 if (in.equals("DISPLAY")) {
@@ -75,13 +93,31 @@ public class Server {
                     }
                     socketOut.println(out);
                     socketOut.println("END");
+                }else if (in.equals("QUIT")){
+
                 }
-            } catch (Exception e) {
+            } catch(SocketException e) {
+                threadPool.shutdown();
+            }catch(IOException e){
+
+            }catch (Exception e) {
                 e.printStackTrace();
                 threadPool.shutdown();
+            }finally {
+                try{
+                    socketIn.close();
+                    socketOut.close();
+                    socket.close();
+                }catch(IOException e){
+                    System.err.println(e.getMessage());
+                }
             }
         }
 
+    }
+
+    public void run(){
+        communicate();
     }
 
     /**
@@ -157,6 +193,18 @@ public class Server {
         }
         return theSupplier;
     }
+
+    /**
+     * When an object implementing interface <code>Runnable</code> is used
+     * to create a thread, starting the thread causes the object's
+     * <code>run</code> method to be called in that separately executing
+     * thread.
+     * <p>
+     * The general contract of the method <code>run</code> is that it may
+     * take any action whatsoever.
+     *
+     * @see Thread#run()
+     */
 }
 
 

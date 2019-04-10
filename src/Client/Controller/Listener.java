@@ -30,7 +30,14 @@ public class Listener {
             }
         }
         return "";
-    }
 
+//        if (action.equals("QUIT")){
+//            try {
+//
+//            }catch (NullPointerException e){
+//                return
+//            }
+//        }
+    }
 
 }
