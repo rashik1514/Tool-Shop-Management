@@ -52,6 +52,8 @@ public class Item {
      */
     public Item(int id, String name, int quanitiy, double price, Supplier sup) {
 
+
+    public Item(int id, String name, int quanitiy, double price, Supplier sup) {
         itemId = id;
         itemName = name;
         itemQuantity = quanitiy;
@@ -64,6 +66,7 @@ public class Item {
      * @return true if item has been decreased
      */
     protected boolean decreaseItemQuantity() {
+    public boolean decreaseItemQuantity() {
         if (itemQuantity > 0) {
             itemQuantity--;
             return true;
@@ -78,6 +81,7 @@ public class Item {
      * @return
      */
     protected OrderLine placeOrder() {
+    public OrderLine placeOrder() {
         OrderLine ol;
         if (getItemQuantity() < MINIMUMUMBER && alreadyOrdered == false) {
             ol = new OrderLine(this, ORDERQUANTITY);

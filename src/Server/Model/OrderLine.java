@@ -24,6 +24,7 @@ public class OrderLine {
      * @param quantity
      */
     protected OrderLine(Item item, int quantity) {
+    public OrderLine(Item item, int quantity) {
         theItem = item;
         setOrderQuantity(quantity);
     }

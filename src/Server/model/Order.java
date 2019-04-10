@@ -30,6 +30,10 @@ public class Order {
      * default constructor of order
      */
     protected Order() {
+    private ArrayList<OrderLine> orderLines;
+
+
+    public Order() {
         today = Calendar.getInstance().getTime();
         orderLines = new ArrayList<OrderLine>();
     }
@@ -46,6 +50,10 @@ public class Order {
     /**
      * @return the orderlines
      */
+    public void addOrderLine(OrderLine ol) {
+        orderLines.add(ol);
+    }
+
     public ArrayList<OrderLine> getOrderLines() {
         return orderLines;
     }
@@ -80,6 +88,12 @@ public class Order {
         for (OrderLine ol : orderLines) {
             str.append(ol);
             str.append("------------------------\n");
+    public String toString() {
+        String order = "Order Date: " + today.toString() + "\n\n";
+        String str = "";
+        for (OrderLine ol : orderLines) {
+            str += ol;
+            str += "------------------------\n";
         }
         if (str.toString().equals(""))
             str = new StringBuilder("here are corrently no orderlines");

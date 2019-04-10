@@ -39,6 +39,8 @@ public class Supplier {
      * @param address
      * @param contactName
      */
+    private ArrayList<Item> itemList;
+
     public Supplier(int id, String name, String address, String contactName) {
         supId = id;
         supName = name;

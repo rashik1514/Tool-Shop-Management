@@ -25,6 +25,8 @@ public class Shop {
      * @param inventory
      * @param suppliers
      */
+    private ArrayList<Supplier> supplierList;
+
     public Shop(Inventory inventory, ArrayList<Supplier> suppliers) {
         theInventory = inventory;
         supplierList = suppliers;

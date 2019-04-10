@@ -42,7 +42,9 @@ public class UserGUI {
     /**
      * listener object to react to action in gui
      */
+
     private Listener listener;
+    //private JTable ItemTable;
 
     /**
      * Default constructor for the GUI

@@ -4,6 +4,8 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.concurrent.*;
 
@@ -39,6 +41,10 @@ public class Server {
      * Allows aSocket to be connected between server and client
      */
     private ServerSocket serverSocket;
+    /**
+     * The database in which the records are stored
+     */
+    Database database;
 
     /**
      * @param portNum
@@ -49,7 +55,10 @@ public class Server {
             socket = serverSocket.accept();
             socketOut = new PrintWriter((socket.getOutputStream()), true);
             socketIn = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+
 //            threadPool = Executors.newCachedThreadPool();
+            threadPool = Executors.newCachedThreadPool();
+            database = new Database();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -74,6 +83,9 @@ public class Server {
                     StringBuilder out = new StringBuilder();
                     for (int i = 0; i < temp.getItemList().size(); i++) {
                         out.append(temp.getItemList().get(i).toString());
+                    String out = "";
+                    for (int i = 0; i < temp.getItemList().size(); i++) {
+                        out += temp.getItemList().get(i).toString();
                     }
                     socketOut.println(out);
                     socketOut.println("END");
@@ -98,10 +110,15 @@ public class Server {
      * closes all the sockets
      */
     private void close() {
+    /**
+     * closes all the sockets
+     */
+    public void close() {
         try {
             socketIn.close();
             socketOut.close();
             socket.close();
+//            database.connection.close();
         } catch (IOException e) {
             System.out.println("Closing error: " + e.getMessage());
         }
@@ -122,11 +139,19 @@ public class Server {
                 int id = Integer.parseInt(info[0]);
 
                 suppliers.add(new Supplier(id, info[1], info[2], info[3]));
+    public void loadSuppliers(ArrayList<Supplier> suppliers) {
+        ResultSet rs = database.select("SELECT * FROM Suppliers");
+        try {
+            while (rs.next()) {
+                suppliers.add(new Supplier(rs.getInt("supId"), rs.getString("supName"), rs.getString("supAddress"),
+                        rs.getString("supContactName")));
+
             }
-        } catch (IOException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
 
     /**
      * load all the item information from the database
@@ -135,6 +160,7 @@ public class Server {
      */
     public ArrayList<Item> loadItems(ArrayList<Supplier> s) {
         ArrayList<Item> items = new ArrayList<>();
+        ResultSet rs = database.select("SELECT * FROM Items");
         try {
             FileReader fr = new FileReader("items.txt");
             BufferedReader br = new BufferedReader(fr);
@@ -151,12 +177,18 @@ public class Server {
                     items.add(myItem);
                     supplier.getItemList().add(myItem);
                 }
+            while (rs.next()) {
+                Item myItem = new Item(rs.getInt("itemId"), rs.getString("itemName"), rs.getInt("itemQuantity"),
+                        rs.getDouble("itemPrice"), findSupplier(rs.getInt("supId"), s));
+                items.add(myItem);
+                Supplier supplier = myItem.getTheSupplier();
+                supplier.getItemList().add(myItem);
             }
-            br.close();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return items;
+
     }
 
     /**

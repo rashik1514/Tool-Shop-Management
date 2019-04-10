@@ -14,6 +14,7 @@ import java.net.Socket;
  * @since April 5 2019
  */
 public class Client {
+
     /**
      * output to server
      */
@@ -34,6 +35,15 @@ public class Client {
      * activity status of client
      */
     private boolean isActive = false;
+
+
+    private PrintWriter socketOut;
+    private Socket socket;
+    private BufferedReader socketIn;
+    private BufferedReader stdIn;
+
+    boolean isActive = false;
+
 
     /**
      * Constructs the client
