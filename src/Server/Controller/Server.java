@@ -14,11 +14,7 @@ import Server.Model.*;
 /**
  *
  */
-<<<<<<< HEAD
 public class Server implements Runnable{
-=======
-public class Server implements Runnable {
->>>>>>> 9c72b649e7eaa90693014b5f379428644aff196f
     private BufferedReader socketIn;
 
     private PrintWriter socketOut;
@@ -60,28 +56,16 @@ public class Server implements Runnable {
         System.out.println("Server is now runnning...");
     }
 
-    @Override
-    public void run() {
-        try {
-            communicate();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     /**
      * Initializes the shop and connects the clients
      */
-<<<<<<< HEAD
     public void communicate() {
 
         ArrayList<Supplier> suppliers = new ArrayList<>();
         loadSuppliers(suppliers);
         ArrayList<Item> items = loadItems(suppliers);
         Shop shop = new Shop(new Inventory(items), suppliers);
-=======
-    public void communicate() throws IOException {
->>>>>>> 9c72b649e7eaa90693014b5f379428644aff196f
         while (true) {
             try {
                 String in = socketIn.readLine();

@@ -4,11 +4,7 @@ import java.sql.*;
 
 
 public class Database {
-<<<<<<< HEAD
-    Connection connection;
-=======
     private Connection connection;
->>>>>>> 9c72b649e7eaa90693014b5f379428644aff196f
 
     public Database() {
         try {
@@ -18,12 +14,8 @@ public class Database {
         }
         try {
 
-<<<<<<< HEAD
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ToolShop?serverTimezone=GMT",
                     "root", "Iig82cb3!");
-=======
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ToolShop?serverTimezone=GMT", "root", "rootroot");
->>>>>>> 9c72b649e7eaa90693014b5f379428644aff196f
         } catch (SQLException e) {
            e.printStackTrace();
         }
