@@ -160,6 +160,8 @@ public class Database {
         }
         return theSupplier;
     }
-
-
+    
+    public Connection getConnection() {
+        return connection;
+    }
 }

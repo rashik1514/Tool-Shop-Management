@@ -1,10 +1,13 @@
 package Client.Controller;
 
+import com.sun.xml.internal.bind.v2.TODO;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+
 
 /**
  * Forms connection to server
@@ -62,11 +65,40 @@ public class Client {
         StringBuilder data = new StringBuilder();
         while (!response.equals("END")) {
             data.append(response);
-            data.append("\n");
+            data.append(";");
             response = socketIn.readLine();
         }
         return data.toString();
     }
+
+    public String search (int id){
+        socketOut.println("SEARCHID");
+        //TODO
+
+        return "";
+    }
+
+    public String search (String name){
+        socketOut.println("SEARCHNAME");
+        //TODO
+
+        return "";
+    }
+
+    public String decrease (int id, int amount){
+        socketOut.println("DECREASEID");
+        //TODO
+
+        return "";
+    }
+
+    public String decrease (String name, int amount){
+        socketOut.println("DECREASENAME");
+        //TODO
+
+        return "";
+    }
+
 
 
 }

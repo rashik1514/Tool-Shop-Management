@@ -11,14 +11,16 @@ public class UserGUI {
 
     private JPanel panel;
     private JButton showToolsButton;
-    private JTextArea ItemList;
-    private JTextField textField1;
     private JButton searchButton;
+    private JButton decreaseItemQuantityButton;
     private Listener listener;
+
     /**
      * Default constructor for the GUI
      */
-    public UserGUI() {}
+    public UserGUI() {
+    }
+
     /**
      * sets the listener
      *
@@ -40,17 +42,31 @@ public class UserGUI {
              */
             @Override
             public void actionPerformed(ActionEvent e) {
-                String tools = listener.actionPerformed("DISPLAY");
-                ItemList.setText(tools);
+                String response = listener.actionPerformed("DISPLAY");
+                String[] headers = {"Item ID", "Item Name", "Quantity", "Price"};
+                String[] temp = response.split(";");
+
+                String[][] data = new String[temp.length][];
+
+                for (int i = 0; i < temp.length; i++) {
+                    data[i] = temp[i].split("/");
+                }
+
+                JTable items = new JTable(data, headers);
+                items.setBackground(new Color(-1657945));
+                panel.add(new JScrollPane(items));
+                panel.repaint();
+                panel.revalidate();
             }
         });
+
     }
 
     /**
      * searches for the tool if "search" button is pressed
      */
     public void searchTools() {
-        showToolsButton.addActionListener(new ActionListener() {
+        searchButton.addActionListener(new ActionListener() {
             /**
              * Invoked when an action occurs.
              *
@@ -58,9 +74,24 @@ public class UserGUI {
              */
             @Override
             public void actionPerformed(ActionEvent e) {
+                String response = listener.actionPerformed("SEARCH");
 
             }
+        });
+    }
 
+    public void decreaseItemQuantity() {
+        decreaseItemQuantityButton.addActionListener(new ActionListener() {
+            /**
+             * Invoked when an action occurs.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String response = listener.actionPerformed("DECREASE");
+
+            }
         });
     }
 
@@ -96,23 +127,26 @@ public class UserGUI {
     private void $$$setupUI$$$() {
         panel = new JPanel();
         panel.setLayout(new BorderLayout(0, 0));
+        panel.setBackground(new Color(-1657945));
         panel.setMinimumSize(new Dimension(500, 500));
         panel.setPreferredSize(new Dimension(500, 500));
         final JToolBar toolBar1 = new JToolBar();
+        toolBar1.setBackground(new Color(-1657945));
+        toolBar1.setFloatable(false);
         panel.add(toolBar1, BorderLayout.NORTH);
         showToolsButton = new JButton();
+        showToolsButton.setBackground(new Color(-1140324));
         showToolsButton.setText("Show Tools");
         toolBar1.add(showToolsButton);
-        textField1 = new JTextField();
-        toolBar1.add(textField1);
         searchButton = new JButton();
+        searchButton.setBackground(new Color(-1140324));
         searchButton.setText("Search");
         toolBar1.add(searchButton);
-        final JScrollPane scrollPane1 = new JScrollPane();
-        panel.add(scrollPane1, BorderLayout.CENTER);
-        ItemList = new JTextArea();
-        ItemList.setText("");
-        scrollPane1.setViewportView(ItemList);
+        decreaseItemQuantityButton = new JButton();
+        decreaseItemQuantityButton.setBackground(new Color(-1140324));
+        decreaseItemQuantityButton.setForeground(new Color(-12828863));
+        decreaseItemQuantityButton.setText("Decrease Item Quantity");
+        toolBar1.add(decreaseItemQuantityButton);
     }
 
     /**

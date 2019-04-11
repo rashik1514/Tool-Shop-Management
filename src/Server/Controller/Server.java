@@ -5,11 +5,11 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
 import java.sql.ResultSet;
+import java.sql.*;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.concurrent.*;
-
 import Server.Model.*;
+
 
 /**
  * Connection to client
@@ -52,9 +52,9 @@ public class Server implements Runnable {
     public Server(int portNum) {
         try {
             serverSocket = new ServerSocket(portNum);
-            socket = serverSocket.accept();
-            socketOut = new PrintWriter((socket.getOutputStream()), true);
-            socketIn = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+//            socket = serverSocket.accept();
+//            socketOut = new PrintWriter((socket.getOutputStream()), true);
+//            socketIn = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             threadPool = Executors.newCachedThreadPool();
             database = new Database();
         } catch (IOException e) {
@@ -67,9 +67,6 @@ public class Server implements Runnable {
      * Initializes the shop and connects the clients
      */
     public void communicate() {
-        ArrayList<Supplier> suppliers = database.loadSuppliers();
-        ArrayList<Item> items = database.loadItems(suppliers);
-        Shop shop = new Shop(new Inventory());
         while (true) {
             try {
                 String in = socketIn.readLine();
@@ -82,16 +79,39 @@ public class Server implements Runnable {
                 } else if (in.equals("QUIT")) {
                     close();
                     threadPool.shutdown();
+                    Statement statement = database.getConnection().createStatement();
+                    ResultSet rs = statement.executeQuery("SELECT * from Items");
+                    String out = "";
+                    while (rs.next()) {
+                        out += (rs.getInt("itemId")+ "/" + rs.getString("itemName") +
+                                "/" + rs.getInt("ItemQuantity") + "/" + rs.getDouble("itemPrice") + "\n");
+                    }
+                    socketOut.println(out);
+                    socketOut.println("END");
+
+                } else if(in.equals("SEARCHID")){
+
+                } else if (in.equals("SEARCHNAME")){
+
+                } else if (in.equals("DECREASE")){
                 }
             } catch (SocketException e) {
                 threadPool.shutdown();
             } catch (IOException e) {
                 e.printStackTrace();
+                threadPool.shutdown();
             }
         }
     }
 
-    public void run() {
+    public void run(){
+        try {
+            socket = serverSocket.accept();
+            socketOut = new PrintWriter((socket.getOutputStream()), true);
+            socketIn = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         communicate();
     }
 
@@ -113,17 +133,7 @@ public class Server implements Runnable {
         }
     }
 
-    /*
-      When an object implementing interface <code>Runnable</code> is used
-      to create a thread, starting the thread causes the object's
-      <code>run</code> method to be called in that separately executing
-      thread.
-      <p>
-      The general contract of the method <code>run</code> is that it may
-      take any action whatsoever.
-
-      @see Thread#run()
-     */
+  
 }
 
 
