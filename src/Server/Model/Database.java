@@ -61,8 +61,10 @@ public class Database {
 
     }
 
-    public void changeItemQuantity(int amount, int ID) {
-        changeItemQuantity(amount, getItemFromID(ID));
+    public String changeItemQuantity(int amount, int ID) {
+        Item item = getItemFromID(ID);
+        changeItemQuantity(amount, item);
+        return item.getItemName()+ " has been changed successfully;There are " + item.getItemQuantity() + " in stock";
     }
 
     public Item getItemFromID(int id) {
