@@ -3,7 +3,10 @@ package Client.View;
 import Client.Controller.Listener;
 
 import javax.swing.*;
+import javax.swing.event.TableModelListener;
 import javax.swing.plaf.ColorUIResource;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,6 +18,7 @@ public class UserGUI {
     private JButton searchButton;
     private JButton decreaseItemQuantityButton;
     private Listener listener;
+    private JTable items;
 
     /**
      * Default constructor for the GUI
@@ -53,15 +57,17 @@ public class UserGUI {
                     data[i] = temp[i].split("/");
                 }
 
-                JTable items = new JTable(data, headers);
+                items = new JTable(data, headers);
                 items.setBackground(new Color(-1657945));
                 panel.add(new JScrollPane(items));
-                panel.repaint();
-                panel.revalidate();
+                panel.validate();
+//                panel.repaint();
+//                panel.revalidate();
             }
         });
 
     }
+
 
     /**
      * searches for the tool if "search" button is pressed
@@ -93,6 +99,7 @@ public class UserGUI {
             }
         });
     }
+
 
     public void decreaseItemQuantity() {
         decreaseItemQuantityButton.addActionListener(new ActionListener() {
