@@ -74,7 +74,7 @@ public class SearchForm extends JDialog {
         contentPane.setMinimumSize(new Dimension(300, 90));
         contentPane.setPreferredSize(new Dimension(300, 90));
         searchType = new JComboBox();
-        searchType.setBackground(new Color(-1655851));
+        searchType.setBackground(new Color(-3562530));
         searchType.setForeground(new Color(-12828863));
         final DefaultComboBoxModel defaultComboBoxModel1 = new DefaultComboBoxModel();
         defaultComboBoxModel1.addElement("Search by ID");
@@ -87,23 +87,23 @@ public class SearchForm extends JDialog {
         label1.setText("Enter item name or ID");
         contentPane.add(label1, BorderLayout.NORTH);
         search = new JTextField();
-        search.setBackground(new Color(-4662027));
+        search.setBackground(new Color(-1655851));
         search.setMinimumSize(new Dimension(100, 10));
         search.setPreferredSize(new Dimension(100, 10));
         search.setText("");
         contentPane.add(search, BorderLayout.CENTER);
         final JToolBar toolBar1 = new JToolBar();
-        toolBar1.setBackground(new Color(-1657945));
+        toolBar1.setBackground(new Color(-4662027));
         toolBar1.setFloatable(false);
         toolBar1.setForeground(new Color(-12828863));
         contentPane.add(toolBar1, BorderLayout.SOUTH);
         OKButton = new JButton();
-        OKButton.setBackground(new Color(-1140324));
+        OKButton.setBackground(new Color(-11157259));
         OKButton.setForeground(new Color(-12828863));
         OKButton.setText("OK");
         toolBar1.add(OKButton);
         cancelButton = new JButton();
-        cancelButton.setBackground(new Color(-1140324));
+        cancelButton.setBackground(new Color(-11157259));
         cancelButton.setText("Cancel");
         toolBar1.add(cancelButton);
     }

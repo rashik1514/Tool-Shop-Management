@@ -71,35 +71,34 @@ public class Server implements Runnable {
             try {
                 String in = socketIn.readLine();
                 if (in.equals("DISPLAY")) {
-                    String out = "";
-                    for (Item item : items)
-                        out += item.toString();
-                    socketOut.println(out);
-                    socketOut.println("END");
-                } else if (in.equals("QUIT")) {
-                    close();
-                    threadPool.shutdown();
                     Statement statement = database.getConnection().createStatement();
                     ResultSet rs = statement.executeQuery("SELECT * from Items");
                     String out = "";
-                    while (rs.next()) {
-                        out += (rs.getInt("itemId")+ "/" + rs.getString("itemName") +
-                                "/" + rs.getInt("ItemQuantity") + "/" + rs.getDouble("itemPrice") + "\n");
-                    }
                     socketOut.println(out);
                     socketOut.println("END");
-
+                    while (rs.next()) {
+                        out += (rs.getInt("itemId") + "/" + rs.getString("itemName") +
+                                "/" + rs.getInt("ItemQuantity") + "/" + rs.getDouble("itemPrice") + "\n");
+                    }
                 } else if(in.equals("SEARCHID")){
 
                 } else if (in.equals("SEARCHNAME")){
 
-                } else if (in.equals("DECREASE")){
+                } else if (in.equals("DECREASEID")){
+
+                } else if (in.equals("DECREASENAME")){
+
+                } else if (in.equals("QUIT")) {
+                    close();
+                    threadPool.shutdown();
                 }
             } catch (SocketException e) {
                 threadPool.shutdown();
             } catch (IOException e) {
                 e.printStackTrace();
                 threadPool.shutdown();
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
         }
     }
