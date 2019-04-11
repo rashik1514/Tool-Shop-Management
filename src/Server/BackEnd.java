@@ -11,6 +11,7 @@ public class BackEnd {
         Server server = new Server(5050);
         server.communicate();
         server.close();
+
     }
 
 }

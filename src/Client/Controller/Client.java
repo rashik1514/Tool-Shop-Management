@@ -70,30 +70,29 @@ public class Client {
         return data.toString();
     }
 
-    public String search (int id) throws IOException{
+    public String search(int id) throws IOException {
         socketOut.println("SEARCHID");
         socketOut.println(id);
         return socketIn.readLine();
     }
 
-    public String search (String name)throws IOException{
+    public String search(String name) throws IOException {
         socketOut.println("SEARCHNAME");
         socketOut.println(name);
         return socketIn.readLine();
     }
 
-    public String decrease (int id, int amount)throws IOException{
+    public String decrease(int id, int amount) throws IOException {
         socketOut.println("DECREASEID");
         socketOut.println(id + "\n" + amount);
         return socketIn.readLine();
     }
 
-    public String decrease (String name, int amount)throws IOException{
+    public String decrease(String name, int amount) throws IOException {
         socketOut.println("DECREASENAME");
         socketOut.println(name + "\n" + amount);
         return socketIn.readLine();
     }
-
 
 
 }
