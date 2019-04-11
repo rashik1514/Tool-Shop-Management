@@ -21,10 +21,6 @@ public class Database {
         }
     }
 
-    public Connection getConnection() {
-        return connection;
-    }
-
     public ResultSet select(String queryStr) {
         ResultSet resultSet;
         try {
@@ -65,6 +61,17 @@ public class Database {
         }
 
     }
+
+    public String searchById(int id) {
+        ArrayList<Item> items = loadItems(loadSuppliers());
+        for (Item i : items) {
+            if (i.getItemId() == id)
+                return i.toString();
+        }
+
+
+    }
+
 
     public void insertItem(int id, String name, int quantity, double price, int supID) {
         try {
@@ -143,6 +150,15 @@ public class Database {
         return items;
     }
 
+    public String loadItemsString(ArrayList<Supplier> s) {
+        ArrayList<Item> items = loadItems(s);
+        String st = "";
+        for (Item i : items)
+            st += i.toString();
+        return st;
+    }
+
+
     /**
      * finds the supplier by ID
      *
@@ -160,7 +176,7 @@ public class Database {
         }
         return theSupplier;
     }
-    
+
     public Connection getConnection() {
         return connection;
     }
