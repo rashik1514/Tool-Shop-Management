@@ -44,7 +44,6 @@ public class Database {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     public void changeItemQuantity(int amount, Item item) {
@@ -60,6 +59,19 @@ public class Database {
             e.printStackTrace();
         }
 
+    }
+
+    public void changeItemQuantity(int amount, int ID) {
+        changeItemQuantity(amount, getItemFromID(ID));
+    }
+
+    public Item getItemFromID(int id) {
+        ArrayList<Item> items = loadItems(loadSuppliers());
+        for (Item i : items) {
+            if (i.getItemId() == id)
+                return i;
+        }
+        return null;
     }
 
     public String searchByItemId(int id) {
@@ -79,8 +91,6 @@ public class Database {
         }
         return null;
     }
-
-
 
     public void insertItem(int id, String name, int quantity, double price, int supID) {
         try {
