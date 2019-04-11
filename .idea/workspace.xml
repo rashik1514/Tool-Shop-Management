@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b867af5b-e934-419d-b4b8-86529fe2af09" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Server/Model/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/Model/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/Model/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/Model/Item.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -74,10 +74,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Server/Controller/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="550">
+            <state relative-caret-position="156">
               <caret line="76" lean-forward="true" selection-start-line="76" selection-end-line="76" />
               <folding>
                 <element signature="docComment;class#Server#0" expanded="true" />
@@ -152,11 +152,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Server/Model/Item.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-256">
-              <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+            <state relative-caret-position="419">
+              <caret line="85" column="83" selection-start-line="85" selection-start-column="83" selection-end-line="85" selection-end-column="83" />
               <folding>
                 <element signature="e#1716#1717#0" expanded="true" />
                 <element signature="e#1758#1759#0" expanded="true" />
@@ -212,11 +212,11 @@
         <option value="$PROJECT_DIR$/src/Server/Model/OrderLine.java" />
         <option value="$PROJECT_DIR$/src/Server/Model/Order.java" />
         <option value="$PROJECT_DIR$/src/Server/Model/Shop.java" />
-        <option value="$PROJECT_DIR$/src/Server/Model/Item.java" />
         <option value="$PROJECT_DIR$/src/Server/Model/Inventory.java" />
         <option value="$PROJECT_DIR$/src/Client/Controller/Client.java" />
         <option value="$PROJECT_DIR$/src/Server/Controller/Server.java" />
         <option value="$PROJECT_DIR$/src/Server/Model/Database.java" />
+        <option value="$PROJECT_DIR$/src/Server/Model/Item.java" />
       </list>
     </option>
   </component>
@@ -293,7 +293,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554999267990" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555000560822" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
@@ -362,12 +362,12 @@
       <workItem from="1554865403768" duration="3399000" />
       <workItem from="1554915126541" duration="4101000" />
       <workItem from="1554924931502" duration="5547000" />
-      <workItem from="1554933834584" duration="19115000" />
+      <workItem from="1554933834584" duration="19575000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32162000" />
+    <option name="totallyTimeSpent" value="32622000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -556,19 +556,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Server/Model/Item.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-256">
-          <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
-          <folding>
-            <element signature="e#1716#1717#0" expanded="true" />
-            <element signature="e#1758#1759#0" expanded="true" />
-            <element signature="e#2118#2119#0" expanded="true" />
-            <element signature="e#2155#2156#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Server/Model/Supplier.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -588,7 +575,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Server/Controller/Server.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
+        <state relative-caret-position="156">
           <caret line="76" lean-forward="true" selection-start-line="76" selection-end-line="76" />
           <folding>
             <element signature="docComment;class#Server#0" expanded="true" />
@@ -601,6 +588,19 @@
             <element signature="docComment;method#Server#0;class#Server#0" expanded="true" />
             <element signature="docComment;method#communicate#0;class#Server#0" expanded="true" />
             <element signature="docComment;method#close#0;class#Server#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Server/Model/Item.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="419">
+          <caret line="85" column="83" selection-start-line="85" selection-start-column="83" selection-end-line="85" selection-end-column="83" />
+          <folding>
+            <element signature="e#1716#1717#0" expanded="true" />
+            <element signature="e#1758#1759#0" expanded="true" />
+            <element signature="e#2118#2119#0" expanded="true" />
+            <element signature="e#2155#2156#0" expanded="true" />
           </folding>
         </state>
       </provider>
