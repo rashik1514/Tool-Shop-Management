@@ -10,6 +10,14 @@ public class Inventory extends Database {
         myOrder = new Order();
     }
 
+
+    public void placeOrders() {
+        ArrayList<Item> items = loadItems(loadSuppliers());
+        for (Item i : items)
+            if (i != null)
+                placeOrder(i);
+    }
+
     public Item manageItem(String name) {
         Item theItem = decreaseItem(name);
 

@@ -61,6 +61,7 @@ public class Shop extends Database implements Runnable {
     public void run() {
         String in = "";
         while (true) {
+            theInventory.placeOrders();
             try {
                 in = socketIn.readLine();
 
