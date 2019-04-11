@@ -3,10 +3,7 @@ package Client.View;
 import Client.Controller.Listener;
 
 import javax.swing.*;
-import javax.swing.event.TableModelListener;
 import javax.swing.plaf.ColorUIResource;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,7 +26,7 @@ public class UserGUI {
     /**
      * sets the listener
      *
-     * @param listener
+     * @param listener the listener
      */
     public void setListener(Listener listener) {
         this.listener = listener;
@@ -83,15 +80,15 @@ public class UserGUI {
                 String response = listener.actionPerformed("SEARCH");
 
                 if (response.equals("null")) {
-                    UIManager UI = new UIManager();
                     UIManager.put("OptionPane.background", new ColorUIResource(239, 214, 249));
-                    UI.put("Panel.background", new ColorUIResource(239, 214, 249));
+                    UIManager.put("Panel.background", new ColorUIResource(239, 214, 249));
                     JOptionPane.showMessageDialog(new JFrame(), "Item not found!");
                 } else if (response.equals("invalid")) {
-
+                    UIManager.put("OptionPane.background", new ColorUIResource(239, 214, 249));
+                    UIManager.put("Panel.background", new ColorUIResource(239, 214, 249));
+                    JOptionPane.showMessageDialog(null, "Please input valid ID", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    UIManager UI = new UIManager();
-                    UI.put("OptionPane.background", new ColorUIResource(239, 214, 249));
+                    UIManager.put("OptionPane.background", new ColorUIResource(239, 214, 249));
                     UIManager.put("Panel.background", new ColorUIResource(239, 214, 249));
                     JOptionPane.showMessageDialog(null, response.replaceAll(";", "\n"), "Item", JOptionPane.PLAIN_MESSAGE);
                 }

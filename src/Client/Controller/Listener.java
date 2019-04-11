@@ -20,7 +20,7 @@ public class Listener {
     }
 
     /**
-     * @param action
+     * @param action action that occurred
      * @return string received from the server
      */
     public String actionPerformed(String action) {
@@ -41,10 +41,6 @@ public class Listener {
                     int id = Integer.parseInt(dialog.search.getText());
                     return client.search(id);
                 } catch (NumberFormatException e){
-                    UIManager UI=new UIManager();
-                    UI.put("OptionPane.background",new ColorUIResource(239, 214, 249));
-                    UI.put("Panel.background",new ColorUIResource(239, 214, 249));
-                    JOptionPane.showMessageDialog(null,"Please input valid ID","Error", JOptionPane.ERROR_MESSAGE);
                     return "invalid";
                 } catch (IOException e) {
                     e.printStackTrace();
