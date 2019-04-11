@@ -38,7 +38,7 @@ public class UserGUI {
     /**
      * Displays the tools of the "Show Tools" button is pressed
      */
-    public void displayTools() {
+    private void displayTools() {
         showToolsButton.addActionListener(new ActionListener() {
             /**
              * Invoked when an action occurs.
@@ -61,8 +61,7 @@ public class UserGUI {
                 items.setBackground(new Color(-1657945));
                 panel.add(new JScrollPane(items));
                 panel.validate();
-//                panel.repaint();
-//                panel.revalidate();
+
             }
         });
 
@@ -72,7 +71,7 @@ public class UserGUI {
     /**
      * searches for the tool if "search" button is pressed
      */
-    public void searchTools() {
+    private void searchTools() {
         searchButton.addActionListener(new ActionListener() {
             /**
              * Invoked when an action occurs.
@@ -85,7 +84,7 @@ public class UserGUI {
 
                 if (response.equals("null")) {
                     UIManager UI = new UIManager();
-                    UI.put("OptionPane.background", new ColorUIResource(239, 214, 249));
+                    UIManager.put("OptionPane.background", new ColorUIResource(239, 214, 249));
                     UI.put("Panel.background", new ColorUIResource(239, 214, 249));
                     JOptionPane.showMessageDialog(new JFrame(), "Item not found!");
                 } else if (response.equals("invalid")) {
@@ -93,7 +92,7 @@ public class UserGUI {
                 } else {
                     UIManager UI = new UIManager();
                     UI.put("OptionPane.background", new ColorUIResource(239, 214, 249));
-                    UI.put("Panel.background", new ColorUIResource(239, 214, 249));
+                    UIManager.put("Panel.background", new ColorUIResource(239, 214, 249));
                     JOptionPane.showMessageDialog(null, response.replaceAll(";", "\n"), "Item", JOptionPane.PLAIN_MESSAGE);
                 }
             }
@@ -101,7 +100,7 @@ public class UserGUI {
     }
 
 
-    public void decreaseItemQuantity() {
+    private void decreaseItemQuantity() {
         decreaseItemQuantityButton.addActionListener(new ActionListener() {
             /**
              * Invoked when an action occurs.
@@ -113,13 +112,13 @@ public class UserGUI {
                 String response = listener.actionPerformed("DECREASE");
                 if (response.equals("null")) {
                     UIManager UI = new UIManager();
-                    UI.put("OptionPane.background", new ColorUIResource(239, 214, 249));
-                    UI.put("Panel.background", new ColorUIResource(239, 214, 249));
+                    UIManager.put("OptionPane.background", new ColorUIResource(239, 214, 249));
+                    UIManager.put("Panel.background", new ColorUIResource(239, 214, 249));
                     JOptionPane.showMessageDialog(new JFrame(), "Could not decrease quantity!");
                 } else {
                     UIManager UI = new UIManager();
-                    UI.put("OptionPane.background", new ColorUIResource(239, 214, 249));
-                    UI.put("Panel.background", new ColorUIResource(239, 214, 249));
+                    UIManager.put("OptionPane.background", new ColorUIResource(239, 214, 249));
+                    UIManager.put("Panel.background", new ColorUIResource(239, 214, 249));
                     JOptionPane.showMessageDialog(null, response.replaceAll(";", "\n"), "Quantity Decrease", JOptionPane.PLAIN_MESSAGE);
                 }
             }
@@ -129,7 +128,7 @@ public class UserGUI {
     /**
      * updates the GUI
      *
-     * @param gui
+     * @param gui the gui
      */
     public void updateView(UserGUI gui) {
         JFrame frame = new JFrame("Toolshop");
