@@ -47,7 +47,7 @@ public class Database {
     }
 
     public void changeItemQuantity(int amount, Item item) {
-        String query = "UPDATE Items\n" +
+        String query = "UPDATE Items " +
                 "SET ItemQuantity = ?" +
                 "WHERE itemId = ?";
         try {
