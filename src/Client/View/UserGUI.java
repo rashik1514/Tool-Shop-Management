@@ -64,7 +64,9 @@ public class UserGUI {
                 }
 
                 items.setBackground(new Color(-1657945));
-                panel.validate();
+//                panel.validate();
+                panel.revalidate();
+                panel.repaint();
             }
         });
 
