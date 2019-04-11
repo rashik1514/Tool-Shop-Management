@@ -1,6 +1,7 @@
 package Server.Model;
 
 import java.sql.*;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class Database {
@@ -163,9 +164,11 @@ public class Database {
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("SELECT * FROM Items");
             String out = "";
+            NumberFormat format = NumberFormat.getCurrencyInstance();
             while (rs.next()) {
+                String price = format.format(rs.getDouble("itemPrice"));
                 out += (rs.getInt("itemId") + "/" + rs.getString("itemName") +
-                        "/" + rs.getInt("ItemQuantity") + "/" + rs.getDouble("itemPrice") + ";");
+                        "/" + rs.getInt("ItemQuantity") + "/" + price + ";");
             }
             return out;
         } catch (SQLException e) {
