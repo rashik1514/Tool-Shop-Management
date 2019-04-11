@@ -82,18 +82,16 @@ public class Client {
         return socketIn.readLine();
     }
 
-    public String decrease (int id, int amount){
+    public String decrease (int id, int amount)throws IOException{
         socketOut.println("DECREASEID");
-        //TODO
-
-        return "";
+        socketOut.println(id + "\n" + amount);
+        return socketIn.readLine();
     }
 
-    public String decrease (String name, int amount){
+    public String decrease (String name, int amount)throws IOException{
         socketOut.println("DECREASENAME");
-        //TODO
-
-        return "";
+        socketOut.println(name + "\n" + amount);
+        return socketIn.readLine();
     }
 
 

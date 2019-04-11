@@ -86,8 +86,11 @@ public class Server implements Runnable {
                     socketOut.println(out);
 
                 } else if (in.equals("DECREASEID")){
-
+                    int id = Integer.parseInt(socketIn.readLine());
+                    int amount = Integer.parseInt(socketIn.readLine());
                 } else if (in.equals("DECREASENAME")){
+                    String name = socketIn.readLine();
+                    int amount = Integer.parseInt(socketIn.readLine());
 
                 } else if (in.equals("QUIT")) {
                     close();

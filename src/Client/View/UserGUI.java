@@ -75,7 +75,12 @@ public class UserGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String response = listener.actionPerformed("SEARCH");
-                JOptionPane.showMessageDialog(null, response, "Item", JOptionPane.PLAIN_MESSAGE);
+                System.out.println(response);
+                if (response.equals("null")) {
+                    JOptionPane.showMessageDialog(new JFrame(), "Item not found!");
+                } else {
+                    JOptionPane.showMessageDialog(null, response.replaceAll(";", "\n"), "Item", JOptionPane.PLAIN_MESSAGE);
+                }
             }
         });
     }
