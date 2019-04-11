@@ -70,19 +70,16 @@ public class Client {
         return data.toString();
     }
 
-    public String search (int id){
+    public String search (int id) throws IOException{
         socketOut.println("SEARCHID");
         socketOut.println(id);
-        //TODO
-
-        return "";
+        return socketIn.readLine();
     }
 
-    public String search (String name){
+    public String search (String name)throws IOException{
         socketOut.println("SEARCHNAME");
         socketOut.println(name);
-
-        return "";
+        return socketIn.readLine();
     }
 
     public String decrease (int id, int amount){

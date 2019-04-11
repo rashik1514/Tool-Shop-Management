@@ -75,7 +75,7 @@ public class UserGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String response = listener.actionPerformed("SEARCH");
-
+                JOptionPane.showMessageDialog(null, response, "Item", JOptionPane.PLAIN_MESSAGE);
             }
         });
     }
