@@ -56,9 +56,11 @@ public class UserGUI {
                     data[i] = temp[i].split("/");
                 }
 
-                TableModel model = new DefaultTableModel(data, headers);
-                items = new JTable(model);
-                items.setEnabled(false);
+                if (items == null) {
+                    TableModel model = new DefaultTableModel(data, headers);
+                    items = new JTable(model);
+                    items.setEnabled(false);
+                }
 
                 items.setBackground(new Color(-1657945));
                 panel.add(new JScrollPane(items));
