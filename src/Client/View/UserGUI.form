@@ -5,6 +5,7 @@
       <xy x="20" y="20" width="500" height="500"/>
     </constraints>
     <properties>
+      <background color="-1657945"/>
       <minimumSize width="500" height="500"/>
       <preferredSize width="500" height="500"/>
     </properties>
@@ -14,6 +15,7 @@
         <constraints border-constraint="North"/>
         <properties>
           <background color="-1657945"/>
+          <floatable value="false"/>
         </properties>
         <border type="none"/>
         <children>
@@ -29,6 +31,14 @@
             <properties>
               <background color="-1140324"/>
               <text value="Search"/>
+            </properties>
+          </component>
+          <component id="967c2" class="javax.swing.JButton" binding="decreaseItemQuantityButton" default-binding="true">
+            <constraints/>
+            <properties>
+              <background color="-1140324"/>
+              <foreground color="-12828863"/>
+              <text value="Decrease Item Quantity"/>
             </properties>
           </component>
         </children>

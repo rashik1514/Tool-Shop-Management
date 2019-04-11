@@ -1,11 +1,13 @@
 package Client.Controller;
 
+import com.sun.xml.internal.bind.v2.TODO;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.ArrayList;
+
 
 /**
  *
@@ -71,15 +73,33 @@ public class Client {
 
     public String search (int id){
         socketOut.println("SEARCHID");
+        //TODO
 
         return "";
     }
 
     public String search (String name){
         socketOut.println("SEARCHNAME");
+        //TODO
 
         return "";
     }
+
+    public String decrease (int id, int amount){
+        socketOut.println("DECREASEID");
+        //TODO
+
+        return "";
+    }
+
+    public String decrease (String name, int amount){
+        socketOut.println("DECREASENAME");
+        //TODO
+
+        return "";
+    }
+
+
 
 
 }

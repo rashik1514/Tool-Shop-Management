@@ -10,36 +10,11 @@
     </properties>
     <border type="none"/>
     <children>
-      <toolbar id="85875">
-        <constraints border-constraint="South"/>
-        <properties/>
-        <border type="none"/>
-        <children>
-          <component id="7942c" class="javax.swing.JButton" binding="cancelButton" default-binding="true">
-            <constraints/>
-            <properties>
-              <background color="-1140324"/>
-              <foreground color="-12828863"/>
-              <text value="Cancel"/>
-            </properties>
-          </component>
-          <component id="176e7" class="javax.swing.JButton" binding="OKButton" default-binding="true">
-            <constraints/>
-            <properties>
-              <alignmentX value="0.0"/>
-              <background color="-1140324"/>
-              <foreground color="-12828863"/>
-              <horizontalAlignment value="0"/>
-              <horizontalTextPosition value="11"/>
-              <text value="OK"/>
-              <verticalAlignment value="0"/>
-            </properties>
-          </component>
-        </children>
-      </toolbar>
       <component id="53974" class="javax.swing.JComboBox" binding="searchType">
         <constraints border-constraint="East"/>
         <properties>
+          <background color="-1655851"/>
+          <foreground color="-12828863"/>
           <model>
             <item value="Search by ID"/>
             <item value="Search by Name"/>
@@ -63,6 +38,32 @@
           <text value=""/>
         </properties>
       </component>
+      <toolbar id="aaaaf">
+        <constraints border-constraint="South"/>
+        <properties>
+          <background color="-1657945"/>
+          <floatable value="false"/>
+          <foreground color="-12828863"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="3b778" class="javax.swing.JButton" binding="OKButton" default-binding="true">
+            <constraints/>
+            <properties>
+              <background color="-1140324"/>
+              <foreground color="-12828863"/>
+              <text value="OK"/>
+            </properties>
+          </component>
+          <component id="c2611" class="javax.swing.JButton" binding="cancelButton" default-binding="true">
+            <constraints/>
+            <properties>
+              <background color="-1140324"/>
+              <text value="Cancel"/>
+            </properties>
+          </component>
+        </children>
+      </toolbar>
     </children>
   </grid>
 </form>
