@@ -71,13 +71,7 @@ public class Server implements Runnable {
             try {
                 String in = socketIn.readLine();
                 if (in.equals("DISPLAY")) {
-                    Statement statement = database.getConnection().createStatement();
-                    ResultSet rs = statement.executeQuery("SELECT * from Items");
-                    String out = "";
-                    while (rs.next()) {
-                        out += (rs.getInt("itemId") + "/" + rs.getString("itemName") +
-                                "/" + rs.getInt("ItemQuantity") + "/" + rs.getDouble("itemPrice") + "\n");
-                    }
+                    String out = database.loadItemsTable();
                     socketOut.println(out);
                     socketOut.println("END");
 
@@ -98,8 +92,6 @@ public class Server implements Runnable {
             } catch (IOException e) {
                 e.printStackTrace();
                 threadPool.shutdown();
-            } catch (SQLException e) {
-                e.printStackTrace();
             }
         }
     }

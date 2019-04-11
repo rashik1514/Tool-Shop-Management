@@ -15,7 +15,7 @@ public class Database {
         }
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ToolShop?serverTimezone=GMT",
-                    "root", "Iig82cb3!");
+                    "root", "rootroot");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -69,7 +69,7 @@ public class Database {
                 return i.toString();
         }
 
-
+        return null;
     }
 
 
@@ -150,12 +150,21 @@ public class Database {
         return items;
     }
 
-    public String loadItemsString(ArrayList<Supplier> s) {
-        ArrayList<Item> items = loadItems(s);
-        String st = "";
-        for (Item i : items)
-            st += i.toString();
-        return st;
+    public String loadItemsTable() {
+        try {
+            ArrayList<Supplier> s = loadSuppliers();
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT * from Items");
+            String out = "";
+            while (rs.next()) {
+                out += (rs.getInt("itemId") + "/" + rs.getString("itemName") +
+                        "/" + rs.getInt("ItemQuantity") + "/" + rs.getDouble("itemPrice") + "\n");
+                return out;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 
