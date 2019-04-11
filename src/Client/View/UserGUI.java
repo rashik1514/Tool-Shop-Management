@@ -56,11 +56,9 @@ public class UserGUI {
                     data[i] = temp[i].split("/");
                 }
 
-                TableModel model = new DefaultTableModel(data, headers) {
-                    public boolean isCellEditable(int row, int column) { return false; }
-                };
-
+                TableModel model = new DefaultTableModel(data, headers);
                 items = new JTable(model);
+                items.setEnabled(false);
 
                 items.setBackground(new Color(-1657945));
                 panel.add(new JScrollPane(items));
@@ -93,6 +91,8 @@ public class UserGUI {
                     UIManager.put("OptionPane.background", new ColorUIResource(239, 214, 249));
                     UIManager.put("Panel.background", new ColorUIResource(239, 214, 249));
                     JOptionPane.showMessageDialog(null, "Please input valid ID", "Error", JOptionPane.ERROR_MESSAGE);
+                } else if (response.equals("CLOSE")) {
+                    //do nothing
                 } else {
                     UIManager.put("OptionPane.background", new ColorUIResource(239, 214, 249));
                     UIManager.put("Panel.background", new ColorUIResource(239, 214, 249));
@@ -121,6 +121,8 @@ public class UserGUI {
                     UIManager.put("OptionPane.background", new ColorUIResource(239, 214, 249));
                     UIManager.put("Panel.background", new ColorUIResource(239, 214, 249));
                     JOptionPane.showMessageDialog(null, "Please input valid item Name or ID", "Error", JOptionPane.ERROR_MESSAGE);
+                } else if (response.equals("CLOSE")) {
+                    //do nothing
                 } else {
                     UIManager.put("OptionPane.background", new ColorUIResource(239, 214, 249));
                     UIManager.put("Panel.background", new ColorUIResource(239, 214, 249));
