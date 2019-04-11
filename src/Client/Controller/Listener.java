@@ -1,6 +1,7 @@
 package Client.Controller;
 
 import javax.swing.*;
+import javax.swing.plaf.ColorUIResource;
 import java.io.IOException;
 
 /**
@@ -35,10 +36,16 @@ public class Listener {
             dialog.pack();
             dialog.setVisible(true);
             int selectedIndex = dialog.searchType.getSelectedIndex();
-
             if (selectedIndex == 0) {
-                int id = Integer.parseInt(dialog.search.getText());
-                client.search(id);
+                try {
+                    int id = Integer.parseInt(dialog.search.getText());
+                    client.search(id);
+                } catch (NumberFormatException e){
+                    UIManager UI=new UIManager();
+                    UI.put("OptionPane.background",new ColorUIResource(222,187,247));
+                    UI.put("Panel.background",new ColorUIResource(222,187,247));
+                    JOptionPane.showMessageDialog(null,"Please input valid ID","Error", JOptionPane.ERROR_MESSAGE);
+                }
             } else if (selectedIndex == 1) {
                 String name = dialog.search.getText();
                 client.search(name);

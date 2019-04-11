@@ -72,6 +72,7 @@ public class Client {
 
     public String search (int id){
         socketOut.println("SEARCHID");
+        socketOut.println(id);
         //TODO
 
         return "";
@@ -79,7 +80,7 @@ public class Client {
 
     public String search (String name){
         socketOut.println("SEARCHNAME");
-        //TODO
+        socketOut.println(name);
 
         return "";
     }
