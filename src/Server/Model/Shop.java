@@ -99,10 +99,7 @@ public class Shop extends Database implements Runnable {
                     break;
                 }
             } catch (SocketException e) {
-                e.printStackTrace();
             } catch (IOException e) {
-                e.printStackTrace();
-
             }
 
         }

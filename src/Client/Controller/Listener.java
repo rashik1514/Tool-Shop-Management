@@ -35,12 +35,13 @@ public class Listener {
             dialog.setTitle("Search");
             dialog.pack();
             dialog.setVisible(true);
-            if (dialog.search.equals("null")){
-                return "invalid";
-            }
+
             int selectedIndex = dialog.searchType.getSelectedIndex();
             if (selectedIndex == 0) {
                 try {
+                    if (dialog.search.getText().equals("")){
+                        return "CLOSE";
+                    }
                     int id = Integer.parseInt(dialog.search.getText());
                     return client.search(id);
                 } catch (NumberFormatException e){
@@ -53,6 +54,8 @@ public class Listener {
                 try {
                     return client.search(name);
 
+                } catch (NumberFormatException e){
+                    return "invalid";
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -64,13 +67,21 @@ public class Listener {
             dialog.pack();
             dialog.setVisible(true);
             int selectedIndex = dialog.searchType.getSelectedIndex();
-            int amount = 0 - Integer.parseInt(dialog.Quantity.getText());
+            int amount = 0;
+            try{
+                amount = 0 - Integer.parseInt(dialog.Quantity.getText());
+            }catch (NumberFormatException e){
+
+            }
             if (selectedIndex == 0) {
-                int id = Integer.parseInt(dialog.item.getText());
+                int id;
                 try {
+                    id =Integer.parseInt(dialog.item.getText());
                     return client.decrease(id, amount);
                 } catch (IOException e) {
                     return null;
+                } catch (NumberFormatException e){
+                    return "CLOSE";
                 }
             } else if (selectedIndex == 1) {
                 String name = dialog.item.getText();
@@ -78,7 +89,7 @@ public class Listener {
                     return client.decrease(name, amount);
                 } catch (IOException e) {
                     return null;
-                } 
+                }
             }
 
         }

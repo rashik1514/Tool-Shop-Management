@@ -15,7 +15,7 @@ public class Database {
         }
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ToolShop?serverTimezone=GMT",
-                    "root", "rootroot");
+                    "root", "Iig82cb3!");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -71,6 +71,7 @@ public class Database {
 
     public String changeItemQuantity(int amount, String name) {
         Item item = getItemFromName(name);
+        System.out.println(item.toString());
         if ((item.getItemQuantity() + amount) < 0)
             return null;
         else{
@@ -93,7 +94,7 @@ public class Database {
     public Item getItemFromName(String name) {
         ArrayList<Item> items = loadItems(loadSuppliers());
         for (Item i : items) {
-            if (i.getItemName() == name)
+            if (i.getItemName().equals(name))
                 return i;
         }
         return null;
