@@ -39,16 +39,23 @@ public class Listener {
             if (selectedIndex == 0) {
                 try {
                     int id = Integer.parseInt(dialog.search.getText());
-                    client.search(id);
+                    return client.search(id);
                 } catch (NumberFormatException e){
                     UIManager UI=new UIManager();
                     UI.put("OptionPane.background",new ColorUIResource(222,187,247));
                     UI.put("Panel.background",new ColorUIResource(222,187,247));
                     JOptionPane.showMessageDialog(null,"Please input valid ID","Error", JOptionPane.ERROR_MESSAGE);
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             } else if (selectedIndex == 1) {
                 String name = dialog.search.getText();
-                client.search(name);
+                try {
+                    return client.search(name);
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         } else if (action.equals("DECREASE")) {
             DecreaseForm dialog = new DecreaseForm();
