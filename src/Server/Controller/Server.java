@@ -74,12 +74,13 @@ public class Server implements Runnable {
                     Statement statement = database.getConnection().createStatement();
                     ResultSet rs = statement.executeQuery("SELECT * from Items");
                     String out = "";
-                    socketOut.println(out);
-                    socketOut.println("END");
                     while (rs.next()) {
                         out += (rs.getInt("itemId") + "/" + rs.getString("itemName") +
                                 "/" + rs.getInt("ItemQuantity") + "/" + rs.getDouble("itemPrice") + "\n");
                     }
+                    socketOut.println(out);
+                    socketOut.println("END");
+
                 } else if(in.equals("SEARCHID")){
 
                 } else if (in.equals("SEARCHNAME")){
