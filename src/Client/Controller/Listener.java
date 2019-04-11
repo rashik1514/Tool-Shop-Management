@@ -1,7 +1,6 @@
 package Client.Controller;
 
 import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
 import java.io.IOException;
 
 /**
@@ -32,9 +31,13 @@ public class Listener {
             }
         } else if (action.equals("SEARCH")) {
             SearchForm dialog = new SearchForm();
+            dialog.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             dialog.setTitle("Search");
             dialog.pack();
             dialog.setVisible(true);
+            if (dialog.search.equals("null")){
+                return "invalid";
+            }
             int selectedIndex = dialog.searchType.getSelectedIndex();
             if (selectedIndex == 0) {
                 try {
@@ -56,6 +59,7 @@ public class Listener {
             }
         } else if (action.equals("DECREASE")) {
             DecreaseForm dialog = new DecreaseForm();
+            dialog.setDefaultCloseOperation(dialog.DISPOSE_ON_CLOSE);
             dialog.setTitle("Decrease Quantity");
             dialog.pack();
             dialog.setVisible(true);
@@ -66,16 +70,17 @@ public class Listener {
                 try {
                     return client.decrease(id, amount);
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    return null;
                 }
             } else if (selectedIndex == 1) {
                 String name = dialog.item.getText();
                 try {
                     return client.decrease(name, amount);
                 } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                    return null;
+                } 
             }
+
         }
         return "";
     }

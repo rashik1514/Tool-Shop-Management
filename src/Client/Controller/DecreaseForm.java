@@ -12,6 +12,7 @@ public class DecreaseForm extends JDialog {
     protected JComboBox searchType;
     protected JTextField Quantity;
 
+
     public DecreaseForm() {
         setContentPane(contentPane);
         setModal(true);
@@ -46,12 +47,12 @@ public class DecreaseForm extends JDialog {
     }
 
     private void onOK() {
-        // add your code here
+
         dispose();
     }
 
     private void onCancel() {
-        
+
         dispose();
     }
 
