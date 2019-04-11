@@ -66,10 +66,18 @@ public class Listener {
             int amount = Integer.parseInt(dialog.Quantity.getText());
             if (selectedIndex == 0) {
                 int id = Integer.parseInt(dialog.item.getText());
-                client.decrease(id, amount);
+                try {
+                    return client.decrease(id, amount);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             } else if (selectedIndex == 1) {
                 String name = dialog.item.getText();
-                client.decrease(name, amount);
+                try {
+                    return client.decrease(name, amount);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
         return "";

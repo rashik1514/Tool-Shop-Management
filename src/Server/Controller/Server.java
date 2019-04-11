@@ -89,10 +89,11 @@ public class Server implements Runnable {
                 } else if (in.equals("DECREASEID")){
                     int id = Integer.parseInt(socketIn.readLine());
                     int amount = Integer.parseInt(socketIn.readLine());
+                    String out = database.changeItemQuantity(amount, id);
                 } else if (in.equals("DECREASENAME")){
                     String name = socketIn.readLine();
                     int amount = Integer.parseInt(socketIn.readLine());
-
+                    String out = database.changeItemQuantity(amount, name);
                 } else if (in.equals("QUIT")) {
                     close();
                 }
