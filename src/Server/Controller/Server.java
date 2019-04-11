@@ -12,11 +12,18 @@ import java.util.concurrent.*;
 import Server.Model.*;
 
 /**
- *
+ * Connection to client
  */
-public class Server implements Runnable{
+public class Server implements Runnable {
+
+    /**
+     * Input to server
+     */
     private BufferedReader socketIn;
 
+    /**
+     * Output to client
+     */
     private PrintWriter socketOut;
 
     /**
@@ -33,16 +40,16 @@ public class Server implements Runnable{
      * Allows aSocket to be connected between server and client
      */
     private ServerSocket serverSocket;
+
     /**
      * The database in which the records are stored
      */
     Database database;
 
     /**
-     * @param portNum
+     * @param portNum port number
      */
     public Server(int portNum) {
-
         try {
             serverSocket = new ServerSocket(portNum);
             socket = serverSocket.accept();
@@ -56,51 +63,35 @@ public class Server implements Runnable{
         System.out.println("Server is now runnning...");
     }
 
-
     /**
      * Initializes the shop and connects the clients
      */
     public void communicate() {
-
-        ArrayList<Supplier> suppliers = new ArrayList<>();
-        loadSuppliers(suppliers);
-        ArrayList<Item> items = loadItems(suppliers);
-        Shop shop = new Shop(new Inventory(items), suppliers);
+        ArrayList<Supplier> suppliers = database.loadSuppliers();
+        ArrayList<Item> items = database.loadItems(suppliers);
+        Shop shop = new Shop(new Inventory());
         while (true) {
             try {
                 String in = socketIn.readLine();
                 if (in.equals("DISPLAY")) {
-                    Inventory temp = shop.getTheInventory();
                     String out = "";
-                    for (int i = 0; i < temp.getItemList().size(); i++) {
-                        out += temp.getItemList().get(i).toString();
-                    }
+                    for (Item item : items)
+                        out += item.toString();
                     socketOut.println(out);
                     socketOut.println("END");
-                }else if (in.equals("QUIT")){
-
+                } else if (in.equals("QUIT")) {
+                    close();
+                    threadPool.shutdown();
                 }
-            } catch(SocketException e) {
+            } catch (SocketException e) {
                 threadPool.shutdown();
-            }catch(IOException e){
-
-            }catch (Exception e) {
+            } catch (IOException e) {
                 e.printStackTrace();
-                threadPool.shutdown();
-            }finally {
-                try{
-                    socketIn.close();
-                    socketOut.close();
-                    socket.close();
-                }catch(IOException e){
-                    System.err.println(e.getMessage());
-                }
             }
         }
-
     }
 
-    public void run(){
+    public void run() {
         communicate();
     }
 
@@ -112,82 +103,26 @@ public class Server implements Runnable{
             socketIn.close();
             socketOut.close();
             socket.close();
-//            database.connection.close();
+            try {
+                database.getConnection().close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         } catch (IOException e) {
             System.out.println("Closing error: " + e.getMessage());
         }
     }
 
-    /**
-     * load all the supplier information from the database
-     *
-     * @param suppliers object where it stores the information
-     */
-    public void loadSuppliers(ArrayList<Supplier> suppliers) {
-        ResultSet rs = database.select("SELECT * FROM Suppliers");
-        try {
-            while (rs.next()) {
-                suppliers.add(new Supplier(rs.getInt("supId"), rs.getString("supName"), rs.getString("supAddress"),
-                        rs.getString("supContactName")));
+    /*
+      When an object implementing interface <code>Runnable</code> is used
+      to create a thread, starting the thread causes the object's
+      <code>run</code> method to be called in that separately executing
+      thread.
+      <p>
+      The general contract of the method <code>run</code> is that it may
+      take any action whatsoever.
 
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    /**
-     * load all the item information from the database
-     *
-     * @param s object where it stores the information
-     */
-    public ArrayList<Item> loadItems(ArrayList<Supplier> s) {
-        ArrayList<Item> items = new ArrayList<>();
-        ResultSet rs = database.select("SELECT * FROM Items");
-        try {
-            while (rs.next()) {
-                Item myItem = new Item(rs.getInt("itemId"), rs.getString("itemName"), rs.getInt("itemQuantity"),
-                        rs.getDouble("itemPrice"), findSupplier(rs.getInt("supId"), s));
-                items.add(myItem);
-                Supplier supplier = myItem.getTheSupplier();
-                supplier.getItemList().add(myItem);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return items;
-
-    }
-
-    /**
-     * finds the supplier by ID
-     *
-     * @param supplierId supplier's id
-     * @param suppliers  list of suppliers
-     * @return the supplier if found, null if otherwise
-     */
-    private Supplier findSupplier(int supplierId, ArrayList<Supplier> suppliers) {
-        Supplier theSupplier = null;
-        for (Supplier s : suppliers) {
-            if (s.getSupId() == supplierId) {
-                theSupplier = s;
-                break;
-            }
-        }
-        return theSupplier;
-    }
-
-    /**
-     * When an object implementing interface <code>Runnable</code> is used
-     * to create a thread, starting the thread causes the object's
-     * <code>run</code> method to be called in that separately executing
-     * thread.
-     * <p>
-     * The general contract of the method <code>run</code> is that it may
-     * take any action whatsoever.
-     *
-     * @see Thread#run()
+      @see Thread#run()
      */
 }
 

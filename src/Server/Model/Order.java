@@ -6,7 +6,6 @@ import java.util.Calendar;
 
 public class Order {
 
-
     private Date today;
     private int orderId;
     private ArrayList<OrderLine> orderLines;
@@ -43,9 +42,8 @@ public class Order {
             str.append(ol);
             str.append("------------------------\n");
         }
-        if (str.toString() == "")
+        if (str.toString().equals(""))
             str = new StringBuilder("here are currently no orderlines");
-
         order += str;
         order += "\n";
         return order;
