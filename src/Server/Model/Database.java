@@ -62,7 +62,7 @@ public class Database {
 
     }
 
-    public String searchById(int id) {
+    public String searchByItemId(int id) {
         ArrayList<Item> items = loadItems(loadSuppliers());
         for (Item i : items) {
             if (i.getItemId() == id)
@@ -70,6 +70,16 @@ public class Database {
         }
         return null;
     }
+
+    public String searchByItemName(String name) {
+        ArrayList<Item> items = loadItems(loadSuppliers());
+        for (Item i : items) {
+            if (i.getItemName().equals(name))
+                return i.toString();
+        }
+        return null;
+    }
+
 
 
     public void insertItem(int id, String name, int quantity, double price, int supID) {
