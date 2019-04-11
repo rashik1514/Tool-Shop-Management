@@ -77,7 +77,7 @@ public class Server implements Runnable {
 
                 } else if(in.equals("SEARCHID")){
                     int id = Integer.parseInt(socketIn.readLine());
-                    String out = database.searchById(id);
+                    String out = database.searchByItemId();
                     socketOut.println(out);
 
                 } else if (in.equals("SEARCHNAME")){

@@ -82,8 +82,8 @@ public class Item extends Database {
     }
 
     public String toString() {
-        return "Item ID: " + itemId + "\n Item Name: " + itemName + "\n Item Quantity: " +
-                itemQuantity + "\n" + "Supplier: " + theSupplier.getSupName() + "\n";
+        return "Item ID: " + itemId + "; Item Name: " + itemName + "; Item Quantity: " +
+                itemQuantity + ";" + "Supplier: " + theSupplier.getSupName() + "/n";
     }
 
     public boolean isAlreadyOrdered() {
