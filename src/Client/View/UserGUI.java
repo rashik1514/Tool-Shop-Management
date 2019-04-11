@@ -4,6 +4,8 @@ import Client.Controller.Listener;
 
 import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -54,11 +56,15 @@ public class UserGUI {
                     data[i] = temp[i].split("/");
                 }
 
-                items = new JTable(data, headers);
+                TableModel model = new DefaultTableModel(data, headers) {
+                    public boolean isCellEditable(int row, int column) { return false; }
+                };
+
+                items = new JTable(model);
+
                 items.setBackground(new Color(-1657945));
                 panel.add(new JScrollPane(items));
                 panel.validate();
-
             }
         });
 
@@ -108,12 +114,14 @@ public class UserGUI {
             public void actionPerformed(ActionEvent e) {
                 String response = listener.actionPerformed("DECREASE");
                 if (response.equals("null")) {
-                    UIManager UI = new UIManager();
                     UIManager.put("OptionPane.background", new ColorUIResource(239, 214, 249));
                     UIManager.put("Panel.background", new ColorUIResource(239, 214, 249));
                     JOptionPane.showMessageDialog(new JFrame(), "Could not decrease quantity!");
+                } else if (response.equals("invalid")) {
+                    UIManager.put("OptionPane.background", new ColorUIResource(239, 214, 249));
+                    UIManager.put("Panel.background", new ColorUIResource(239, 214, 249));
+                    JOptionPane.showMessageDialog(null, "Please input valid item Name or ID", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    UIManager UI = new UIManager();
                     UIManager.put("OptionPane.background", new ColorUIResource(239, 214, 249));
                     UIManager.put("Panel.background", new ColorUIResource(239, 214, 249));
                     JOptionPane.showMessageDialog(null, response.replaceAll(";", "\n"), "Quantity Decrease", JOptionPane.PLAIN_MESSAGE);
