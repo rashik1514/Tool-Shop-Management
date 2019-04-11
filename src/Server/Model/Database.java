@@ -68,7 +68,6 @@ public class Database {
             if (i.getItemId() == id)
                 return i.toString();
         }
-
         return null;
     }
 
@@ -158,15 +157,14 @@ public class Database {
             String out = "";
             while (rs.next()) {
                 out += (rs.getInt("itemId") + "/" + rs.getString("itemName") +
-                        "/" + rs.getInt("ItemQuantity") + "/" + rs.getDouble("itemPrice") + "\n");
-                return out;
+                        "/" + rs.getInt("ItemQuantity") + "/" + rs.getDouble("itemPrice") + ";");
             }
+            return out;
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
-
 
     /**
      * finds the supplier by ID

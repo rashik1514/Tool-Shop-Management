@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b867af5b-e934-419d-b4b8-86529fe2af09" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/Controller/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/Controller/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server/Model/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/Model/Database.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -64,23 +62,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Server/Model/Database.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="154" column="52" selection-start-line="154" selection-start-column="52" selection-end-line="154" selection-end-column="52" />
+            <state relative-caret-position="248">
+              <caret line="159" column="97" selection-start-line="159" selection-start-column="97" selection-end-line="159" selection-end-column="97" />
               <folding>
-                <element signature="e#6358#6359#0" expanded="true" />
+                <element signature="e#6351#6352#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Server/Controller/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="457">
-              <caret line="95" column="9" lean-forward="true" selection-start-line="95" selection-start-column="9" selection-end-line="95" selection-end-column="9" />
+            <state relative-caret-position="1020">
+              <caret line="76" lean-forward="true" selection-start-line="76" selection-end-line="76" />
               <folding>
                 <element signature="docComment;class#Server#0" expanded="true" />
                 <element signature="docComment;field#socketIn#0;class#Server#0" expanded="true" />
@@ -215,8 +213,8 @@
         <option value="$PROJECT_DIR$/src/Server/Model/Item.java" />
         <option value="$PROJECT_DIR$/src/Server/Model/Inventory.java" />
         <option value="$PROJECT_DIR$/src/Client/Controller/Client.java" />
-        <option value="$PROJECT_DIR$/src/Server/Model/Database.java" />
         <option value="$PROJECT_DIR$/src/Server/Controller/Server.java" />
+        <option value="$PROJECT_DIR$/src/Server/Model/Database.java" />
       </list>
     </option>
   </component>
@@ -293,7 +291,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554997995468" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554998822011" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
@@ -362,12 +360,12 @@
       <workItem from="1554865403768" duration="3399000" />
       <workItem from="1554915126541" duration="4101000" />
       <workItem from="1554924931502" duration="5547000" />
-      <workItem from="1554933834584" duration="18207000" />
+      <workItem from="1554933834584" duration="18352000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31254000" />
+    <option name="totallyTimeSpent" value="31399000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -382,7 +380,7 @@
     <frame x="0" y="23" width="1386" height="877" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22098215" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22098215" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -393,7 +391,7 @@
       <window_info anchor="bottom" id="Database Console" order="0" weight="0.3299363" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" />
-      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.32611465" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.32611465" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.12866242" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -609,20 +607,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Server/Model/Database.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="154" column="52" selection-start-line="154" selection-start-column="52" selection-end-line="154" selection-end-column="52" />
-          <folding>
-            <element signature="e#6358#6359#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Server/Controller/Server.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="457">
-          <caret line="95" column="9" lean-forward="true" selection-start-line="95" selection-start-column="9" selection-end-line="95" selection-end-column="9" />
+        <state relative-caret-position="1020">
+          <caret line="76" lean-forward="true" selection-start-line="76" selection-end-line="76" />
           <folding>
             <element signature="docComment;class#Server#0" expanded="true" />
             <element signature="docComment;field#socketIn#0;class#Server#0" expanded="true" />
@@ -634,6 +622,16 @@
             <element signature="docComment;method#Server#0;class#Server#0" expanded="true" />
             <element signature="docComment;method#communicate#0;class#Server#0" expanded="true" />
             <element signature="docComment;method#close#0;class#Server#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Server/Model/Database.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="159" column="97" selection-start-line="159" selection-start-column="97" selection-end-line="159" selection-end-column="97" />
+          <folding>
+            <element signature="e#6351#6352#0" expanded="true" />
           </folding>
         </state>
       </provider>
