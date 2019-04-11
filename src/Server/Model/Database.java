@@ -93,7 +93,7 @@ public class Database {
     public Item getItemFromName(String name) {
         ArrayList<Item> items = loadItems(loadSuppliers());
         for (Item i : items) {
-            if (i.getItemName() == name)
+            if (i.getItemName().equals(name))
                 return i;
         }
         return null;
