@@ -51,10 +51,10 @@ public class Database {
         Item item = getItemFromID(ID);
         if ((item.getItemQuantity() + amount) < 0)
             return null;
-        else{
+        else {
             changeItemQuantity(amount, item);
             item.setItemQuantity(item.getItemQuantity() + amount);
-            return item.getItemName()+ " has been changed successfully;There are " + item.getItemQuantity() + " in stock";
+            return item.getItemName() + " has been changed successfully;There are " + item.getItemQuantity() + " in stock";
         }
 
     }
@@ -64,10 +64,10 @@ public class Database {
         System.out.println(item.toString());
         if ((item.getItemQuantity() + amount) < 0)
             return null;
-        else{
+        else {
             changeItemQuantity(amount, item);
             item.setItemQuantity(item.getItemQuantity() + amount);
-            return item.getItemName()+ " has been changed successfully;There are " + item.getItemQuantity() + " in stock";
+            return item.getItemName() + " has been changed successfully;There are " + item.getItemQuantity() + " in stock";
         }
 
     }

@@ -27,7 +27,6 @@ public class Shop extends Database implements Runnable {
     }
 
 
-
     public String decreaseItem(String name) {
         if (theInventory.manageItem(name) == null)
             return "Couldn't not decrease item quantity!\n";
@@ -62,6 +61,7 @@ public class Shop extends Database implements Runnable {
         String in = "";
         while (true) {
             theInventory.placeOrders();
+
             try {
                 in = socketIn.readLine();
 

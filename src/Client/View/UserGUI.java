@@ -110,6 +110,7 @@ public class UserGUI {
 
     private void decreaseItemQuantity() {
         decreaseItemQuantityButton.addActionListener(new ActionListener() {
+
             /**
              * Invoked when an action occurs.
              *
