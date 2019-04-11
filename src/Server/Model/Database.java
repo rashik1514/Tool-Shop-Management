@@ -15,7 +15,7 @@ public class Database {
         }
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ToolShop?serverTimezone=GMT",
-                    "root", "Iig82cb3!");
+                    "root", "rootroot");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -63,14 +63,24 @@ public class Database {
 
     public String changeItemQuantity(int amount, int ID) {
         Item item = getItemFromID(ID);
-        changeItemQuantity(amount, item);
-        return item.getItemName()+ " has been changed successfully;There are " + item.getItemQuantity() + " in stock";
+        if ((item.getItemQuantity() + amount) < 0)
+            return null;
+        else{
+            changeItemQuantity(amount, item);
+            return item.getItemName()+ " has been changed successfully;There are " + item.getItemQuantity() + " in stock";
+        }
+
     }
 
     public String changeItemQuantity(int amount, String name) {
         Item item = getItemFromName(name);
-        changeItemQuantity(amount, item);
-        return item.getItemName()+ " has been changed successfully;There are " + item.getItemQuantity() + " in stock";
+        if ((item.getItemQuantity() + amount) < 0)
+            return null;
+        else{
+            changeItemQuantity(amount, item);
+            return item.getItemName()+ " has been changed successfully;There are " + item.getItemQuantity() + " in stock";
+        }
+
     }
 
     public Item getItemFromID(int id) {
