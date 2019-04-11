@@ -33,8 +33,8 @@ public class Database {
     }
 
     public void changeAlreadyOrdered(Item item) {
-        String query = "UPDATE Items\n" +
-                "SET alreadyOrdered = ?" +
+        String query = "UPDATE Items " +
+                "SET alreadyOrdered = ? " +
                 "WHERE itemId = ?";
         try {
             PreparedStatement preparedStmt = connection.prepareStatement(query);
@@ -47,7 +47,7 @@ public class Database {
     }
 
     public void changeItemQuantity(int amount, Item item) {
-        String query = "UPDATE Items\n" +
+        String query = "UPDATE Items " +
                 "SET ItemQuantity = ?" +
                 "WHERE itemId = ?";
         try {
