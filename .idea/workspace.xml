@@ -3,14 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="b867af5b-e934-419d-b4b8-86529fe2af09" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ENSF409Project/Client/Controller/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ENSF409Project/Client/Controller/Client.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ENSF409Project/Client/Controller/Listener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ENSF409Project/Client/Controller/Listener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ENSF409Project/Client/View/UserGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ENSF409Project/Client/View/UserGUI$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ENSF409Project/Client/View/UserGUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ENSF409Project/Client/View/UserGUI$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ENSF409Project/Client/View/UserGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ENSF409Project/Client/View/UserGUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ENSF409Project/Server/Controller/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ENSF409Project/Server/Controller/Server.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ENSF409Project/Server/Model/Database.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ENSF409Project/Server/Model/Database.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ENSF409Project/Server/Model/Item.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ENSF409Project/Server/Model/Item.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/Model/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/Model/Database.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -73,10 +71,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Server/Model/Database.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="42" column="37" lean-forward="true" selection-start-line="42" selection-start-column="37" selection-end-line="42" selection-end-column="37" />
+            <state relative-caret-position="337">
+              <caret line="73" column="30" lean-forward="true" selection-start-line="73" selection-start-column="30" selection-end-line="73" selection-end-column="30" />
               <folding>
-                <element signature="e#7849#7850#0" expanded="true" />
+                <element signature="e#6401#6402#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -85,8 +83,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Server/Controller/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="807">
-              <caret line="87" lean-forward="true" selection-start-line="87" selection-end-line="87" />
+            <state relative-caret-position="323">
+              <caret line="89" column="71" selection-start-line="89" selection-start-column="71" selection-end-line="89" selection-end-column="71" />
               <folding>
                 <element signature="docComment;field#socketIn#0;class#Server#0" expanded="true" />
                 <element signature="docComment;field#socketOut#0;class#Server#0" expanded="true" />
@@ -216,9 +214,9 @@
         <option value="$PROJECT_DIR$/src/Server/Model/Order.java" />
         <option value="$PROJECT_DIR$/src/Server/Model/Inventory.java" />
         <option value="$PROJECT_DIR$/src/Client/Controller/Client.java" />
-        <option value="$PROJECT_DIR$/src/Server/Controller/Server.java" />
         <option value="$PROJECT_DIR$/src/Server/Model/Shop.java" />
         <option value="$PROJECT_DIR$/src/Server/Model/Item.java" />
+        <option value="$PROJECT_DIR$/src/Server/Controller/Server.java" />
         <option value="$PROJECT_DIR$/src/Server/Model/Database.java" />
       </list>
     </option>
@@ -304,7 +302,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555004617262" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555005560294" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
@@ -373,7 +371,7 @@
       <workItem from="1554865403768" duration="3399000" />
       <workItem from="1554915126541" duration="4101000" />
       <workItem from="1554924931502" duration="5547000" />
-      <workItem from="1554933834584" duration="23471000" />
+      <workItem from="1554933834584" duration="24324000" />
     </task>
     <task id="LOCAL-00001" summary=":)">
       <created>1555002909349</created>
@@ -393,7 +391,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36518000" />
+    <option name="totallyTimeSpent" value="37371000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -408,7 +406,7 @@
     <frame x="0" y="23" width="1386" height="877" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22098215" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22098215" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -416,11 +414,11 @@
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info id="Learn" order="7" />
-      <window_info anchor="bottom" id="Duplicate detector" visible="true" weight="0.3299363" />
+      <window_info anchor="bottom" id="Duplicate detector" weight="0.16942675" />
       <window_info anchor="bottom" id="Database Console" order="0" weight="0.3299363" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" />
-      <window_info anchor="bottom" id="Run" order="3" weight="0.3312102" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.3312102" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.12866242" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -579,17 +577,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Server/Model/Item.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
-          <folding>
-            <element signature="e#1716#1717#0" expanded="true" />
-            <element signature="e#1758#1759#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Server/Model/Inventory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="143">
@@ -610,8 +597,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Server/Controller/Server.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="807">
-          <caret line="87" lean-forward="true" selection-start-line="87" selection-end-line="87" />
+        <state relative-caret-position="323">
+          <caret line="89" column="71" selection-start-line="89" selection-start-column="71" selection-end-line="89" selection-end-column="71" />
           <folding>
             <element signature="docComment;field#socketIn#0;class#Server#0" expanded="true" />
             <element signature="docComment;field#socketOut#0;class#Server#0" expanded="true" />
@@ -624,12 +611,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Server/Model/Item.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+          <folding>
+            <element signature="e#1716#1717#0" expanded="true" />
+            <element signature="e#1758#1759#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Server/Model/Database.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="42" column="37" lean-forward="true" selection-start-line="42" selection-start-column="37" selection-end-line="42" selection-end-column="37" />
+        <state relative-caret-position="337">
+          <caret line="73" column="30" lean-forward="true" selection-start-line="73" selection-start-column="30" selection-end-line="73" selection-end-column="30" />
           <folding>
-            <element signature="e#7849#7850#0" expanded="true" />
+            <element signature="e#6401#6402#0" expanded="true" />
           </folding>
         </state>
       </provider>
