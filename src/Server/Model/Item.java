@@ -6,10 +6,8 @@ public class Item extends Database {
     private String itemName;
     private int itemQuantity;
     private double itemPrice;
-    private boolean alreadyOrdered;
     private Supplier theSupplier;
-    private static final int ORDERQUANTITY = 40;
-    private static final int MINIMUMUMBER = 20;
+    private static final int MINIMUMUMBER = 40;
 
     public Item(int id, String name, int quantity, double price, Supplier sup) {
         itemId = id;
@@ -17,7 +15,6 @@ public class Item extends Database {
         itemQuantity = quantity;
         itemPrice = price;
         theSupplier = sup;
-        setAlreadyOrdered(false);
     }
 
     public boolean decreaseItemQuantity() {
@@ -32,10 +29,10 @@ public class Item extends Database {
 
     public OrderLine placeOrder() {
         OrderLine ol;
-        if (getItemQuantity() < MINIMUMUMBER && alreadyOrdered == false) {
-            ol = new OrderLine(this, ORDERQUANTITY);
-            alreadyOrdered = true;
-            changeAlreadyOrdered(this);
+        if (getItemQuantity() < MINIMUMUMBER) {
+            int amount = MINIMUMUMBER - itemQuantity;
+            ol = new OrderLine(this, amount);
+            changeItemQuantity(amount, this);
             return ol;
         }
         return null;
@@ -84,14 +81,6 @@ public class Item extends Database {
     public String toString() {
         return "Item ID: " + itemId + ";Item Name: " + itemName + ";Item Quantity: " +
                 itemQuantity + ";Supplier: " + theSupplier.getSupName();
-    }
-
-    public boolean isAlreadyOrdered() {
-        return alreadyOrdered;
-    }
-
-    public void setAlreadyOrdered(boolean alreadyOrdered) {
-        this.alreadyOrdered = alreadyOrdered;
     }
 
 }

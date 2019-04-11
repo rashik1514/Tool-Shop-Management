@@ -18,6 +18,7 @@ public class UserGUI {
     private JButton decreaseItemQuantityButton;
     private Listener listener;
     private JTable items;
+    private JScrollPane scroll;
 
     /**
      * Default constructor for the GUI
@@ -56,17 +57,17 @@ public class UserGUI {
                     data[i] = temp[i].split("/");
                 }
 
-                if (items == null) {
-                    TableModel model = new DefaultTableModel(data, headers);
-                    items = new JTable(model);
-                    items.setEnabled(false);
-                    panel.add(new JScrollPane(items));
-                }
+                items = new JTable(data, headers);
+                items.setEnabled(false);
+
+                if (scroll != null)
+                    panel.remove(scroll);
+
+                scroll = new JScrollPane(items);
+                panel.add(scroll);
 
                 items.setBackground(new Color(-1657945));
-//                panel.validate();
-                panel.revalidate();
-                panel.repaint();
+                panel.validate();
             }
         });
 

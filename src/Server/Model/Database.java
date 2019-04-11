@@ -33,17 +33,6 @@ public class Database {
         return resultSet;
     }
 
-    public void changeAlreadyOrdered(Item item) {
-        String query = "UPDATE Items SET alreadyOrdered = ? WHERE itemId = ?";
-        try {
-            PreparedStatement preparedStmt = connection.prepareStatement(query);
-            preparedStmt.setInt(1, 1);
-            preparedStmt.setInt(2, item.getItemId());
-            preparedStmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 
     public void changeItemQuantity(int amount, Item item) {
         String query = "UPDATE Items SET ItemQuantity = ? WHERE itemId = ?";
