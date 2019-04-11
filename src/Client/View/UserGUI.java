@@ -60,10 +60,10 @@ public class UserGUI {
                     TableModel model = new DefaultTableModel(data, headers);
                     items = new JTable(model);
                     items.setEnabled(false);
+                    panel.add(new JScrollPane(items));
                 }
 
                 items.setBackground(new Color(-1657945));
-                panel.add(new JScrollPane(items));
                 panel.validate();
             }
         });

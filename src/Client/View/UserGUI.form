@@ -43,17 +43,6 @@
           </component>
         </children>
       </toolbar>
-      <scrollpane id="c43fe">
-        <constraints border-constraint="Center"/>
-        <properties/>
-        <border type="none"/>
-        <children>
-          <component id="16e48" class="javax.swing.JTable" binding="items">
-            <constraints/>
-            <properties/>
-          </component>
-        </children>
-      </scrollpane>
     </children>
   </grid>
   <inspectionSuppressions>
