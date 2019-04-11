@@ -3,6 +3,7 @@ package Client.View;
 import Client.Controller.Listener;
 
 import javax.swing.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -75,10 +76,18 @@ public class UserGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String response = listener.actionPerformed("SEARCH");
-                System.out.println(response);
+
                 if (response.equals("null")) {
+                    UIManager UI = new UIManager();
+                    UI.put("OptionPane.background", new ColorUIResource(239, 214, 249));
+                    UI.put("Panel.background", new ColorUIResource(239, 214, 249));
                     JOptionPane.showMessageDialog(new JFrame(), "Item not found!");
+                } else if (response.equals("invalid")) {
+
                 } else {
+                    UIManager UI = new UIManager();
+                    UI.put("OptionPane.background", new ColorUIResource(239, 214, 249));
+                    UI.put("Panel.background", new ColorUIResource(239, 214, 249));
                     JOptionPane.showMessageDialog(null, response.replaceAll(";", "\n"), "Item", JOptionPane.PLAIN_MESSAGE);
                 }
             }
@@ -95,10 +104,15 @@ public class UserGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String response = listener.actionPerformed("DECREASE");
-                System.out.println(response);
                 if (response.equals("null")) {
+                    UIManager UI = new UIManager();
+                    UI.put("OptionPane.background", new ColorUIResource(239, 214, 249));
+                    UI.put("Panel.background", new ColorUIResource(239, 214, 249));
                     JOptionPane.showMessageDialog(new JFrame(), "Could not decrease quantity!");
                 } else {
+                    UIManager UI = new UIManager();
+                    UI.put("OptionPane.background", new ColorUIResource(239, 214, 249));
+                    UI.put("Panel.background", new ColorUIResource(239, 214, 249));
                     JOptionPane.showMessageDialog(null, response.replaceAll(";", "\n"), "Quantity Decrease", JOptionPane.PLAIN_MESSAGE);
                 }
             }
@@ -142,7 +156,7 @@ public class UserGUI {
         panel.setMinimumSize(new Dimension(500, 500));
         panel.setPreferredSize(new Dimension(500, 500));
         final JToolBar toolBar1 = new JToolBar();
-        toolBar1.setBackground(new Color(-1657945));
+        toolBar1.setBackground(new Color(-17217));
         toolBar1.setFloatable(false);
         panel.add(toolBar1, BorderLayout.NORTH);
         showToolsButton = new JButton();

@@ -14,7 +14,7 @@
       <toolbar id="dd442">
         <constraints border-constraint="North"/>
         <properties>
-          <background color="-1657945"/>
+          <background color="-17217"/>
           <floatable value="false"/>
         </properties>
         <border type="none"/>
