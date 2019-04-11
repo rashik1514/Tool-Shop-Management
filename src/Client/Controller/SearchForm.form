@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Client.Controller.SearchForm">
+  <grid id="cbd77" binding="contentPane" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="48" y="54" width="495" height="297"/>
+    </constraints>
+    <properties>
+      <minimumSize width="300" height="90"/>
+      <preferredSize width="300" height="90"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <toolbar id="85875">
+        <constraints border-constraint="South"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="7942c" class="javax.swing.JButton" binding="cancelButton" default-binding="true">
+            <constraints/>
+            <properties>
+              <background color="-1140324"/>
+              <foreground color="-12828863"/>
+              <text value="Cancel"/>
+            </properties>
+          </component>
+          <component id="176e7" class="javax.swing.JButton" binding="OKButton" default-binding="true">
+            <constraints/>
+            <properties>
+              <alignmentX value="0.0"/>
+              <background color="-1140324"/>
+              <foreground color="-12828863"/>
+              <horizontalAlignment value="0"/>
+              <horizontalTextPosition value="11"/>
+              <text value="OK"/>
+              <verticalAlignment value="0"/>
+            </properties>
+          </component>
+        </children>
+      </toolbar>
+      <component id="53974" class="javax.swing.JComboBox" binding="searchType">
+        <constraints border-constraint="East"/>
+        <properties>
+          <model>
+            <item value="Search by ID"/>
+            <item value="Search by Name"/>
+          </model>
+        </properties>
+      </component>
+      <component id="806f9" class="javax.swing.JLabel">
+        <constraints border-constraint="North"/>
+        <properties>
+          <background color="-1657945"/>
+          <foreground color="-12828863"/>
+          <text value="Enter item name or ID"/>
+        </properties>
+      </component>
+      <component id="e660b" class="javax.swing.JTextField" binding="search">
+        <constraints border-constraint="Center"/>
+        <properties>
+          <background color="-4662027"/>
+          <minimumSize width="100" height="10"/>
+          <preferredSize width="100" height="10"/>
+          <text value=""/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>

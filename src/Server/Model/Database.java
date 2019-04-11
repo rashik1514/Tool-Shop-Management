@@ -32,4 +32,7 @@ public class Database {
         return resultSet;
     }
 
+    public Connection getConnection() {
+        return connection;
+    }
 }

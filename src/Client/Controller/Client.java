@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.ArrayList;
 
 /**
  *
@@ -62,12 +63,23 @@ public class Client {
         StringBuilder data = new StringBuilder();
         while (!response.equals("END")) {
             data.append(response);
-            data.append("\n");
+            data.append(";");
             response = socketIn.readLine();
         }
         return data.toString();
     }
 
+    public String search (int id){
+        socketOut.println("SEARCHID");
+
+        return "";
+    }
+
+    public String search (String name){
+        socketOut.println("SEARCHNAME");
+
+        return "";
+    }
 
 
 }

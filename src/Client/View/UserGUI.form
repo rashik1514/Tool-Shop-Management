@@ -24,12 +24,6 @@
               <text value="Show Tools"/>
             </properties>
           </component>
-          <component id="36636" class="javax.swing.JTextField" binding="textField1" default-binding="true">
-            <constraints/>
-            <properties>
-              <background color="-4662027"/>
-            </properties>
-          </component>
           <component id="266b3" class="javax.swing.JButton" binding="searchButton" default-binding="true">
             <constraints/>
             <properties>
@@ -39,20 +33,6 @@
           </component>
         </children>
       </toolbar>
-      <scrollpane id="c9635">
-        <constraints border-constraint="Center"/>
-        <properties/>
-        <border type="none"/>
-        <children>
-          <component id="7df2" class="javax.swing.JTextArea" binding="ItemList">
-            <constraints/>
-            <properties>
-              <background color="-1657945"/>
-              <text value=""/>
-            </properties>
-          </component>
-        </children>
-      </scrollpane>
     </children>
   </grid>
   <inspectionSuppressions>

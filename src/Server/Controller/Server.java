@@ -5,11 +5,12 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
 import java.sql.ResultSet;
+import java.sql.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.concurrent.*;
-
 import Server.Model.*;
+
 
 /**
  *
@@ -62,22 +63,35 @@ public class Server implements Runnable{
      */
     public void communicate() {
 
-        ArrayList<Supplier> suppliers = new ArrayList<>();
-        loadSuppliers(suppliers);
-        ArrayList<Item> items = loadItems(suppliers);
-        Shop shop = new Shop(new Inventory(items), suppliers);
+//        ArrayList<Supplier> suppliers = new ArrayList<>();
+//        loadSuppliers(suppliers);
+//        ArrayList<Item> items = loadItems(suppliers);
+//        Shop shop = new Shop(new Inventory(items), suppliers);
         while (true) {
             try {
                 String in = socketIn.readLine();
                 if (in.equals("DISPLAY")) {
-                    Inventory temp = shop.getTheInventory();
+//                    Inventory temp = shop.getTheInventory();
+//                    String out = "";
+//                    for (int i = 0; i < temp.getItemList().size(); i++) {
+//                        out += temp.getItemList().get(i).toString();
+//                    }
+//                    socketOut.println(out);
+//                    socketOut.println("END");
+
+                    Statement statement = database.getConnection().createStatement();
+                    ResultSet rs = statement.executeQuery("SELECT * from Items");
                     String out = "";
-                    for (int i = 0; i < temp.getItemList().size(); i++) {
-                        out += temp.getItemList().get(i).toString();
+                    while (rs.next()) {
+                        out += (rs.getInt("itemId")+ "/" + rs.getString("itemName") +
+                                "/" + rs.getInt("ItemQuantity") + "/" + rs.getDouble("itemPrice") + "\n");
                     }
                     socketOut.println(out);
                     socketOut.println("END");
-                }else if (in.equals("QUIT")){
+
+                } else if(in.equals("SEARCHID")){
+
+                } else if (in.equals("SEARCHNAME")){
 
                 }
             } catch(SocketException e) {
@@ -87,14 +101,6 @@ public class Server implements Runnable{
             }catch (Exception e) {
                 e.printStackTrace();
                 threadPool.shutdown();
-            }finally {
-                try{
-                    socketIn.close();
-                    socketOut.close();
-                    socket.close();
-                }catch(IOException e){
-                    System.err.println(e.getMessage());
-                }
             }
         }
 
@@ -123,18 +129,18 @@ public class Server implements Runnable{
      *
      * @param suppliers object where it stores the information
      */
-    public void loadSuppliers(ArrayList<Supplier> suppliers) {
-        ResultSet rs = database.select("SELECT * FROM Suppliers");
-        try {
-            while (rs.next()) {
-                suppliers.add(new Supplier(rs.getInt("supId"), rs.getString("supName"), rs.getString("supAddress"),
-                        rs.getString("supContactName")));
-
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+//    public void loadSuppliers(ArrayList<Supplier> suppliers) {
+//        ResultSet rs = database.select("SELECT * FROM Suppliers");
+//        try {
+//            while (rs.next()) {
+//                suppliers.add(new Supplier(rs.getInt("supId"), rs.getString("supName"), rs.getString("supAddress"),
+//                        rs.getString("supContactName")));
+//
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
 
     /**
@@ -142,23 +148,23 @@ public class Server implements Runnable{
      *
      * @param s object where it stores the information
      */
-    public ArrayList<Item> loadItems(ArrayList<Supplier> s) {
-        ArrayList<Item> items = new ArrayList<>();
-        ResultSet rs = database.select("SELECT * FROM Items");
-        try {
-            while (rs.next()) {
-                Item myItem = new Item(rs.getInt("itemId"), rs.getString("itemName"), rs.getInt("itemQuantity"),
-                        rs.getDouble("itemPrice"), findSupplier(rs.getInt("supId"), s));
-                items.add(myItem);
-                Supplier supplier = myItem.getTheSupplier();
-                supplier.getItemList().add(myItem);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return items;
-
-    }
+//    public ArrayList<Item> loadItems(ArrayList<Supplier> s) {
+//        ArrayList<Item> items = new ArrayList<>();
+//        ResultSet rs = database.select("SELECT * FROM Items");
+//        try {
+//            while (rs.next()) {
+//                Item myItem = new Item(rs.getInt("itemId"), rs.getString("itemName"), rs.getInt("itemQuantity"),
+//                        rs.getDouble("itemPrice"), findSupplier(rs.getInt("supId"), s));
+//                items.add(myItem);
+//                Supplier supplier = myItem.getTheSupplier();
+//                supplier.getItemList().add(myItem);
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return items;
+//
+//    }
 
     /**
      * finds the supplier by ID

@@ -28,6 +28,19 @@ public class Listener {
             } catch (IOException e) {
                 return "Error getting tools";
             }
+        } else if (action.equals("SEARCH")){
+            SearchForm dialog = new SearchForm();
+            dialog.pack();
+            dialog.setVisible(true);
+            int selectedIndex = dialog.searchType.getSelectedIndex();
+
+            if (selectedIndex == 1){
+                int id = Integer.parseInt(dialog.search.getText());
+                client.search(id);
+            } else if (selectedIndex == 2){
+                String name = dialog.search.getText();
+                client.search(name);
+            }
         }
         return "";
 
