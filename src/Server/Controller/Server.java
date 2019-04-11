@@ -12,11 +12,18 @@ import Server.Model.*;
 
 
 /**
- *
+ * Connection to client
  */
-public class Server implements Runnable{
+public class Server implements Runnable {
+
+    /**
+     * Input to server
+     */
     private BufferedReader socketIn;
 
+    /**
+     * Output to client
+     */
     private PrintWriter socketOut;
 
     /**
@@ -33,13 +40,14 @@ public class Server implements Runnable{
      * Allows aSocket to be connected between server and client
      */
     private ServerSocket serverSocket;
+
     /**
      * The database in which the records are stored
      */
     Database database;
 
     /**
-     * @param portNum
+     * @param portNum port number
      */
     public Server(int portNum) {
         try {
@@ -55,7 +63,6 @@ public class Server implements Runnable{
         System.out.println("Server is now runnning...");
     }
 
-
     /**
      * Initializes the shop and connects the clients
      */
@@ -64,6 +71,14 @@ public class Server implements Runnable{
             try {
                 String in = socketIn.readLine();
                 if (in.equals("DISPLAY")) {
+                    String out = "";
+                    for (Item item : items)
+                        out += item.toString();
+                    socketOut.println(out);
+                    socketOut.println("END");
+                } else if (in.equals("QUIT")) {
+                    close();
+                    threadPool.shutdown();
                     Statement statement = database.getConnection().createStatement();
                     ResultSet rs = statement.executeQuery("SELECT * from Items");
                     String out = "";
@@ -79,18 +94,14 @@ public class Server implements Runnable{
                 } else if (in.equals("SEARCHNAME")){
 
                 } else if (in.equals("DECREASE")){
-
                 }
-            } catch(SocketException e) {
+            } catch (SocketException e) {
                 threadPool.shutdown();
-            }catch(IOException e){
-
-            }catch (Exception e) {
+            } catch (IOException e) {
                 e.printStackTrace();
                 threadPool.shutdown();
             }
         }
-
     }
 
     public void run(){
@@ -112,12 +123,17 @@ public class Server implements Runnable{
             socketIn.close();
             socketOut.close();
             socket.close();
-//            database.connection.close();
+            try {
+                database.getConnection().close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         } catch (IOException e) {
             System.out.println("Closing error: " + e.getMessage());
         }
     }
 
+  
 }
 
 

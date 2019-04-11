@@ -10,7 +10,7 @@ import java.net.Socket;
 
 
 /**
- *
+ * Forms connection to server
  */
 public class Client {
 
@@ -19,7 +19,7 @@ public class Client {
     private BufferedReader socketIn;
     private BufferedReader stdIn;
 
-    boolean isActive = false;
+    private boolean isActive = false;
 
     /**
      * Constructs the client
@@ -41,7 +41,7 @@ public class Client {
     /**
      * disconnects the client from the server
      */
-    protected void disconnect() {
+    protected void close() {
         isActive = false;
         try {
             socketIn.close();
@@ -56,8 +56,8 @@ public class Client {
     /**
      * returns the string received from the server when the client sens DISPLAY
      *
-     * @return
-     * @throws IOException
+     * @return tools in a string
+     * @throws IOException io exception
      */
     public String displayTools() throws IOException {
         socketOut.println("DISPLAY");
@@ -98,7 +98,6 @@ public class Client {
 
         return "";
     }
-
 
 
 

@@ -1,6 +1,6 @@
 package Server.Model;
 
-public class Item {
+public class Item extends Database {
 
     private int itemId;
     private String itemName;
@@ -11,11 +11,10 @@ public class Item {
     private static final int ORDERQUANTITY = 40;
     private static final int MINIMUMUMBER = 20;
 
-
-    public Item(int id, String name, int quanitiy, double price, Supplier sup) {
+    public Item(int id, String name, int quantity, double price, Supplier sup) {
         itemId = id;
         itemName = name;
-        itemQuantity = quanitiy;
+        itemQuantity = quantity;
         itemPrice = price;
         theSupplier = sup;
         setAlreadyOrdered(false);
@@ -24,6 +23,7 @@ public class Item {
     public boolean decreaseItemQuantity() {
         if (itemQuantity > 0) {
             itemQuantity--;
+            changeItemQuantity(-1, this);
             return true;
         } else
             return false;
@@ -35,6 +35,7 @@ public class Item {
         if (getItemQuantity() < MINIMUMUMBER && alreadyOrdered == false) {
             ol = new OrderLine(this, ORDERQUANTITY);
             alreadyOrdered = true;
+            changeAlreadyOrdered(this);
             return ol;
         }
         return null;

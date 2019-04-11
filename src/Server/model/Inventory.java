@@ -2,22 +2,12 @@ package Server.Model;
 
 import java.util.ArrayList;
 
-public class Inventory {
+public class Inventory extends Database {
 
-    private ArrayList<Item> itemList;
     private Order myOrder;
 
-    public Inventory(ArrayList<Item> itemList) {
-        this.itemList = itemList;
+    public Inventory() {
         myOrder = new Order();
-    }
-
-    public ArrayList<Item> getItemList() {
-        return itemList;
-    }
-
-    public void setItemList(ArrayList<Item> itemList) {
-        this.itemList = itemList;
     }
 
     public Item manageItem(String name) {
@@ -37,7 +27,6 @@ public class Inventory {
     }
 
     private Item decreaseItem(String name) {
-
         Item theItem = searchForItem(name);
 
         if (theItem == null)
@@ -59,6 +48,7 @@ public class Inventory {
     }
 
     public Item searchForItem(String name) {
+        ArrayList<Item> itemList = loadItems(loadSuppliers());
         for (Item i : itemList) {
             if (i.getItemName().equals(name))
                 return i;
@@ -68,6 +58,7 @@ public class Inventory {
 
     public String toString() {
         StringBuilder str = new StringBuilder();
+        ArrayList<Item> itemList = loadItems(loadSuppliers());
         for (Item i : itemList) {
             str.append(i);
         }
@@ -75,6 +66,7 @@ public class Inventory {
     }
 
     public Item searchForItem(int id) {
+        ArrayList<Item> itemList = loadItems(loadSuppliers());
         for (Item i : itemList) {
             if (i.getItemId() == id)
                 return i;
