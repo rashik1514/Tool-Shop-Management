@@ -4,10 +4,10 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
-import java.sql.ResultSet;
-import java.sql.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.sql.SQLException;
-import java.util.concurrent.*;
+
 
 import Server.Model.*;
 
@@ -15,7 +15,7 @@ import Server.Model.*;
 /**
  * Connection to client
  */
-public class Server implements Runnable {
+public class Server {
 
     /**
      * Input to server
@@ -35,7 +35,7 @@ public class Server implements Runnable {
     /**
      * Used for executing the method within class ShopController
      */
-    private ExecutorService threadPool;
+    public ExecutorService pool;
 
     /**
      * Allows aSocket to be connected between server and client
@@ -56,7 +56,7 @@ public class Server implements Runnable {
 //            socket = serverSocket.accept();
 //            socketOut = new PrintWriter((socket.getOutputStream()), true);
 //            socketIn = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            threadPool = Executors.newCachedThreadPool();
+            pool = Executors.newCachedThreadPool();
             database = new Database();
         } catch (IOException e) {
             e.printStackTrace();
@@ -68,57 +68,16 @@ public class Server implements Runnable {
      * Initializes the shop and connects the clients
      */
     public void communicate() {
-        while (true) {
+        Inventory theInventory = new Inventory();
+       while (true) {
             try {
-                String in = socketIn.readLine();
-                if (in.equals("DISPLAY")) {
-                    String out = database.loadItemsTable();
-                    socketOut.println(out);
-                    socketOut.println("END");
-
-                } else if (in.equals("SEARCHID")) {
-                    int id = Integer.parseInt(socketIn.readLine());
-                    String out = database.searchByItemId(id);
-                    socketOut.println(out);
-
-                } else if (in.equals("SEARCHNAME")) {
-                    String name = socketIn.readLine();
-                    String out = database.searchByItemName(name);
-                    socketOut.println(out);
-
-                } else if (in.equals("DECREASEID")){
-                    int id = Integer.parseInt(socketIn.readLine());
-                    int amount = Integer.parseInt(socketIn.readLine());
-                    String out = database.changeItemQuantity(amount, id);
-                    socketOut.println(out);
-
-                } else if (in.equals("DECREASENAME")){
-                    String name = socketIn.readLine();
-                    int amount = Integer.parseInt(socketIn.readLine());
-                    String out = database.changeItemQuantity(amount, name);
-                    socketOut.println(out);
-                } else if (in.equals("QUIT")) {
-                    System.exit(0);
-                }
-            } catch (SocketException e) {
-                threadPool.shutdown();
+                Shop shop = new Shop(theInventory, serverSocket.accept());
+                pool.execute(shop);
             } catch (IOException e) {
                 e.printStackTrace();
-
+                pool.shutdown();
             }
-            threadPool.shutdown();
         }
-    }
-
-    public void run() {
-        try {
-            socket = serverSocket.accept();
-            socketOut = new PrintWriter((socket.getOutputStream()), true);
-            socketIn = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        communicate();
     }
 
     /**
