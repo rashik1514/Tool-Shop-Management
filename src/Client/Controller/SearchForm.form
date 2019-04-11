@@ -13,7 +13,7 @@
       <component id="53974" class="javax.swing.JComboBox" binding="searchType">
         <constraints border-constraint="East"/>
         <properties>
-          <background color="-1655851"/>
+          <background color="-3562530"/>
           <foreground color="-12828863"/>
           <model>
             <item value="Search by ID"/>
@@ -32,7 +32,7 @@
       <component id="e660b" class="javax.swing.JTextField" binding="search">
         <constraints border-constraint="Center"/>
         <properties>
-          <background color="-4662027"/>
+          <background color="-1655851"/>
           <minimumSize width="100" height="10"/>
           <preferredSize width="100" height="10"/>
           <text value=""/>
@@ -41,7 +41,7 @@
       <toolbar id="aaaaf">
         <constraints border-constraint="South"/>
         <properties>
-          <background color="-1657945"/>
+          <background color="-4662027"/>
           <floatable value="false"/>
           <foreground color="-12828863"/>
         </properties>
@@ -50,7 +50,7 @@
           <component id="3b778" class="javax.swing.JButton" binding="OKButton" default-binding="true">
             <constraints/>
             <properties>
-              <background color="-1140324"/>
+              <background color="-11157259"/>
               <foreground color="-12828863"/>
               <text value="OK"/>
             </properties>
@@ -58,7 +58,7 @@
           <component id="c2611" class="javax.swing.JButton" binding="cancelButton" default-binding="true">
             <constraints/>
             <properties>
-              <background color="-1140324"/>
+              <background color="-11157259"/>
               <text value="Cancel"/>
             </properties>
           </component>
