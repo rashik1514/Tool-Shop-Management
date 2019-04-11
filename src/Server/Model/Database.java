@@ -15,7 +15,7 @@ public class Database {
         }
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ToolShop?serverTimezone=GMT",
-                    "root", "Iig82cb3!");
+                    "root", "rootroot");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -33,9 +33,7 @@ public class Database {
     }
 
     public void changeAlreadyOrdered(Item item) {
-        String query = "UPDATE Items " +
-                "SET alreadyOrdered = ? " +
-                "WHERE itemId = ?";
+        String query = "UPDATE Items SET alreadyOrdered = ? WHERE itemId = ?";
         try {
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.setInt(1, 1);
@@ -47,9 +45,7 @@ public class Database {
     }
 
     public void changeItemQuantity(int amount, Item item) {
-        String query = "UPDATE Items " +
-                "SET ItemQuantity = ?" +
-                "WHERE itemId = ?";
+        String query = "UPDATE Items SET ItemQuantity = ? WHERE itemId = ?";
         try {
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.setInt(1, item.getItemQuantity() + amount);
@@ -67,6 +63,7 @@ public class Database {
             return null;
         else{
             changeItemQuantity(amount, item);
+            item.setItemQuantity(item.getItemQuantity() + amount);
             return item.getItemName()+ " has been changed successfully;There are " + item.getItemQuantity() + " in stock";
         }
 
@@ -78,6 +75,7 @@ public class Database {
             return null;
         else{
             changeItemQuantity(amount, item);
+            item.setItemQuantity(item.getItemQuantity() + amount);
             return item.getItemName()+ " has been changed successfully;There are " + item.getItemQuantity() + " in stock";
         }
 
@@ -117,43 +115,6 @@ public class Database {
                 return i.toString();
         }
         return null;
-    }
-
-    public void insertItem(int id, String name, int quantity, double price, int supID) {
-        try {
-            String query = "INSERT INTO ITEMS (itemId, itemname, itemquantity, itemprice, supId) values(?, ?, ?, ?, ?)";
-            PreparedStatement pStmt = connection.prepareStatement(query);
-            pStmt.setInt(1, id);
-            pStmt.setString(2, name);
-            pStmt.setInt(3, quantity);
-            pStmt.setDouble(4, price);
-            pStmt.setInt(5, supID);
-
-            int rowCount = pStmt.executeUpdate();
-            System.out.println("row Count = " + rowCount);
-            pStmt.close();
-        } catch (SQLException e) {
-            System.out.println("Error inserting in table");
-            e.printStackTrace();
-        }
-    }
-
-    public void insertSupplier(int id, String name, String address, String contactName) {
-        try {
-            String query = "INSERT INTO SUPPLIERS (supId, supname, supaddress, supcontactName) values(?, ?, ?, ?)";
-            PreparedStatement pStmt = connection.prepareStatement(query);
-            pStmt.setInt(1, id);
-            pStmt.setString(2, name);
-            pStmt.setString(3, address);
-            pStmt.setString(4, contactName);
-
-            int rowCount = pStmt.executeUpdate();
-            System.out.println("row Count = " + rowCount);
-            pStmt.close();
-        } catch (SQLException sqle) {
-            System.out.println("Error inserting in table");
-            sqle.printStackTrace();
-        }
     }
 
     /**
@@ -200,7 +161,7 @@ public class Database {
         try {
             ArrayList<Supplier> s = loadSuppliers();
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * from Items");
+            ResultSet rs = statement.executeQuery("SELECT * FROM Items");
             String out = "";
             while (rs.next()) {
                 out += (rs.getInt("itemId") + "/" + rs.getString("itemName") +
