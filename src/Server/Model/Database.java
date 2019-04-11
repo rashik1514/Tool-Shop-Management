@@ -67,10 +67,25 @@ public class Database {
         return item.getItemName()+ " has been changed successfully;There are " + item.getItemQuantity() + " in stock";
     }
 
+    public String changeItemQuantity(int amount, String name) {
+        Item item = getItemFromName(name);
+        changeItemQuantity(amount, item);
+        return item.getItemName()+ " has been changed successfully;There are " + item.getItemQuantity() + " in stock";
+    }
+
     public Item getItemFromID(int id) {
         ArrayList<Item> items = loadItems(loadSuppliers());
         for (Item i : items) {
             if (i.getItemId() == id)
+                return i;
+        }
+        return null;
+    }
+
+    public Item getItemFromName(String name) {
+        ArrayList<Item> items = loadItems(loadSuppliers());
+        for (Item i : items) {
+            if (i.getItemName() == name)
                 return i;
         }
         return null;
