@@ -73,14 +73,12 @@ public class Shop extends Database implements Runnable {
                     int id = Integer.parseInt(socketIn.readLine());
                     String out = searchByItemId(id);
                     socketOut.println(out);
-                    socketOut.println("END");
 
 
                 } else if (in.equals("SEARCHNAME")) {
                     String name = socketIn.readLine();
                     String out = searchByItemName(name);
                     socketOut.println(out);
-                    socketOut.println("END");
 
 
                 } else if (in.equals("DECREASEID")) {
@@ -88,7 +86,6 @@ public class Shop extends Database implements Runnable {
                     int amount = Integer.parseInt(socketIn.readLine());
                     String out = changeItemQuantity(amount, id);
                     socketOut.println(out);
-                    socketOut.println("END");
 
 
                 } else if (in.equals("DECREASENAME")) {
@@ -96,7 +93,6 @@ public class Shop extends Database implements Runnable {
                     int amount = Integer.parseInt(socketIn.readLine());
                     String out = changeItemQuantity(amount, name);
                     socketOut.println(out);
-                    socketOut.println("END");
 
 
                 } else if (in.equals("QUIT")) {
