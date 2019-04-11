@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.15, for macos10.14 (x86_64)
 --
--- Host: 127.0.0.1    Database: ToolShop
+-- Host: localhost    Database: ToolShop
 -- ------------------------------------------------------
 -- Server version	8.0.15
 
@@ -26,7 +26,7 @@ CREATE TABLE `Items` (
   `itemId` int(11) NOT NULL,
   `itemName` varchar(45) DEFAULT NULL,
   `ItemQuantity` int(11) DEFAULT NULL,
-  `itemPrice` varchar(45) DEFAULT NULL,
+  `itemPrice` decimal(6,2) DEFAULT NULL,
   `alreadyOrdered` tinyint(4) DEFAULT '0',
   `supId` int(11) DEFAULT NULL,
   PRIMARY KEY (`itemId`),
@@ -41,7 +41,7 @@ CREATE TABLE `Items` (
 
 LOCK TABLES `Items` WRITE;
 /*!40000 ALTER TABLE `Items` DISABLE KEYS */;
-INSERT INTO `Items` VALUES (1001,'Widgets',10,'35.5',0,8004),(1003,'Wedges',15,'10.15',0,8020),(1004,'Wing Bats',11,'11.25',0,8003),(1005,'Twinkies',75,'15.75',0,8012),(1006,'Wiggles',30,'12.34',0,8020),(1007,'Bing Bobs',25,'2.39',0,8005),(1008,'Wog Wits',300,'19.99',0,8004),(1009,'Barney Bits',21,'23.59',0,8006),(1010,'Willie Widgits',89,'12.99',0,8003),(1011,'Barge Bogs',35,'2.99',0,8011),(1012,'Poggy Pogs',99,'1.1',0,8002),(1013,'Pardle Pins',400,'0.69',0,8013),(1014,'Piddley Wicks',54,'5.19',0,8013),(1015,'Iggy Orks',22,'49.95',0,8010),(1016,'Crank Cribs',888,'0.29',0,8005),(1017,'Thingies',67,'45.98',0,8008),(1018,'Orf Dappers',32,'19.98',0,8018),(1019,'Piff Knocks',82,'4.95',0,8002),(1020,'Knit Piks',66,'6.75',0,8015),(1021,'Piddley Pins',370,'0.25',0,8020),(1022,'Tic Tocs',87,'1.36',0,8014),(1023,'Tin Wits',23,'5.67',0,8014),(1024,'Thinga-ma-bobs',40,'10.98',0,8012),(1025,'Fling Flobs',254,'2.33',0,8009),(1026,'Barn Bins',45,'88.67',0,8006),(1027,'Flap Wrappers',89,'44.88',0,8009),(1028,'Pong Pangs',2345,'0.1',0,8002),(1029,'Oof Tongs',345,'8.49',0,8011),(1030,'Nic Nacs',238,'2.99',0,8015),(1031,'Tork Tins',376,'0.95',0,8012),(1032,'Lilly Larks',56,'12.99',0,8007),(1033,'Minnie Morks',800,'1.95',0,8007),(1034,'Cork Handles',654,'2.66',0,8016),(1035,'Ding Darns',1208,'0.15',0,8019),(1036,'Erk Orks',498,'3.99',0,8017),(1037,'Foo Figs',234,'5.89',0,8018),(1039,'Handy Pandies',321,'4.35',0,8017),(1040,'Inny Outies',219,'3.45',0,8010);
+INSERT INTO `Items` VALUES (1001,'Widgets',10,35.50,0,8004),(1003,'Wedges',15,10.15,0,8020),(1004,'Wing Bats',11,11.25,0,8003),(1005,'Twinkies',75,15.75,0,8012),(1006,'Wiggles',30,12.34,0,8020),(1007,'Bing Bobs',25,2.39,0,8005),(1008,'Wog Wits',300,19.99,0,8004),(1009,'Barney Bits',21,23.59,0,8006),(1010,'Willie Widgits',89,12.99,0,8003),(1011,'Barge Bogs',35,2.99,0,8011),(1012,'Poggy Pogs',99,1.10,0,8002),(1013,'Pardle Pins',400,0.69,0,8013),(1014,'Piddley Wicks',54,5.19,0,8013),(1015,'Iggy Orks',22,49.95,0,8010),(1016,'Crank Cribs',888,0.29,0,8005),(1017,'Thingies',67,45.98,0,8008),(1018,'Orf Dappers',32,19.98,0,8018),(1019,'Piff Knocks',82,4.95,0,8002),(1020,'Knit Piks',66,6.75,0,8015),(1021,'Piddley Pins',370,0.25,0,8020),(1022,'Tic Tocs',87,1.36,0,8014),(1023,'Tin Wits',23,5.67,0,8014),(1024,'Thinga-ma-bobs',40,10.98,0,8012),(1025,'Fling Flobs',254,2.33,0,8009),(1026,'Barn Bins',45,88.67,0,8006),(1027,'Flap Wrappers',89,44.88,0,8009),(1028,'Pong Pangs',2345,0.10,0,8002),(1029,'Oof Tongs',345,8.49,0,8011),(1030,'Nic Nacs',238,2.99,0,8015),(1031,'Tork Tins',376,0.95,0,8012),(1032,'Lilly Larks',56,12.99,0,8007),(1033,'Minnie Morks',800,1.95,0,8007),(1034,'Cork Handles',654,2.66,0,8016),(1035,'Ding Darns',1208,0.15,0,8019),(1036,'Erk Orks',498,3.99,0,8017),(1037,'Foo Figs',234,5.89,0,8018),(1039,'Handy Pandies',321,4.35,0,8017),(1040,'Inny Outies',219,3.45,0,8010);
 /*!40000 ALTER TABLE `Items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -80,4 +80,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-10 13:53:15
+-- Dump completed on 2019-04-11 12:11:38
