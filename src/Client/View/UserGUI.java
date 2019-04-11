@@ -118,6 +118,7 @@ public class UserGUI {
         frame.setVisible(true);
         gui.displayTools();
         gui.searchTools();
+        gui.decreaseItemQuantity();
     }
 
     {

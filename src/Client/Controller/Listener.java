@@ -63,7 +63,7 @@ public class Listener {
             dialog.pack();
             dialog.setVisible(true);
             int selectedIndex = dialog.searchType.getSelectedIndex();
-            int amount = Integer.parseInt(dialog.Quantity.getText());
+            int amount = 0 - Integer.parseInt(dialog.Quantity.getText());
             if (selectedIndex == 0) {
                 int id = Integer.parseInt(dialog.item.getText());
                 try {
