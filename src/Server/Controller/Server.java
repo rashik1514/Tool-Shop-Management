@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.*;
 import java.sql.SQLException;
 import java.util.concurrent.*;
+
 import Server.Model.*;
 
 
@@ -75,12 +76,12 @@ public class Server implements Runnable {
                     socketOut.println(out);
                     socketOut.println("END");
 
-                } else if(in.equals("SEARCHID")){
+                } else if (in.equals("SEARCHID")) {
                     int id = Integer.parseInt(socketIn.readLine());
                     String out = database.searchByItemId(id);
                     socketOut.println(out);
 
-                } else if (in.equals("SEARCHNAME")){
+                } else if (in.equals("SEARCHNAME")) {
                     String name = socketIn.readLine();
                     String out = database.searchByItemName(name);
                     socketOut.println(out);
@@ -94,18 +95,18 @@ public class Server implements Runnable {
 
                 } else if (in.equals("QUIT")) {
                     close();
-                    threadPool.shutdown();
                 }
             } catch (SocketException e) {
                 threadPool.shutdown();
             } catch (IOException e) {
                 e.printStackTrace();
-                threadPool.shutdown();
+
             }
+            threadPool.shutdown();
         }
     }
 
-    public void run(){
+    public void run() {
         try {
             socket = serverSocket.accept();
             socketOut = new PrintWriter((socket.getOutputStream()), true);
@@ -124,6 +125,7 @@ public class Server implements Runnable {
             socketIn.close();
             socketOut.close();
             socket.close();
+
             try {
                 database.getConnection().close();
             } catch (SQLException e) {
@@ -134,7 +136,7 @@ public class Server implements Runnable {
         }
     }
 
-  
+
 }
 
 
