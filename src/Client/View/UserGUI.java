@@ -95,7 +95,12 @@ public class UserGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String response = listener.actionPerformed("DECREASE");
-
+                System.out.println(response);
+                if (response.equals("null")) {
+                    JOptionPane.showMessageDialog(new JFrame(), "Could not decrease quantity!");
+                } else {
+                    JOptionPane.showMessageDialog(null, response.replaceAll(";", "\n"), "Quantity Decrease", JOptionPane.PLAIN_MESSAGE);
+                }
             }
         });
     }
