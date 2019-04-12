@@ -18,7 +18,7 @@ public class OrderLine {
      * @param item item to order
      * @param quantity quantity to order
      */
-    public OrderLine(Item item, int quantity) {
+    protected OrderLine(Item item, int quantity) {
         theItem = item;
         setOrderQuantity(quantity);
     }
@@ -27,15 +27,15 @@ public class OrderLine {
         return theItem;
     }
 
-    public void setTheItem(Item theItem) {
+    protected void setTheItem(Item theItem) {
         this.theItem = theItem;
     }
 
-    public int getOrderQuantity() {
+    protected int getOrderQuantity() {
         return orderQuantity;
     }
 
-    public void setOrderQuantity(int orderQuantity) {
+    protected void setOrderQuantity(int orderQuantity) {
         this.orderQuantity = orderQuantity;
     }
 

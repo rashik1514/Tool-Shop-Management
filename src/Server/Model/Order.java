@@ -25,12 +25,12 @@ public class Order {
     /**
      * default constructor
      */
-    public Order() {
+    protected Order() {
         today = Calendar.getInstance().getTime();
         orderLines = new ArrayList<OrderLine>();
     }
 
-    public void addOrderLine(OrderLine ol) {
+    protected void addOrderLine(OrderLine ol) {
         orderLines.add(ol);
     }
 

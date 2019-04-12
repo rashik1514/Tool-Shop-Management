@@ -99,15 +99,15 @@ public class Item extends Database {
         this.itemQuantity = itemQuantity;
     }
 
-    public double getItemPrice() {
+    protected double getItemPrice() {
         return itemPrice;
     }
 
-    public void setItemPrice(double itemPrice) {
+    protected void setItemPrice(double itemPrice) {
         this.itemPrice = itemPrice;
     }
 
-    public void setTheSupplier(Supplier sup) {
+    protected void setTheSupplier(Supplier sup) {
         theSupplier = sup;
     }
 

@@ -22,7 +22,7 @@ public class Inventory extends Database {
     /**
      * this places multiple orders
      */
-    public void placeOrders() {
+    protected void placeOrders() {
         ArrayList<Item> items = loadItems(loadSuppliers());
         for (Item i : items)
             if (i != null)
@@ -34,7 +34,7 @@ public class Inventory extends Database {
      *
      * @param theItem the item to be ordered
      */
-    public void placeOrder(Item theItem) {
+    protected void placeOrder(Item theItem) {
         OrderLine ol = theItem.placeOrder();
         if (ol != null) {
             myOrder.addOrderLine(ol);
@@ -66,7 +66,7 @@ public class Inventory extends Database {
      * @param name the name of the item
      * @return the item, null if the item is not found
      */
-    public int getItemQuantity(String name) {
+    protected int getItemQuantity(String name) {
         Item theItem = searchForItem(name);
         if (theItem == null)
             return -1;
@@ -80,7 +80,7 @@ public class Inventory extends Database {
      * @param name name of the item
      * @return the item if found, null if otherwise
      */
-    public Item searchForItem(String name) {
+    protected Item searchForItem(String name) {
         ArrayList<Item> itemList = loadItems(loadSuppliers());
         for (Item i : itemList) {
             if (i.getItemName().equals(name))
@@ -123,7 +123,7 @@ public class Inventory extends Database {
      *
      * @return order as a string
      */
-    public String printOrder() {
+    protected String printOrder() {
         return myOrder.toString();
     }
 
