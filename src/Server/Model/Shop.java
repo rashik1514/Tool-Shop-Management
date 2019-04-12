@@ -26,7 +26,6 @@ public class Shop extends Database implements Runnable {
         }
     }
 
-
     public String decreaseItem(String name) {
         if (theInventory.manageItem(name) == null)
             return "Couldn't not decrease item quantity!\n";

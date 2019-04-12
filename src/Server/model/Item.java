@@ -82,5 +82,6 @@ public class Item extends Database {
         return "Item ID: " + itemId + ";Item Name: " + itemName + ";Item Quantity: " +
                 itemQuantity + ";Supplier: " + theSupplier.getSupName();
     }
-
 }
+
+

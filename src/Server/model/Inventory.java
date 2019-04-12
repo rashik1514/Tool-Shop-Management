@@ -2,15 +2,26 @@ package Server.Model;
 
 import java.util.ArrayList;
 
+/**
+ * This implements the store's inventory
+ */
 public class Inventory extends Database {
 
+    /**
+     * an order
+     */
     private Order myOrder;
 
+    /**
+     * constructs the inventory
+     */
     public Inventory() {
         myOrder = new Order();
     }
 
-
+    /**
+     * this places multiple orders
+     */
     public void placeOrders() {
         ArrayList<Item> items = loadItems(loadSuppliers());
         for (Item i : items)
@@ -18,6 +29,11 @@ public class Inventory extends Database {
                 placeOrder(i);
     }
 
+    /**
+     * //TODO idk what dis
+     * @param name
+     * @return
+     */
     public Item manageItem(String name) {
         Item theItem = decreaseItem(name);
 
@@ -27,6 +43,10 @@ public class Inventory extends Database {
         return theItem;
     }
 
+    /**
+     * this places an order for the received item
+     * @param theItem the item to be ordered
+     */
     public void placeOrder(Item theItem) {
         OrderLine ol = theItem.placeOrder();
         if (ol != null) {
@@ -34,6 +54,11 @@ public class Inventory extends Database {
         }
     }
 
+    /**
+     * this decreases the quantity of the received item in stock
+     * @param name the name of the item
+     * @return the item, null if the item is not found
+     */
     private Item decreaseItem(String name) {
         Item theItem = searchForItem(name);
 
@@ -47,6 +72,11 @@ public class Inventory extends Database {
 
     }
 
+    /**
+     * this decreases the quantity of the received item in stock
+     * @param name the name of the item
+     * @return the item, null if the item is not found
+     */
     public int getItemQuantity(String name) {
         Item theItem = searchForItem(name);
         if (theItem == null)
@@ -55,6 +85,11 @@ public class Inventory extends Database {
             return theItem.getItemQuantity();
     }
 
+    /**
+     * searches for the item by name
+     * @param name name of the item
+     * @return the item if found, null if otherwise
+     */
     public Item searchForItem(String name) {
         ArrayList<Item> itemList = loadItems(loadSuppliers());
         for (Item i : itemList) {
@@ -64,6 +99,10 @@ public class Inventory extends Database {
         return null;
     }
 
+    /**
+     * retruns the inventory list as a string
+     * @return inventory as a string
+     */
     public String toString() {
         StringBuilder str = new StringBuilder();
         ArrayList<Item> itemList = loadItems(loadSuppliers());
@@ -73,6 +112,11 @@ public class Inventory extends Database {
         return str.toString();
     }
 
+    /**
+     * searchs for the item by id
+     * @param id item id
+     * @return the item if found, null if other wise
+     */
     public Item searchForItem(int id) {
         ArrayList<Item> itemList = loadItems(loadSuppliers());
         for (Item i : itemList) {
@@ -82,6 +126,10 @@ public class Inventory extends Database {
         return null;
     }
 
+    /**
+     * returns the order as a string
+     * @return order as a string
+     */
     public String printOrder() {
         return myOrder.toString();
     }

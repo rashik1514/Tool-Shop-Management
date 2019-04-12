@@ -8,7 +8,6 @@ public class OrderLine {
     public OrderLine(Item item, int quantity) {
         theItem = item;
         setOrderQuantity(quantity);
-
     }
 
     public Item getTheItem() {

@@ -5,9 +5,14 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class Database {
-
+    /**
+     * Connection to the SQL server
+     */
     private Connection connection;
 
+    /**
+     * Default constructor
+     */
     public Database() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -16,12 +21,16 @@ public class Database {
         }
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ToolShop?serverTimezone=GMT",
-                    "root", "Iig82cb3!");
+                    "root", "rootroot");
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * @param queryStr SQL statement to send to database
+     * @return results
+     */
     public ResultSet select(String queryStr) {
         ResultSet resultSet;
         try {
@@ -33,7 +42,12 @@ public class Database {
         return resultSet;
     }
 
-
+    /**
+     * Changes the item quantity in the database
+     *
+     * @param amount amount to change quantity by
+     * @param item   the item to change
+     */
     public void changeItemQuantity(int amount, Item item) {
         String query = "UPDATE Items SET ItemQuantity = ? WHERE itemId = ?";
         try {
@@ -47,9 +61,16 @@ public class Database {
 
     }
 
+    /**
+     * Changes the quantity of the item in stock
+     *
+     * @param amount amount to change quantity by
+     * @param ID     id of item
+     * @return String of the item being changed successfully
+     */
     public String changeItemQuantity(int amount, int ID) {
         Item item = getItemFromID(ID);
-        if (item == null){
+        if (item == null) {
             return null;
         }
         if ((item.getItemQuantity() + amount) < 0)
@@ -62,9 +83,16 @@ public class Database {
 
     }
 
+    /**
+     * Changes the quantity of the item in stock
+     *
+     * @param amount amount to change quantity by
+     * @param name   name of item
+     * @return String of the item being changed successfully
+     */
     public String changeItemQuantity(int amount, String name) {
         Item item = getItemFromName(name);
-        if (item == null){
+        if (item == null) {
             return null;
         }
         System.out.println(item.toString());
@@ -78,6 +106,12 @@ public class Database {
 
     }
 
+    /**
+     * returns item with passed Id
+     *
+     * @param id id of item to get
+     * @return the item found
+     */
     public Item getItemFromID(int id) {
         ArrayList<Item> items = loadItems(loadSuppliers());
         for (Item i : items) {
@@ -87,6 +121,12 @@ public class Database {
         return null;
     }
 
+    /**
+     * returns item with passed name
+     *
+     * @param name name of item to get
+     * @return the item found
+     */
     public Item getItemFromName(String name) {
         ArrayList<Item> items = loadItems(loadSuppliers());
         for (Item i : items) {
@@ -96,6 +136,12 @@ public class Database {
         return null;
     }
 
+    /**
+     * returns item with passed Id
+     *
+     * @param id id of item to get
+     * @return the item found
+     */
     public String searchByItemId(int id) {
         ArrayList<Item> items = loadItems(loadSuppliers());
         for (Item i : items) {
@@ -105,6 +151,12 @@ public class Database {
         return null;
     }
 
+    /**
+     * returns item with passed name
+     *
+     * @param name name of item to get
+     * @return the item found
+     */
     public String searchByItemName(String name) {
         ArrayList<Item> items = loadItems(loadSuppliers());
         for (Item i : items) {
@@ -154,6 +206,10 @@ public class Database {
         return items;
     }
 
+    /**
+     * loads items from database into String
+     * @return all items in database into a string
+     */
     public String loadItemsTable() {
         try {
             ArrayList<Supplier> s = loadSuppliers();
