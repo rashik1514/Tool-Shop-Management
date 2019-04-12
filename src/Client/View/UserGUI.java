@@ -57,8 +57,13 @@ public class UserGUI {
                     data[i] = temp[i].split("/");
                 }
 
-                items = new JTable(data, headers);
-                items.setEnabled(false);
+                TableModel model = new DefaultTableModel(data, headers) {
+                    public boolean isCellEditable(int row, int column) { return false; }
+                };
+
+                items = new JTable(model);
+//                items = new JTable(data, headers);
+//                items.setEnabled(false);
 
                 if (scroll != null)
                     panel.remove(scroll);

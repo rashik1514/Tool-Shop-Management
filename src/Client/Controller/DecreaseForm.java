@@ -5,11 +5,29 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class DecreaseForm extends JDialog {
+    /**
+     * main panel
+     */
     private JPanel contentPane;
+    /**
+     * ok button
+     */
     private JButton OKButton;
+    /**
+     * cancel button
+     */
     private JButton cancelButton;
+    /**
+     * text field for user to enter item id or name
+     */
     protected JTextField item;
+    /**
+     * option to choose between search by id or search by name
+     */
     protected JComboBox searchType;
+    /**
+     * text field for the quantity to decrease by
+     */
     protected JTextField Quantity;
 
 
