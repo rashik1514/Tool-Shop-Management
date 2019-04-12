@@ -1,10 +1,23 @@
 package Server.Model;
 
+/**
+ * Order for a single item
+ */
 public class OrderLine {
-
+    /**
+     * the item to order
+     */
     private Item theItem;
+    /**
+     * quantity to order
+     */
     private int orderQuantity;
 
+    /**
+     * Constructs an orderline
+     * @param item item to order
+     * @param quantity quantity to order
+     */
     public OrderLine(Item item, int quantity) {
         theItem = item;
         setOrderQuantity(quantity);

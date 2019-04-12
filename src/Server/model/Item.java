@@ -2,13 +2,40 @@ package Server.Model;
 
 public class Item extends Database {
 
+    /**
+     * id of item
+     */
     private int itemId;
+    /**
+     * name of item
+     */
     private String itemName;
+    /**
+     * quantity of item
+     */
     private int itemQuantity;
+    /**
+     * price of item
+     */
     private double itemPrice;
+    /**
+     * supplier of item
+     */
     private Supplier theSupplier;
+    /**
+     * minimum order number
+     */
     private static final int MINIMUMUMBER = 40;
 
+    /**
+     * Constructs the item
+     *
+     * @param id
+     * @param name
+     * @param quantity
+     * @param price
+     * @param sup
+     */
     public Item(int id, String name, int quantity, double price, Supplier sup) {
         itemId = id;
         itemName = name;
@@ -17,7 +44,12 @@ public class Item extends Database {
         theSupplier = sup;
     }
 
-    public boolean decreaseItemQuantity() {
+    /**
+     * decreases the quantity of the item in the database
+     *
+     * @return true if item has changed quantity
+     */
+    protected boolean decreaseItemQuantity() {
         if (itemQuantity > 0) {
             itemQuantity--;
             changeItemQuantity(-1, this);
@@ -27,7 +59,12 @@ public class Item extends Database {
 
     }
 
-    public OrderLine placeOrder() {
+    /**
+     * places an order for the item if its quantity in stock is less than the minimum quantity
+     *
+     * @return the orderline placed
+     */
+    protected OrderLine placeOrder() {
         OrderLine ol;
         if (getItemQuantity() < MINIMUMUMBER) {
             int amount = MINIMUMUMBER - itemQuantity;
@@ -38,7 +75,7 @@ public class Item extends Database {
         return null;
     }
 
-    public int getItemId() {
+    protected int getItemId() {
         return itemId;
     }
 
@@ -46,7 +83,7 @@ public class Item extends Database {
         this.itemId = itemId;
     }
 
-    public String getItemName() {
+    protected String getItemName() {
         return itemName;
     }
 
@@ -54,11 +91,11 @@ public class Item extends Database {
         this.itemName = itemName;
     }
 
-    public int getItemQuantity() {
+    protected int getItemQuantity() {
         return itemQuantity;
     }
 
-    public void setItemQuantity(int itemQuantity) {
+    protected void setItemQuantity(int itemQuantity) {
         this.itemQuantity = itemQuantity;
     }
 
@@ -74,7 +111,7 @@ public class Item extends Database {
         theSupplier = sup;
     }
 
-    public Supplier getTheSupplier() {
+    protected Supplier getTheSupplier() {
         return theSupplier;
     }
 

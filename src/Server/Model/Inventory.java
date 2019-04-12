@@ -30,21 +30,8 @@ public class Inventory extends Database {
     }
 
     /**
-     * //TODO idk what dis
-     * @param name
-     * @return
-     */
-    public Item manageItem(String name) {
-        Item theItem = decreaseItem(name);
-
-        if (theItem != null) {
-            placeOrder(theItem);
-        }
-        return theItem;
-    }
-
-    /**
      * this places an order for the received item
+     *
      * @param theItem the item to be ordered
      */
     public void placeOrder(Item theItem) {
@@ -56,6 +43,7 @@ public class Inventory extends Database {
 
     /**
      * this decreases the quantity of the received item in stock
+     *
      * @param name the name of the item
      * @return the item, null if the item is not found
      */
@@ -74,6 +62,7 @@ public class Inventory extends Database {
 
     /**
      * this decreases the quantity of the received item in stock
+     *
      * @param name the name of the item
      * @return the item, null if the item is not found
      */
@@ -87,6 +76,7 @@ public class Inventory extends Database {
 
     /**
      * searches for the item by name
+     *
      * @param name name of the item
      * @return the item if found, null if otherwise
      */
@@ -101,6 +91,7 @@ public class Inventory extends Database {
 
     /**
      * retruns the inventory list as a string
+     *
      * @return inventory as a string
      */
     public String toString() {
@@ -114,6 +105,7 @@ public class Inventory extends Database {
 
     /**
      * searchs for the item by id
+     *
      * @param id item id
      * @return the item if found, null if other wise
      */
@@ -128,6 +120,7 @@ public class Inventory extends Database {
 
     /**
      * returns the order as a string
+     *
      * @return order as a string
      */
     public String printOrder() {

@@ -4,12 +4,27 @@ import java.util.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+/**
+ * Contains list of orders
+ */
 public class Order {
 
+    /**
+     * date order was placed
+     */
     private Date today;
+    /**
+     * id of order
+     */
     private int orderId;
+    /**
+     * Arraylist of orderlines in order
+     */
     private ArrayList<OrderLine> orderLines;
 
+    /**
+     * default constructor
+     */
     public Order() {
         today = Calendar.getInstance().getTime();
         orderLines = new ArrayList<OrderLine>();

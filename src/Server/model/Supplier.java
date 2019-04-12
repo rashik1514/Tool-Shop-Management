@@ -2,15 +2,40 @@ package Server.Model;
 
 import java.util.ArrayList;
 
+/**
+ * Supplier of the items
+ */
 public class Supplier {
 
+    /**
+     * Supplier Id
+     */
     private int supId;
+    /**
+     * Supplier name
+     */
     private String supName;
+    /**
+     * Supplier address
+     */
     private String supAddress;
+    /**
+     * Contact name of supplier
+     */
     private String supContactName;
+    /**
+     *
+     */
     private ArrayList<Item> itemList;
 
-    public Supplier(int id, String name, String address, String contactName) {
+    /**
+     * Constructs the supplier
+     * @param id id of supplier
+     * @param name name of supplier
+     * @param address address of supplier
+     * @param contactName contact name of supplier
+     */
+    protected Supplier(int id, String name, String address, String contactName) {
         supId = id;
         supName = name;
         supAddress = address;
@@ -23,14 +48,14 @@ public class Supplier {
      *
      * @return supId
      */
-    public int getSupId() {
+    protected int getSupId() {
         return supId;
     }
 
     /**
      * @param supId ID of supplier to set
      */
-    public void setSupId(int supId) {
+    protected void setSupId(int supId) {
         this.supId = supId;
     }
 
@@ -39,14 +64,14 @@ public class Supplier {
      *
      * @return supName
      */
-    public String getSupName() {
+    protected String getSupName() {
         return supName;
     }
 
     /**
      * @param supName name of sup to set
      */
-    public void setSupName(String supName) {
+    protected void setSupName(String supName) {
         this.supName = supName;
     }
 
@@ -55,14 +80,14 @@ public class Supplier {
      *
      * @return supplier address
      */
-    public String getSupAddress() {
+    protected String getSupAddress() {
         return supAddress;
     }
 
     /**
      * @param supAddress sup address to set
      */
-    public void setSupAddress(String supAddress) {
+    protected void setSupAddress(String supAddress) {
         this.supAddress = supAddress;
     }
 
@@ -71,14 +96,14 @@ public class Supplier {
      *
      * @return supplier's contact name
      */
-    public String getSupContactName() {
+    protected String getSupContactName() {
         return supContactName;
     }
 
     /**
      * @param supContactName contact name of sup to set
      */
-    public void setSupContactName(String supContactName) {
+    protected void setSupContactName(String supContactName) {
         this.supContactName = supContactName;
     }
 
@@ -94,14 +119,14 @@ public class Supplier {
      *
      * @return gets item list
      */
-    public ArrayList<Item> getItemList() {
+    protected ArrayList<Item> getItemList() {
         return itemList;
     }
 
     /**
      * @param itemList item list to set
      */
-    public void setItemList(ArrayList<Item> itemList) {
+    protected void setItemList(ArrayList<Item> itemList) {
         this.itemList = itemList;
     }
 }

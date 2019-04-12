@@ -5,6 +5,7 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class Database {
+
     /**
      * Connection to the SQL server
      */
@@ -167,6 +168,8 @@ public class Database {
 
     /**
      * load all the supplier information from the database
+     *
+     * @return arraylist of suppliers
      */
     public ArrayList<Supplier> loadSuppliers() {
         ResultSet rs = select("SELECT * FROM Suppliers");
@@ -207,6 +210,7 @@ public class Database {
 
     /**
      * loads items from database into String
+     *
      * @return all items in database into a string
      */
     public String loadItemsTable() {

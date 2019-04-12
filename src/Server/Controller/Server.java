@@ -35,7 +35,7 @@ public class Server {
     /**
      * Used for executing the method within class ShopController
      */
-    public ExecutorService pool;
+    private ExecutorService pool;
 
     /**
      * Allows aSocket to be connected between server and client
@@ -45,7 +45,7 @@ public class Server {
     /**
      * The database in which the records are stored
      */
-    Database database;
+    private Database database;
 
     /**
      * @param portNum port number
@@ -53,9 +53,6 @@ public class Server {
     public Server(int portNum) {
         try {
             serverSocket = new ServerSocket(portNum);
-//            socket = serverSocket.accept();
-//            socketOut = new PrintWriter((socket.getOutputStream()), true);
-//            socketIn = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             pool = Executors.newCachedThreadPool();
             database = new Database();
         } catch (IOException e) {
@@ -69,7 +66,7 @@ public class Server {
      */
     public void communicate() {
         Inventory theInventory = new Inventory();
-       while (true) {
+        while (true) {
             try {
                 Shop shop = new Shop(theInventory, serverSocket.accept());
                 pool.execute(shop);

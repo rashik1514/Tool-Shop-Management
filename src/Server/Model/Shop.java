@@ -8,13 +8,32 @@ import java.net.Socket;
 import java.net.SocketException;
 import java.util.ArrayList;
 
+/**
+ * Manages the inventory
+ */
 public class Shop extends Database implements Runnable {
-
+    /**
+     * Inventory of items
+     */
     private Inventory theInventory;
+    /**
+     * Input to client
+     */
     private BufferedReader socketIn;
+    /**
+     * Output from client
+     */
     private PrintWriter socketOut;
+    /**
+     * Socket to connect to client
+     */
     private Socket socket;
 
+    /**
+     * Constructs the shop
+     * @param inventory inventory to assign
+     * @param s socket to the client
+     */
     public Shop(Inventory inventory, Socket s) {
         theInventory = inventory;
         socket = s;
@@ -26,13 +45,9 @@ public class Shop extends Database implements Runnable {
         }
     }
 
-    public String decreaseItem(String name) {
-        if (theInventory.manageItem(name) == null)
-            return "Couldn't not decrease item quantity!\n";
-        else
-            return "Item quantity was decreased!\n";
-    }
-
+    /**
+     * lists all the suppliers
+     */
     public void listAllSuppliers() {
         ArrayList<Supplier> supplierList = loadSuppliers();
         for (Supplier s : supplierList) {
@@ -40,10 +55,20 @@ public class Shop extends Database implements Runnable {
         }
     }
 
+    /**
+     * Outputs item information
+     * @param theItem the item to access
+     * @return item's information
+     */
     private String outputItem(Item theItem) {
         return "The item information is as follows: \n" + theItem;
     }
 
+    /**
+     * returns the item quantity stringed
+     * @param name name of the item
+     * @return the String of item the quantity attribute
+     */
     public String getItemQuantity(String name) {
         int quantity = theInventory.getItemQuantity(name);
         if (quantity < 0)
@@ -52,10 +77,17 @@ public class Shop extends Database implements Runnable {
             return "The quantity of Item " + name + " is: " + quantity + "\n";
     }
 
+    /**
+     * Returns the order printed into a String
+     * @return the order atrributes stringed
+     */
     public String printOrder() {
         return theInventory.printOrder();
     }
 
+    /**
+     * Method to be called and executed by threads
+     */
     public void run() {
         String in = "";
         while (true) {
