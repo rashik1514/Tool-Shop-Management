@@ -18,7 +18,6 @@ public class Database {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ToolShop?serverTimezone=GMT",
                     "root", "Iig82cb3!");
         } catch (SQLException e) {
-            e.printStackTrace();
         }
     }
 
