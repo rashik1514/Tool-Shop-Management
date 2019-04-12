@@ -1,16 +1,7 @@
 package Server.Model;
 
-/**
- * Class for items
- *
- * @author Christina Lu 30037885, Layla Arab 30017060, MD Rashik Hassan 30048022
- * @version 1.0
- * @since April 5 2019
- */
-public class Item {
-    /**
-     * ID of the tool
-     */
+public class Item extends Database {
+
     private int itemId;
     /**
      * name of the tool
@@ -24,51 +15,24 @@ public class Item {
      * price of the tool
      */
     private double itemPrice;
-    /**
-     * true if item is already ordered, false otherwise
-     */
-    private boolean alreadyOrdered;
-    /**
-     * supplier of the tool
-     */
     private Supplier theSupplier;
-    /**
-     * quantity for which item will be ordered automatically
-     */
-    private static final int ORDERQUANTITY = 40;
-    /**
-     * minimum number of the item in stock
-     */
-    private static final int MINIMUMUMBER = 20;
+    private static final int MINIMUMUMBER = 40;
 
-    /**
-     * constructs the item
-     *
-     * @param id
-     * @param name
-     * @param quanitiy
-     * @param price
-     * @param sup
-     */
-    public Item(int id, String name, int quanitiy, double price, Supplier sup) {
-
-
-    public Item(int id, String name, int quanitiy, double price, Supplier sup) {
+    public Item(int id, String name, int quantity, double price, Supplier sup) {
         itemId = id;
         itemName = name;
-        itemQuantity = quanitiy;
+        itemQuantity = quantity;
         itemPrice = price;
         theSupplier = sup;
-        setAlreadyOrdered(false);
     }
 
     /**
      * @return true if item has been decreased
      */
-    protected boolean decreaseItemQuantity() {
     public boolean decreaseItemQuantity() {
         if (itemQuantity > 0) {
             itemQuantity--;
+            changeItemQuantity(-1, this);
             return true;
         } else
             return false;
@@ -80,12 +44,12 @@ public class Item {
      *
      * @return
      */
-    protected OrderLine placeOrder() {
     public OrderLine placeOrder() {
         OrderLine ol;
-        if (getItemQuantity() < MINIMUMUMBER && alreadyOrdered == false) {
-            ol = new OrderLine(this, ORDERQUANTITY);
-            alreadyOrdered = true;
+        if (getItemQuantity() < MINIMUMUMBER) {
+            int amount = MINIMUMUMBER - itemQuantity;
+            ol = new OrderLine(this, amount);
+            changeItemQuantity(amount, this);
             return ol;
         }
         return null;
@@ -165,22 +129,8 @@ public class Item {
      * @return makes the member variables into a string
      */
     public String toString() {
-        return "Item ID: " + itemId + ", Item Name: " + itemName + ", Item Quantity: " +
-                itemQuantity + "\n";
-    }
-
-    /**
-     * @return true if the item has been ordered
-     */
-    public boolean isAlreadyOrdered() {
-        return alreadyOrdered;
-    }
-
-    /**
-     * @param alreadyOrdered sets the order status of item
-     */
-    protected void setAlreadyOrdered(boolean alreadyOrdered) {
-        this.alreadyOrdered = alreadyOrdered;
+        return "Item ID: " + itemId + ";Item Name: " + itemName + ";Item Quantity: " +
+                itemQuantity + ";Supplier: " + theSupplier.getSupName();
     }
 
 }

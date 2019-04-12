@@ -13,9 +13,6 @@ import java.util.Calendar;
  */
 public class Order {
 
-    /**
-     * date of placement of order
-     */
     private Date today;
     /**
      * id of order
@@ -31,7 +28,6 @@ public class Order {
      */
     protected Order() {
     private ArrayList<OrderLine> orderLines;
-
 
     public Order() {
         today = Calendar.getInstance().getTime();
@@ -90,14 +86,13 @@ public class Order {
             str.append("------------------------\n");
     public String toString() {
         String order = "Order Date: " + today.toString() + "\n\n";
-        String str = "";
+        StringBuilder str = new StringBuilder();
         for (OrderLine ol : orderLines) {
-            str += ol;
-            str += "------------------------\n";
+            str.append(ol);
+            str.append("------------------------\n");
         }
         if (str.toString().equals(""))
-            str = new StringBuilder("here are corrently no orderlines");
-
+            str = new StringBuilder("here are currently no orderlines");
         order += str;
         order += "\n";
         return order;

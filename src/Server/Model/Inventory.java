@@ -2,66 +2,20 @@ package Server.Model;
 
 import java.util.ArrayList;
 
-/**
- * Class that holds the items
- *
- * @author Christina Lu 30037885, Layla Arab 30017060, MD Rashik Hassan 30048022
- * @version 1.0
- * @since April 5 2019
- */
-public class Inventory {
-    /**
-     * ArrayList that holds the items
-     */
-    private ArrayList<Item> itemList;
-    /**
-     * Order of items for the inventory
-     */
+public class Inventory extends Database {
+
     private Order myOrder;
 
-    /**
-     * Constructs the inventory
-     *
-     * @param itemList itemList to set
-     */
-
-    private ArrayList<Item> itemList;
-    private Order myOrder;
-
-
-    public Inventory(ArrayList<Item> itemList) {
-        this.itemList = itemList;
+    public Inventory() {
         myOrder = new Order();
     }
 
-    /**
-     * @return the item list
-     */
-    public ArrayList<Item> getItemList() {
-        return itemList;
-    }
 
-    /**
-     * @param itemList list to set
-     */
-    public void setItemList(ArrayList<Item> itemList) {
-        this.itemList = itemList;
-    }
-
-    /**
-     * Manages the item's quantity and orders it
-     *
-     * @param name name of the item
-     * @return the item
-     */
-    protected Item manageItem(String name) {
-    public Item manageItem(String name) {
-        Item theItem = decreaseItem(name);
-
-        if (theItem != null) {
-            placeOrder(theItem);
-        }
-        return theItem;
+    public void placeOrders() {
+        ArrayList<Item> items = loadItems(loadSuppliers());
+        for (Item i : items)
+            if (i != null)
+                placeOrder(i);
     }
 
     /**
@@ -83,14 +37,12 @@ public class Inventory {
      * @return the item
      */
     private Item decreaseItem(String name) {
-
         Item theItem = searchForItem(name);
 
         if (theItem == null)
             return null;
 
-        if (theItem.decreaseItemQuantity() == true) {
-
+        if (theItem.decreaseItemQuantity()) {
             return theItem;
         }
         return null;
@@ -101,7 +53,6 @@ public class Inventory {
      * @param name name of item to find
      * @return quantity of item
      */
-    protected int getItemQuantity(String name) {
     public int getItemQuantity(String name) {
         Item theItem = searchForItem(name);
         if (theItem == null)
@@ -114,8 +65,8 @@ public class Inventory {
      * @param name name of item to find
      * @return index of item to find
      */
-    protected Item searchForItem(String name) {
     public Item searchForItem(String name) {
+        ArrayList<Item> itemList = loadItems(loadSuppliers());
         for (Item i : itemList) {
             if (i.getItemName().equals(name))
                 return i;
@@ -127,19 +78,16 @@ public class Inventory {
      * @return the String of the inventory
      */
     public String toString() {
-        String str = "";
+        StringBuilder str = new StringBuilder();
+        ArrayList<Item> itemList = loadItems(loadSuppliers());
         for (Item i : itemList) {
-            str += i;
+            str.append(i);
         }
-        return str;
+        return str.toString();
     }
 
-    /**
-     * @param id id of item to search for
-     * @return the item with the passed id
-     */
-    protected Item searchForItem(int id) {
-        // TODO Auto-generated method stub
+    public Item searchForItem(int id) {
+        ArrayList<Item> itemList = loadItems(loadSuppliers());
         for (Item i : itemList) {
             if (i.getItemId() == id)
                 return i;
@@ -147,11 +95,7 @@ public class Inventory {
         return null;
     }
 
-    /**
-     * @return the String of the order
-     */
-    protected String printOrder() {
-        // TODO Auto-generated method stub
+    public String printOrder() {
         return myOrder.toString();
     }
 

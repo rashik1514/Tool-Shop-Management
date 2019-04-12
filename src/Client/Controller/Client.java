@@ -1,48 +1,34 @@
 package Client.Controller;
 
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+
 /**
- * Client that connects to server
- *
- * @author Christina Lu 30037885, Layla Arab 30017060, MD Rashik Hassan 30048022
- * @version 1.0
- * @since April 5 2019
+ * This class implements a client that forms connection to server
  */
 public class Client {
-
     /**
-     * output to server
+     * Output of the client
      */
     private PrintWriter socketOut;
+
     /**
-     * connection to server
+     * Socket that connects the client to the server
      */
     private Socket socket;
     /**
-     * input from server
+     * Input to the client
      */
     private BufferedReader socketIn;
-    /**
-     * output to console
-     */
+
     private BufferedReader stdIn;
-    /**
-     * activity status of client
-     */
+
     private boolean isActive = false;
-
-
-    private PrintWriter socketOut;
-    private Socket socket;
-    private BufferedReader socketIn;
-    private BufferedReader stdIn;
-
-    boolean isActive = false;
 
 
     /**
@@ -65,7 +51,7 @@ public class Client {
     /**
      * disconnects the client from the server
      */
-    protected void disconnect() {
+    protected void close() {
         isActive = false;
         try {
             socketIn.close();
@@ -80,8 +66,8 @@ public class Client {
     /**
      * returns the string received from the server when the client sens DISPLAY
      *
-     * @return
-     * @throws IOException
+     * @return tools in a string
+     * @throws IOException io exception
      */
     protected String displayTools() throws IOException {
         socketOut.println("DISPLAY");
@@ -89,10 +75,61 @@ public class Client {
         StringBuilder data = new StringBuilder();
         while (!response.equals("END")) {
             data.append(response);
-            data.append("\n");
+            data.append(";");
             response = socketIn.readLine();
         }
         return data.toString();
     }
+
+    /**
+     * sends an item id to the server to search by id then returns what the server sends back
+     * @param id item id
+     * @return the item information the server sends back
+     * @throws IOException
+     */
+    public String search(int id) throws IOException {
+        socketOut.println("SEARCHID");
+        socketOut.println(id);
+        return socketIn.readLine();
+    }
+
+    /**
+     * sends an item name to the server to search by id then returns what the server sends back
+     * @param name item name
+     * @return the item information the server sends back
+     * @throws IOException
+     */
+    public String search(String name) throws IOException {
+        socketOut.println("SEARCHNAME");
+        socketOut.println(name);
+        return socketIn.readLine();
+    }
+
+    /**
+     * sends an item id followed by the amount to decrease item stock by then returns what the server sends back
+     * @param id item id
+     * @param amount amount to decrese stock by
+     * @return null if the operation was unsuccessful, the item name and the quantity left in stock if successful
+     * @throws IOException
+     */
+    public String decrease(int id, int amount) throws IOException {
+        socketOut.println("DECREASEID");
+        socketOut.println(id + "\n" + amount);
+        return socketIn.readLine();
+    }
+
+    /**
+     * sends an item name followed by the amount to decrease item stock by then returns what the server sends back
+     * @param name item name
+     * @param amount amount to decrease stock by
+     * @return null if the operation was unsuccessful, the item name and the quantity left in stock if successful
+     * @throws IOException
+     */
+    public String decrease(String name, int amount) throws IOException {
+        socketOut.println("DECREASENAME");
+        socketOut.println(name + "\n" + amount);
+        return socketIn.readLine();
+    }
+
 
 }

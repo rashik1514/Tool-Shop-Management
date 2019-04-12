@@ -59,7 +59,7 @@ public class Supplier {
     }
 
     /**
-     * @param supId
+     * @param supId ID of supplier to set
      */
     public void setSupId(int supId) {
         this.supId = supId;
@@ -75,7 +75,7 @@ public class Supplier {
     }
 
     /**
-     * @param supName
+     * @param supName name of sup to set
      */
     public void setSupName(String supName) {
         this.supName = supName;
@@ -91,7 +91,7 @@ public class Supplier {
     }
 
     /**
-     * @param supAddress
+     * @param supAddress sup address to set
      */
     public void setSupAddress(String supAddress) {
         this.supAddress = supAddress;
@@ -107,14 +107,14 @@ public class Supplier {
     }
 
     /**
-     * @param supContactName
+     * @param supContactName contact name of sup to set
      */
     public void setSupContactName(String supContactName) {
         this.supContactName = supContactName;
     }
 
     /**
-     * @return
+     * @return the attributes of supplier stringed
      */
     public String toString() {
         return supName + " Supplier ID: " + supId + "\n";
@@ -123,14 +123,14 @@ public class Supplier {
     /**
      * getter for the item list
      *
-     * @return
+     * @return gets item list
      */
     public ArrayList<Item> getItemList() {
         return itemList;
     }
 
     /**
-     * @param itemList
+     * @param itemList item list to set
      */
     public void setItemList(ArrayList<Item> itemList) {
         this.itemList = itemList;
